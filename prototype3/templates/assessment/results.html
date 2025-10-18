@@ -2,7 +2,7 @@
 title %}Assessment Results - CyberHubs{% endblock %} {% block content %}
 <div class="max-w-6xl mx-auto px-4">
   <!-- Results Header -->
-  <div class="text-center mb-10 fade-in">
+  <div id="results-header" class="text-center mb-10 fade-in">
     <div
       class="inline-flex items-center justify-center w-32 h-32 rounded-full mb-6 {% if results.score >= 80 %}bg-gradient-to-br from-green-400 to-emerald-500 {% elif results.score >= 60 %}bg-gradient-to-br from-yellow-400 to-orange-500 {% else %}bg-gradient-to-br from-red-400 to-pink-500{% endif %} shadow-2xl"
     >
@@ -527,9 +527,124 @@ title %}Assessment Results - CyberHubs{% endblock %} {% block content %}
     difficulty: "{{ results.difficulty }}"
   });
 
-  // Confetti effect for high scores
-  {% if results.score >= 80 %}
-  console.log('🎉 Excellent score! Consider adding confetti animation here.');
-  {% endif %}
+  // Confetti drop effect (particles originate at the top and fall down)
+  (function() {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
+    script.async = true;
+    script.onload = () => {
+      const confetti = window.confetti;
+
+      // Fire a single downward burst from a given horizontal position (x is fraction 0..1)
+      function dropBurst(x, particleCount, opts = {}) {
+        confetti(Object.assign({
+          origin: { x: x, y: 0 },
+          angle: 90, // straight down
+          spread: 20,
+          startVelocity: 20,
+          gravity: 1.2,
+          ticks: 200
+        }, opts, { particleCount }));
+      }
+
+      // Simulate rain by firing small bursts across the width over time
+      function dropRain(durationMs, intervalMs, particlesPerBurst, opts) {
+        const end = Date.now() + durationMs;
+        const timer = setInterval(() => {
+          const x = Math.random(); // position across the screen
+          dropBurst(x, particlesPerBurst, opts);
+          if (Date.now() > end) clearInterval(timer);
+        }, intervalMs);
+      }
+
+      const difficulty = '{{ results.difficulty or "" }}'.toLowerCase();
+      const score = Number('{{ results.score or 0 }}');
+
+      // Choose parameters by level (gentle -> heavy)
+      if (difficulty === 'beginner' || score < 60) {
+        // Gentle falling confetti: longer slower drops, fewer particles
+        dropRain(2000, 180, 6, { colors: ['#10B981', '#60A5FA'], gravity: 0.8, startVelocity: 15 });
+      } else if (difficulty === 'intermediate' || (score >= 60 && score < 80)) {
+        // Medium intensity
+        dropRain(2200, 120, 10, { colors: ['#F59E0B', '#F97316', '#60A5FA'], gravity: 1.2, startVelocity: 22 });
+        // small trailing bursts for visual fullness
+        setTimeout(() => dropRain(1000, 150, 8, { colors: ['#FBBF24', '#FB923C'], gravity: 1.1, startVelocity: 18 }), 300);
+      } else if (difficulty === 'advanced' || score >= 80) {
+        // Heavy confetti rain
+        dropRain(2600, 90, 14, { colors: ['#34D399', '#06B6D4', '#8B5CF6', '#F472B6'], gravity: 1.5, startVelocity: 28 });
+        setTimeout(() => dropRain(1600, 100, 12, { colors: ['#60A5FA', '#34D399', '#F97316'], gravity: 1.4, startVelocity: 24 }), 150);
+        setTimeout(() => dropRain(800, 120, 10, { colors: ['#8B5CF6', '#F472B6', '#06B6D4'], gravity: 1.3, startVelocity: 20 }), 500);
+      }
+      
+      // If header element exists, direct drops across its width
+      const headerEl = document.getElementById('results-header');
+      if (headerEl) {
+        // Override dropRain to target header bounding rect
+        function dropRainOverHeader(durationMs, intervalMs, particlesPerBurst, opts) {
+          const rect = headerEl.getBoundingClientRect();
+          const end = Date.now() + durationMs;
+          const timer = setInterval(() => {
+            // choose a random x position inside header bounds
+            const clientX = rect.left + Math.random() * rect.width;
+            // map to 0..1 for confetti origin.x (viewport fraction)
+            const x = Math.min(Math.max(clientX / window.innerWidth, 0), 1);
+            dropBurst(x, particlesPerBurst, opts);
+            if (Date.now() > end) clearInterval(timer);
+          }, intervalMs);
+        }
+
+        // Re-run level logic using header-targeted rain
+        if (difficulty === 'beginner' || score < 60) {
+          dropRainOverHeader(2000, 180, 6, { colors: ['#10B981', '#60A5FA'], gravity: 0.8, startVelocity: 15 });
+        } else if (difficulty === 'intermediate' || (score >= 60 && score < 80)) {
+          dropRainOverHeader(2200, 120, 10, { colors: ['#F59E0B', '#F97316', '#60A5FA'], gravity: 1.2, startVelocity: 22 });
+          setTimeout(() => dropRainOverHeader(1000, 150, 8, { colors: ['#FBBF24', '#FB923C'], gravity: 1.1, startVelocity: 18 }), 300);
+        } else if (difficulty === 'advanced' || score >= 80) {
+          dropRainOverHeader(2600, 90, 14, { colors: ['#34D399', '#06B6D4', '#8B5CF6', '#F472B6'], gravity: 1.5, startVelocity: 28 });
+          setTimeout(() => dropRainOverHeader(1600, 100, 12, { colors: ['#60A5FA', '#34D399', '#F97316'], gravity: 1.4, startVelocity: 24 }), 150);
+          setTimeout(() => dropRainOverHeader(800, 120, 10, { colors: ['#8B5CF6', '#F472B6', '#06B6D4'], gravity: 1.3, startVelocity: 20 }), 500);
+        }
+
+        // Shooting streamer confetti from bottom corners for excellent scores
+        if (score >= 80) {
+          // Small repeated streamer shots from corners aimed inward
+          function shootStreamers(durationMs, intervalMs) {
+            const end = Date.now() + durationMs;
+            const timer = setInterval(() => {
+              // bottom-left -> shoot up-right
+              confetti({
+                origin: { x: 0.02, y: 1 },
+                angle: 60,
+                spread: 12,
+                startVelocity: 50,
+                particleCount: 8,
+                ticks: 400,
+                gravity: 0.6,
+                colors: ['#FFD700', '#FF7A59', '#FFB86B']
+              });
+
+              // bottom-right -> shoot up-left
+              confetti({
+                origin: { x: 0.98, y: 1 },
+                angle: 120,
+                spread: 12,
+                startVelocity: 50,
+                particleCount: 8,
+                ticks: 400,
+                gravity: 0.6,
+                colors: ['#FFD700', '#8B5CF6', '#60A5FA']
+              });
+
+              if (Date.now() > end) clearInterval(timer);
+            }, intervalMs);
+          }
+
+          // Run streamers shortly after the header rain starts
+          setTimeout(() => shootStreamers(1200, 140), 200);
+        }
+      }
+    };
+    document.head.appendChild(script);
+  })();
 </script>
 {% endblock %}
