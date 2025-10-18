@@ -1,0 +1,1887 @@
+{
+  "questions": {
+    "network-security_beginner": [
+      {
+        "title": "Basic Firewall Rule",
+        "context": "A firewall log shows: `action=deny srcip=203.0.113.50 dstip=192.168.1.10 dstport=22 proto=tcp`. The company policy is to block all external SSH access to internal servers. The server at 192.168.1.10 is a development server.",
+        "question": "What does this log entry indicate?",
+        "options": [
+          "A successful SSH connection was made.",
+          "The firewall is misconfigured and allowed SSH.",
+          "The firewall correctly blocked an external SSH attempt.",
+          "An internal user attempted to SSH outwards."
+        ],
+        "correct": 2,
+        "explanation": "✓ The 'action=deny' and 'dstport=22' (SSH) fields clearly show the firewall successfully enforced the security policy by blocking an incoming connection attempt from an external IP.\n✗ The action was 'deny', so the connection was not successful. The source IP is external, indicating an inbound, not outbound, attempt.",
+        "learningPoints": [
+          "Firewall logs show actions taken on traffic (e.g., deny, accept).",
+          "Port 22 is standard for SSH.",
+          "Differentiating between inbound and outbound traffic."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-41r2.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Identifying a Port Scan",
+        "context": "An IDS alert fires for a single external IP, `198.51.100.25`, which has attempted to connect to ports 1 through 1024 on your web server `203.0.113.10` over the last 5 minutes. No successful connections were made.",
+        "question": "What activity does this most likely represent?",
+        "options": [
+          "A DDoS attack.",
+          "A legitimate user trying to connect.",
+          "A reconnaissance port scan.",
+          "A brute-force login attempt."
+        ],
+        "correct": 2,
+        "explanation": "✓ This pattern of systematically checking a wide range of ports from a single source is a classic sign of a port scan. The attacker is trying to discover which services are running on the target server.\n✗ A DDoS attack involves a high volume of traffic, usually from many sources. A brute-force attack targets a specific service (like SSH or a login page), not a wide range of ports.",
+        "learningPoints": [
+          "Port scanning is a reconnaissance technique to find open ports.",
+          "IDS systems are designed to detect suspicious patterns like scans.",
+          "Differentiate scans from DDoS or brute-force attacks."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-94.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Purpose of a VPN",
+        "context": "An employee is working from a public coffee shop and needs to access the company's internal file server. The company security policy requires the use of a VPN for all remote access.",
+        "question": "What is the primary security benefit of using the VPN in this scenario?",
+        "options": [
+          "It increases the user's internet speed.",
+          "It encrypts the connection, protecting data on the untrusted public Wi-Fi.",
+          "It blocks all advertisements on websites.",
+          "It scans the user's computer for viruses."
+        ],
+        "correct": 1,
+        "explanation": "✓ A Virtual Private Network (VPN) creates an encrypted tunnel between the user's device and the company network. This protects the data from being intercepted or read by others on the same public Wi-Fi network.\n✗ VPNs often add a small amount of overhead, which can slightly decrease speed. They do not inherently block ads or scan for viruses.",
+        "learningPoints": [
+          "VPNs provide confidentiality by encrypting traffic.",
+          "Essential for securing data on untrusted networks like public Wi-Fi.",
+          "A VPN creates a secure tunnel to a private network."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-77.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Understanding HTTPS",
+        "context": "A user is browsing a website and notices the URL begins with `https://` and has a lock icon next to it in the browser address bar.",
+        "question": "What does the 'S' in HTTPS signify?",
+        "options": [
+          "The site is 'Static'.",
+          "The site is 'Secure' because traffic is encrypted.",
+          "The site is 'Sponsored'.",
+          "The site loads 'Swiftly'."
+        ],
+        "correct": 1,
+        "explanation": "✓ HTTPS stands for Hypertext Transfer Protocol Secure. It uses TLS/SSL to encrypt the data transmitted between the user's browser and the web server, ensuring confidentiality and integrity.\n✗ The other options are incorrect descriptions of the protocol.",
+        "learningPoints": [
+          "HTTPS means the connection is encrypted.",
+          "The lock icon is a visual indicator of a secure HTTPS connection.",
+          "HTTPS protects against eavesdropping and man-in-the-middle attacks."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-52r2.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "DNS Purpose",
+        "context": "When a user types `www.google.com` into their browser, their computer needs to know the IP address of Google's server to establish a connection.",
+        "question": "What network service is responsible for translating the domain name to an IP address?",
+        "options": [
+          "DHCP (Dynamic Host Configuration Protocol)",
+          "FTP (File Transfer Protocol)",
+          "DNS (Domain Name System)",
+          "SMTP (Simple Mail Transfer Protocol)"
+        ],
+        "correct": 2,
+        "explanation": "✓ The Domain Name System (DNS) acts as the 'phonebook of the internet,' translating human-readable domain names (like www.google.com) into machine-readable IP addresses (like 142.250.190.78).\n✗ DHCP assigns IP addresses to devices on a network. FTP is for file transfers. SMTP is for sending email.",
+        "learningPoints": [
+          "DNS resolves domain names to IP addresses.",
+          "Computers use IP addresses to communicate on a network.",
+          "DNS is a fundamental protocol of the internet."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-81-2.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Simple DDoS Attack",
+        "context": "A company's website, `203.0.113.20`, suddenly becomes unreachable. Network monitoring tools show an extremely high volume of incoming traffic from thousands of different IP addresses, saturating the internet connection.",
+        "question": "What type of attack is most likely occurring?",
+        "options": [
+          "A phishing attack.",
+          "A SQL injection attack.",
+          "A man-in-the-middle attack.",
+          "A Distributed Denial-of-Service (DDoS) attack."
+        ],
+        "correct": 3,
+        "explanation": "✓ A Distributed Denial-of-Service (DDoS) attack aims to make a service unavailable by overwhelming it with traffic from a large number of sources (a botnet). The high volume of traffic from many IPs is the key indicator.\n✗ The other attacks have different goals, such as stealing credentials (phishing), compromising a database (SQL injection), or intercepting traffic (MitM).",
+        "learningPoints": [
+          "DDoS attacks use high traffic volume to cause service outages.",
+          "The 'Distributed' aspect means traffic comes from many sources.",
+          "The goal of DDoS is to impact availability."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/tips/ST04-015"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Role of an IPS",
+        "context": "A network is equipped with a device that monitors traffic. It detects a known malware signature in a file being downloaded by a user. The device immediately terminates the connection and drops the malicious packets.",
+        "question": "What device most likely performed this action?",
+        "options": [
+          "A router.",
+          "An Intrusion Prevention System (IPS).",
+          "An Intrusion Detection System (IDS).",
+          "A load balancer."
+        ],
+        "correct": 1,
+        "explanation": "✓ An Intrusion Prevention System (IPS) can actively block or prevent detected threats. An IDS, by contrast, can only detect and generate an alert. Since the device took an active measure ('terminates the connection'), it is an IPS.\n✗ An IDS would only have alerted the administrator. Routers and load balancers do not typically perform signature-based threat blocking.",
+        "learningPoints": [
+          "IPS provides active, preventative security by blocking threats.",
+          "IDS provides passive, detective security by alerting on threats.",
+          "IPS is an inline device that can take action on traffic."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-94.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Blocking a Website",
+        "context": "A company wants to prevent employees from accessing social media websites. A network administrator is tasked with implementing this policy.",
+        "question": "Which device is best suited to block access to specific URLs or domain names?",
+        "options": [
+          "A network switch.",
+          "A DHCP server.",
+          "A proxy server or web filter.",
+          "A file server."
+        ],
+        "correct": 2,
+        "explanation": "✓ A proxy server or a dedicated web filter is designed for this purpose. It can inspect web traffic and enforce policies based on URL, domain, or content category, blocking requests to forbidden sites.\n✗ Switches operate at Layer 2 and are unaware of URLs. DHCP and file servers have different primary functions.",
+        "learningPoints": [
+          "Proxy servers and web filters are used for content filtering.",
+          "These devices can enforce acceptable use policies at the application layer.",
+          "Firewalls with URL filtering capabilities can also perform this role."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/tips/ST05-001"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Private vs Public IP",
+        "context": "A user's home computer has the IP address `192.168.1.101`. When they visit a website like `whatismyip.com`, it shows their IP as `74.125.224.72`.",
+        "question": "Why are there two different IP addresses?",
+        "options": [
+          "One is for IPv4 and the other is for IPv6.",
+          "The computer has a virus.",
+          "192.168.1.101 is a private IP; the other is a public IP provided by the router's NAT.",
+          "The website is displaying an incorrect IP address."
+        ],
+        "correct": 2,
+        "explanation": "✓ `192.168.x.x` is a private IP address range, used only within a local network. The home router uses Network Address Translation (NAT) to let multiple devices share a single public IP address (`74.125.224.72`) provided by the ISP for communicating with the internet.\n✗ While IPv4 and IPv6 are different, this scenario describes the function of NAT with private and public IPv4 addresses.",
+        "learningPoints": [
+          "Private IP ranges (e.g., 192.168.x.x, 10.x.x.x) are for internal networks.",
+          "Public IPs are for internet communication.",
+          "Network Address Translation (NAT) maps private IPs to a public IP."
+        ],
+        "sources": [
+          "https://datatracker.ietf.org/doc/html/rfc1918"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Unsecure Protocol",
+        "context": "An administrator uses Wireshark to inspect network traffic and sees a user's password being sent in cleartext when they log in to an old internal web portal.",
+        "question": "Which protocol was most likely used by the web portal?",
+        "options": [
+          "HTTPS",
+          "SSH",
+          "HTTP",
+          "SFTP"
+        ],
+        "correct": 2,
+        "explanation": "✓ HTTP (Hypertext Transfer Protocol) does not encrypt data, meaning any information, including passwords, is sent in cleartext and can be easily intercepted. The other protocols listed (HTTPS, SSH, SFTP) all use encryption to protect data in transit.\n✗ If any of the secure protocols were used, the password would have been encrypted and unreadable in the packet capture.",
+        "learningPoints": [
+          "HTTP is an unencrypted, cleartext protocol.",
+          "Always use secure alternatives like HTTPS for websites with logins.",
+          "Packet sniffing tools like Wireshark can reveal unencrypted traffic."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      }
+    ],
+    "network-security_intermediate": [
+      {
+        "title": "WPA2 vs WPA3",
+        "context": "A company is upgrading its wireless network infrastructure. The security engineer is deciding on the Wi-Fi security protocol to implement.",
+        "question": "What is a major security advantage of WPA3 over WPA2?",
+        "options": [
+          "WPA3 is faster than WPA2.",
+          "WPA3 is vulnerable to KRACK attacks.",
+          "WPA3 provides individualized data encryption, protecting against passive eavesdropping on open networks.",
+          "WPA3 does not require a password."
+        ],
+        "correct": 2,
+        "explanation": "✓ WPA3 introduces Simultaneous Authentication of Equals (SAE), which replaces the WPA2 Pre-Shared Key (PSK). A key benefit is that it provides forward secrecy and individual data encryption, even on open networks. This means an attacker cannot passively capture traffic and decrypt it later, even if they eventually get the password.",
+        "learningPoints": [
+          "WPA3 offers significant security enhancements over WPA2.",
+          "It protects against offline dictionary attacks and passive eavesdropping.",
+          "SAE (Simultaneous Authentication of Equals) is a key feature of WPA3."
+        ],
+        "sources": [
+          "https://www.wi-fi.org/discover-wi-fi/security"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "Detecting a Rogue AP",
+        "context": "A security scan of a company's wireless environment reveals an access point broadcasting the corporate SSID ('CorpNet') but with a different BSSID (MAC address) and a lower security level (WEP instead of WPA2). The AP is not on the list of authorized devices.",
+        "question": "What has been discovered on the network?",
+        "options": [
+          "A misconfigured legitimate access point.",
+          "A rogue access point.",
+          "An evil twin access point.",
+          "A Wi-Fi deauthentication attack."
+        ],
+        "correct": 2,
+        "explanation": "✓ An evil twin is a fraudulent Wi-Fi access point that appears to be a legitimate one, but is set up to eavesdrop on wireless communications. It broadcasts the same SSID as the legitimate network, trying to trick users into connecting to it. The different BSSID and weaker security are key indicators.",
+        "learningPoints": [
+          "An evil twin attack is a form of man-in-the-middle attack for Wi-Fi.",
+          "Users may unknowingly connect, exposing their traffic to the attacker.",
+          "Regular wireless network monitoring is needed to detect such threats."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-153.pdf"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "Stateful Firewall Operation",
+        "context": "A user on an internal network (192.168.1.50) initiates a connection to a web server on the internet (203.0.113.80) on port 80. A stateful firewall is in place.",
+        "question": "How does the firewall handle the return traffic from the web server?",
+        "options": [
+          "It blocks the return traffic unless an explicit inbound rule exists.",
+          "It allows the return traffic because it matches an established connection in its state table.",
+          "It forwards the return traffic to every host on the internal network.",
+          "It only allows the return traffic if the source port is also 80."
+        ],
+        "correct": 1,
+        "explanation": "✓ A stateful firewall monitors the state of active connections. When the user initiated the outbound connection, the firewall created an entry in its state table. It knows to expect return traffic for that specific session and automatically permits it, without needing a permanent inbound rule. This is much more secure than a stateless firewall.",
+        "learningPoints": [
+          "Stateful firewalls track the state of network connections.",
+          "They automatically allow return traffic for established sessions.",
+          "This is more secure than stateless filtering, which inspects each packet in isolation."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-41r2.pdf"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      }
+    ],
+    "network-security_advanced": [
+      {
+        "title": "Zero Trust Principle",
+        "context": "A company is moving from a traditional perimeter-based security model ('trust but verify') to a new architecture. In this new model, no user or device is trusted by default, whether inside or outside the network. Access is granted on a per-session basis after strict verification.",
+        "question": "What is this security model called?",
+        "options": [
+          "Defense-in-depth.",
+          "Zero Trust Architecture.",
+          "Air-gapped network.",
+          "Security through obscurity."
+        ],
+        "correct": 1,
+        "explanation": "✓ This describes the Zero Trust model. Its core principle is 'never trust, always verify'. It eliminates the concept of a trusted internal network and instead requires continuous verification of identity, device posture, and other contextual signals for every access request, regardless of origin.",
+        "learningPoints": [
+          "Zero Trust assumes there is no trusted network perimeter.",
+          "Access is granted based on dynamic policies and continuous verification.",
+          "Micro-segmentation is a key technology for implementing Zero Trust."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-207.pdf"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "DNS Amplification DDoS",
+        "context": "A server is being hit by a massive DDoS attack. Packet analysis shows that the attack traffic consists of very large DNS responses (UDP port 53) coming from thousands of legitimate, open DNS resolvers on the internet. The server itself does not host DNS services.",
+        "question": "What specific type of DDoS attack is this?",
+        "options": [
+          "A SYN flood.",
+          "An ICMP flood.",
+          "A DNS amplification/reflection attack.",
+          "An application-layer HTTP flood."
+        ],
+        "correct": 2,
+        "explanation": "✓ This is a DNS amplification attack, a form of Distributed Reflective Denial-of-Service (DRDoS). The attacker sends DNS queries to open resolvers with a spoofed source IP (the victim's IP). The resolvers send a much larger response to the victim, amplifying the attack traffic and hiding the true source.",
+        "learningPoints": [
+          "Amplification attacks exploit services that send a larger response than the initial request.",
+          "Reflection is used to obscure the attacker's true origin.",
+          "Preventing IP spoofing (BCP 38) is a key mitigation for this attack type."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/alerts/TA13-088A"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "BGP Hijacking",
+        "context": "A large cloud provider's IP prefix (e.g., 12.34.56.0/22) is suddenly announced by a small, unauthorized ISP in another country. As a result, internet traffic destined for the cloud provider is misdirected to the malicious ISP.",
+        "question": "What internet routing protocol attack has occurred?",
+        "options": [
+          "ARP Poisoning",
+          "DNS Cache Poisoning",
+          "BGP Hijacking",
+          "OSPF Route Injection"
+        ],
+        "correct": 2,
+        "explanation": "✓ The Border Gateway Protocol (BGP) is used to exchange routing information between autonomous systems (AS) on the internet. BGP hijacking occurs when an attacker illegitimately announces that they own an IP prefix that belongs to someone else, causing traffic to be rerouted to their network.",
+        "learningPoints": [
+          "BGP is the core routing protocol of the internet and was originally designed on a trust model.",
+          "BGP hijacking can lead to massive outages or man-in-the-middle eavesdropping.",
+          "Resource Public Key Infrastructure (RPKI) is a security framework designed to prevent this."
+        ],
+        "sources": [
+          "https://www.internetsociety.org/resources/manrs/2020/bgp-hijacking/"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Network Forensics Analysis",
+        "context": "Following a data breach, a forensics team has a full packet capture (`.pcap`) file from the time of the incident. An attacker exfiltrated a 10MB file. The analyst needs to find and reconstruct the stolen file from the network traffic.",
+        "question": "What is the most effective approach?",
+        "options": [
+          "Filter for DNS queries to find the attacker's domain.",
+          "Look for failed login attempts in the capture.",
+          "Use a tool like Wireshark or tcpflow to reassemble the TCP stream of the suspicious connection.",
+          "Count the total number of packets sent from the compromised server."
+        ],
+        "correct": 2,
+        "explanation": "✓ File transfers over protocols like HTTP, FTP, or SMB are sent across multiple TCP packets. To reconstruct the file, the analyst must reassemble the TCP stream for the specific session used for the exfiltration. Tools like Wireshark ('Follow TCP Stream') or command-line utilities like `tcpflow` are designed for this exact purpose.",
+        "learningPoints": [
+          "TCP stream reassembly is a fundamental technique in network forensics.",
+          "It allows reconstruction of application-layer data like files, emails, or web pages.",
+          "This is critical for understanding what data was exfiltrated during an incident."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-86.pdf"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "DNS over HTTPS (DoH)",
+        "context": "A company uses a DNS filtering service to block malicious domains. They notice that some clients are bypassing this control. Investigation reveals that the clients' web browsers are making DNS queries to public resolvers like `1.1.1.1` over TCP port 443.",
+        "question": "What technology are the browsers using that causes this bypass?",
+        "options": [
+          "DNSSEC",
+          "DNS over HTTPS (DoH)",
+          "Standard DNS (UDP port 53)",
+          "Domain fronting"
+        ],
+        "correct": 1,
+        "explanation": "✓ DNS over HTTPS (DoH) encrypts DNS queries and sends them as standard HTTPS traffic over TCP port 443. This effectively hides the DNS queries from network monitoring and bypasses traditional DNS filtering that watches for traffic on UDP port 53. The browser is communicating directly with a DoH-enabled public resolver.",
+        "learningPoints": [
+          "DoH enhances user privacy by encrypting DNS queries.",
+          "It can bypass enterprise security controls that rely on monitoring standard DNS traffic.",
+          "Enterprises may need to block public DoH resolvers or use other endpoint controls."
+        ],
+        "sources": [
+          "https://datatracker.ietf.org/doc/html/rfc8484"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Micro-segmentation",
+        "context": "An organization wants to prevent lateral movement by an attacker. Their goal is to create granular security policies that control traffic between individual workloads, even if they are on the same network segment or VLAN.",
+        "question": "What technology is best suited to achieve this goal?",
+        "options": [
+          "Perimeter firewall ACLs",
+          "Network Access Control (NAC)",
+          "Micro-segmentation",
+          "Virtual Private Networks (VPN)"
+        ],
+        "correct": 2,
+        "explanation": "✓ Micro-segmentation allows security policies to be applied directly to individual workloads or applications. It enables the creation of secure zones around each workload, enforcing a Zero Trust approach within the datacenter or cloud. This is far more granular than traditional network segmentation with VLANs and ACLs and is highly effective at stopping lateral movement.",
+        "learningPoints": [
+          "Micro-segmentation is a key enabler of Zero Trust for east-west traffic.",
+          "Policies are tied to the workload identity, not just its IP address.",
+          "It can be implemented using host-based firewalls or specialized network virtualization platforms."
+        ],
+        "sources": [
+          "https://www.nist.gov/publications/network-segmentation-and-segregation-enhanced-security"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "DNSSEC Purpose",
+        "context": "An attacker attempts to redirect users of `example.com` to a malicious server by poisoning the cache of an ISP's recursive DNS resolver. They provide a fake IP address for `example.com` in a forged DNS response.",
+        "question": "What technology is specifically designed to prevent this type of attack by providing cryptographic authentication of DNS data?",
+        "options": [
+          "DNS over HTTPS (DoH)",
+          "Transport Layer Security (TLS)",
+          "Domain Name System Security Extensions (DNSSEC)",
+          "Sender Policy Framework (SPF)"
+        ],
+        "correct": 2,
+        "explanation": "✓ DNSSEC is designed to protect against DNS spoofing or cache poisoning. It provides data integrity and origin authentication for DNS records by adding cryptographic signatures to them. A DNSSEC-aware resolver can verify these signatures to ensure that the response it received is authentic and has not been tampered with.",
+        "learningPoints": [
+          "DNSSEC addresses data integrity and authentication in DNS, not confidentiality.",
+          "It uses public key cryptography to sign DNS records.",
+          "It protects users from being misdirected by forged DNS responses."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-81-2.pdf"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Threat Hunting Hypothesis",
+        "context": "A threat hunter at a financial institution is looking for signs of an APT that is known to use PowerShell for lateral movement. They have access to process-level logs from all endpoints in a SIEM.",
+        "question": "What would be a high-fidelity threat hunting hypothesis to begin this investigation?",
+        "options": [
+          "Search for all PowerShell processes that ran in the last 24 hours.",
+          "Look for PowerShell processes launched by non-standard parent processes like `winword.exe` or `services.exe`.",
+          "Find all users who have logged into more than one server.",
+          "Check for large data transfers leaving the network."
+        ],
+        "correct": 1,
+        "explanation": "✓ A good threat hunting hypothesis is specific and looks for anomalous behavior. APTs often use legitimate tools like PowerShell in unusual ways. PowerShell being spawned by a Word document (process injection from a malicious macro) or by `services.exe` (a compromised service) is a strong indicator of malicious activity, whereas simply looking for all PowerShell executions would generate too much noise.",
+        "learningPoints": [
+          "Threat hunting is a proactive, hypothesis-driven process.",
+          "Focus on attacker TTPs (Techniques, Tactics, and Procedures).",
+          "Analyzing parent-child process relationships is a powerful hunting technique."
+        ],
+        "sources": [
+          "https://attack.mitre.org/techniques/T1059/001/"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Deconstructing the Cyber Kill Chain",
+        "context": "An attacker sends a spear-phishing email containing a malicious macro-enabled Word document. The user opens it, which installs a backdoor. The backdoor establishes a C2 connection, allowing the attacker to gain hands-on access.",
+        "question": "At which stage of the Cyber Kill Chain would blocking the C2 connection be most effective?",
+        "options": [
+          "Reconnaissance",
+          "Weaponization",
+          "Delivery",
+          "Command & Control (C2)"
+        ],
+        "correct": 3,
+        "explanation": "✓ According to the Lockheed Martin Cyber Kill Chain model, blocking the Command & Control (C2) phase is a critical defensive opportunity. Even if the initial exploit and installation are successful, preventing the malware from 'phoning home' to the attacker for instructions stops the attack from progressing further and prevents the final objectives (like data exfiltration) from being achieved.",
+        "learningPoints": [
+          "The Cyber Kill Chain is a model for understanding the stages of an intrusion.",
+          "Defensive controls can be mapped to each stage of the chain.",
+          "Blocking C2 communication is a high-impact mitigation strategy."
+        ],
+        "sources": [
+          "https://www.lockheedmartin.com/en-us/capabilities/cyber/cyber-kill-chain.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "TLS Interception",
+        "context": "A company wants to inspect encrypted TLS/SSL traffic from its employees to the internet for malware and data loss prevention. They deploy a proxy server to perform this inspection.",
+        "question": "What process must the proxy perform to inspect the encrypted traffic?",
+        "options": [
+          "Force all connections to downgrade to unencrypted HTTP.",
+          "Act as a man-in-the-middle, terminating the client's TLS session and initiating a new one to the server.",
+          "Use a network tap to read the traffic without altering it.",
+          "Only inspect the unencrypted SNI field in the Client Hello message."
+        ],
+        "correct": 1,
+        "explanation": "✓ This process is known as TLS Interception or Break-and-Inspect. The proxy terminates the TLS connection from the client, decrypts the traffic, inspects it for threats or policy violations, and then re-encrypts the traffic in a new TLS session to the destination server. This requires the client devices to trust a root certificate controlled by the proxy.",
+        "learningPoints": [
+          "TLS interception is a man-in-the-middle process used for security inspection.",
+          "It has significant privacy and security implications if not managed properly.",
+          "It requires deploying a trusted CA certificate to all client devices."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/alerts/aa20-223a"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      }
+    ],
+    "secure-coding_beginner": [
+      {
+        "title": "SQL Injection Example",
+        "context": "A web application uses the following Python code to check user logins: `query = f\"SELECT * FROM users WHERE username = '{user_input}' AND password = '{pass_input}'\"`. An attacker enters `' OR '1'='1` as the username.",
+        "question": "What is this vulnerability called?",
+        "options": [
+          "Cross-Site Scripting (XSS)",
+          "SQL Injection",
+          "Buffer Overflow",
+          "Path Traversal"
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a classic SQL Injection. The application directly combines user input with the SQL query string. By providing a malicious string, the attacker alters the query's logic to bypass authentication. The correct fix is to use parameterized queries (prepared statements).",
+        "learningPoints": [
+          "Never concatenate user input directly into SQL queries.",
+          "Use prepared statements to separate code from data.",
+          "SQL injection can lead to data theft, modification, or full system compromise."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A03_2021-Injection"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Reflected XSS",
+        "context": "A search page on a website takes a search term from a URL parameter and displays it on the page without cleaning it. For example: `search.php?term=my+search`. The PHP code is `echo \"Results for: \" . $_GET['term'];`.",
+        "question": "What happens if an attacker crafts a URL with `?term=<script>alert(1)</script>`?",
+        "options": [
+          "The server will crash.",
+          "The database will be deleted.",
+          "The script will be executed in the victim's browser.",
+          "The page will display the text '<script>alert(1)</script>' safely."
+        ],
+        "correct": 2,
+        "explanation": "✓ This is Reflected Cross-Site Scripting (XSS). The server 'reflects' the malicious script from the URL back to the browser, which then executes it as part of the page's HTML. The fix is to properly encode the output, for example, using `htmlspecialchars()` in PHP.",
+        "learningPoints": [
+          "Always encode user-controllable data before rendering it in HTML.",
+          "Reflected XSS requires a victim to click a malicious link.",
+          "Output encoding is the primary defense against XSS."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/xss/"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Hardcoded Credentials",
+        "context": "A developer writes the following Java code to connect to a database: `String url = \"jdbc:mysql://db.host/db\"; Connection conn = DriverManager.getConnection(url, \"admin\", \"P@ssword123\");`.",
+        "question": "What is the primary security risk in this code?",
+        "options": [
+          "The database URL is incorrect.",
+          "The database username and password are hardcoded in the source code.",
+          "The code is vulnerable to SQL injection.",
+          "The connection object is not closed properly."
+        ],
+        "correct": 1,
+        "explanation": "✓ Hardcoding credentials in source code is a major security risk. If the code is ever leaked or accessed by an unauthorized person, the credentials are exposed. Credentials should be stored securely outside the code, for instance in environment variables or a secrets management system.",
+        "learningPoints": [
+          "Never store sensitive data like passwords or API keys in source code.",
+          "Use secure configuration management tools or environment variables.",
+          "Hardcoded credentials are a common finding in code reviews."
+        ],
+        "sources": [
+          "https://cwe.mitre.org/data/definitions/798.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Weak Password Storage",
+        "context": "A website stores user passwords in its database using a simple MD5 hash without any other protection. For example, `password` is stored as `5f4dcc3b5aa765d61d8327deb882cf99`.",
+        "question": "Why is this method of storing passwords insecure?",
+        "options": [
+          "MD5 hashes are too long to store efficiently.",
+          "MD5 is a symmetric encryption algorithm.",
+          "MD5 is fast and vulnerable to rainbow table and dictionary attacks.",
+          "MD5 hashes cannot be calculated by modern computers."
+        ],
+        "correct": 2,
+        "explanation": "✓ MD5 is a fast hashing algorithm, which makes it easy for attackers to try billions of passwords per second. Because it's a common algorithm, pre-computed 'rainbow tables' exist that map common password hashes back to the original password. A proper solution uses a slow, salted hashing algorithm like Argon2 or bcrypt.",
+        "learningPoints": [
+          "Use slow, salted hashing algorithms for passwords (e.g., Argon2, bcrypt, scrypt).",
+          "Fast hashes like MD5 and SHA1 are not suitable for password storage.",
+          "A 'salt' makes rainbow table attacks ineffective."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-password-storage-cheat-sheet/"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Path Traversal",
+        "context": "A web application allows users to download files using a URL like `download.php?file=report.pdf`. The backend code takes the filename and reads it from `/var/www/html/downloads/`. An attacker submits the URL `download.php?file=../../../../etc/passwd`.",
+        "question": "What vulnerability is the attacker trying to exploit?",
+        "options": [
+          "SQL Injection",
+          "Cross-Site Scripting (XSS)",
+          "Path Traversal",
+          "Command Injection"
+        ],
+        "correct": 2,
+        "explanation": "✓ The attacker is using `../` sequences to traverse up the directory structure and access a sensitive system file outside the intended downloads directory. This is known as Path Traversal or Directory Traversal. The application should validate that the user-supplied filename does not contain such sequences.",
+        "learningPoints": [
+          "Validate user input for file and path operations.",
+          "Do not allow `../` or absolute paths in user-supplied filenames.",
+          "Canonicalize paths before using them to access files."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/Path_Traversal"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Missing Input Validation",
+        "context": "A web form for ordering items has a `quantity` field. A user can intercept the request with a tool like Burp Suite and change the quantity from `10` to `-10`. The backend processes the order, resulting in a negative total and a credit to the user.",
+        "question": "What is the root cause of this vulnerability?",
+        "options": [
+          "Lack of server-side input validation.",
+          "Use of the HTTP POST method.",
+          "Lack of client-side JavaScript validation.",
+          "Weak session management."
+        ],
+        "correct": 0,
+        "explanation": "✓ The application trusts the user-supplied input without validating it on the server. While client-side validation is good for user experience, it can be easily bypassed. The server must always perform its own validation to ensure data (like quantity) is within expected bounds (e.g., a positive integer).",
+        "learningPoints": [
+          "Client-side validation is for UX, server-side validation is for security.",
+          "Never trust data coming from the client.",
+          "Validate data for type, range, format, and length on the server."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2017/A1_Injection"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Error Message Leakage",
+        "context": "When a user tries to log in to an application with an incorrect password, they receive a detailed error message: `Connection failed: SQLSTATE[HY000] [1045] Access denied for user 'admin'@'localhost' (using password: YES)`.",
+        "question": "Why is this error message a security risk?",
+        "options": [
+          "It helps the user debug their connection.",
+          "It confirms that the username 'admin' is valid.",
+          "It indicates the server is running on localhost.",
+          "It reveals too much information about the backend technology (SQL) and valid data (username)."
+        ],
+        "correct": 3,
+        "explanation": "✓ Detailed error messages can provide an attacker with valuable information. In this case, it reveals the database type, confirms the 'admin' username is correct (user enumeration), and gives clues about the system architecture. Errors shown to users should be generic, like 'Invalid username or password'.",
+        "learningPoints": [
+          "Configure applications to show generic error messages to users.",
+          "Log detailed error information on the server for debugging.",
+          "Information leakage can help attackers profile and target a system."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A05_2021-Security_Misconfiguration"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Security Through Obscurity",
+        "context": "A developer tries to secure an API endpoint by renaming it from `/api/get_user` to `/api/g_u_7_1_b`. They believe that because the endpoint name is hard to guess, it is secure.",
+        "question": "Why is this not a reliable security control?",
+        "options": [
+          "The new name is too long.",
+          "This is a valid form of encryption.",
+          "It is an example of 'security through obscurity', which is not a substitute for proper access controls.",
+          "The endpoint will be too slow."
+        ],
+        "correct": 2,
+        "explanation": "✓ Security through obscurity relies on secrecy as the main security measure. It is not a robust control because the endpoint can still be discovered through various means (e.g., analyzing client-side code, brute-forcing). Real security relies on strong, enforced controls like authentication and authorization.",
+        "learningPoints": [
+          "Security through obscurity is not a reliable defense.",
+          "Always implement proper security controls like authentication and authorization.",
+          "Assume an attacker knows your system's architecture."
+        ],
+        "sources": [
+          "https://cwe.mitre.org/data/definitions/656.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Command Injection",
+        "context": "A script allows an administrator to look up an IP address. The code is: `os.system(\"nslookup \" + ip_address)`. An administrator enters `8.8.8.8; rm -rf /` into the input field.",
+        "question": "What is the risk of this code?",
+        "options": [
+          "The `nslookup` command might fail.",
+          "An attacker can inject and execute arbitrary OS commands.",
+          "The script will run slowly.",
+          "The output will be formatted incorrectly."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a Command Injection vulnerability. The user input is passed directly to a system shell. By using a semicolon, the attacker can chain a second, malicious command (`rm -rf /`) which will be executed by the server with the same privileges as the script. The fix is to use safe APIs that do not invoke a shell.",
+        "learningPoints": [
+          "Never pass raw user input to a system shell.",
+          "Use parameterized or library-specific functions that handle arguments safely.",
+          "Command injection can lead to complete server compromise."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/Command_Injection"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Use of HTTP",
+        "context": "A login page for a web application submits the user's credentials over HTTP, not HTTPS. The form action is `http://example.com/login`.",
+        "question": "What is the main risk of this implementation?",
+        "options": [
+          "The website will not be indexed by search engines.",
+          "The credentials will be sent in cleartext and can be intercepted.",
+          "The login form will not work on mobile devices.",
+          "The server cannot handle multiple login requests at once."
+        ],
+        "correct": 1,
+        "explanation": "✓ HTTP is an unencrypted protocol. When credentials are sent over HTTP, they travel in cleartext across the network. Anyone positioned to sniff the traffic (e.g., on the same Wi-Fi) can easily steal the username and password. All sensitive data must be transmitted over HTTPS.",
+        "learningPoints": [
+          "Always use HTTPS for entire websites, especially for pages with forms or sensitive data.",
+          "Cleartext transmission of credentials is a critical vulnerability.",
+          "This is often referred to as 'Sensitive Data Exposure'."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A02_2021-Cryptographic_Failures"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      }
+    ],
+    "secure-coding_intermediate": [
+      {
+        "title": "Insecure Deserialization",
+        "context": "A Java application deserializes a user-provided object from a cookie. The code uses `ObjectInputStream.readObject()` on the raw data from the cookie. The application's classpath includes a library with a known 'gadget chain'.",
+        "question": "What is the most significant risk of this code?",
+        "options": [
+          "The cookie size might exceed browser limits.",
+          "An attacker can create a malicious object that leads to Remote Code Execution (RCE).",
+          "The deserialization process will be slow.",
+          "The application might run out of memory."
+        ],
+        "correct": 1,
+        "explanation": "✓ Deserializing untrusted data is extremely dangerous. An attacker can craft a serialized object that, when deserialized, leverages existing code ('gadgets') in the application to perform unintended actions, often leading to full remote code execution. The best fix is to use a safe data format like JSON instead of native serialization.",
+        "learningPoints": [
+          "Never deserialize untrusted data.",
+          "Insecure deserialization can lead to RCE.",
+          "Prefer safe, data-only formats like JSON for data exchange."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A08_2021-Software_and_Data_Integrity_Failures"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "XML External Entity (XXE)",
+        "context": "An application parses an XML file uploaded by a user. The XML parser is not configured to disallow external entities. An attacker uploads an XML file containing `<!DOCTYPE foo [ <!ENTITY xxe SYSTEM \"file:///etc/passwd\"> ]>`. The entity `&xxe;` is then used in the XML body.",
+        "question": "What will happen when the application parses this XML?",
+        "options": [
+          "The parser will report a validation error.",
+          "The parser will include the contents of the server's `/etc/passwd` file in the parsed data.",
+          "The XML file will be rejected because it is too large.",
+          "The server will make an outbound HTTP request."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is an XML External Entity (XXE) attack. The parser will resolve the external entity `xxe` by reading the specified `SYSTEM` resource, which in this case is the local `/etc/passwd` file. This can lead to sensitive information disclosure. The fix is to disable DTD and external entity processing in the XML parser.",
+        "learningPoints": [
+          "XXE is a serious vulnerability in applications that parse XML.",
+          "It can be used for file disclosure, SSRF, and DoS.",
+          "Always securely configure XML parsers to disable risky features."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-xml-external-entity-xxe-processing/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Broken Authentication",
+        "context": "A password reset feature generates a reset token based on a predictable pattern: `MD5(username + \"_\" + year)`. An attacker knows a user's username.",
+        "question": "How could an attacker exploit this feature?",
+        "options": [
+          "By brute-forcing the user's password.",
+          "By guessing the predictable reset token and taking over the account.",
+          "By launching a denial-of-service attack against the reset page.",
+          "By using a timing attack to guess the username."
+        ],
+        "correct": 1,
+        "explanation": "✓ The token generation algorithm is weak and predictable. An attacker who knows the username can easily compute the same token, submit it to the password reset function, and take control of the victim's account. Secure tokens must be long, unpredictable, and randomly generated from a cryptographically secure source.",
+        "learningPoints": [
+          "Security tokens (for session, password reset, etc.) must be unpredictable.",
+          "Do not use weak or predictable inputs for token generation.",
+          "Use a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG)."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A07_2021-Identification_and_Authentication_Failures"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Server-Side Request Forgery (SSRF)",
+        "context": "An application has a feature to check the status of a remote server. A user provides a URL, and the application's backend makes an HTTP request to it. The code is `requests.get(user_provided_url)`. An attacker provides the URL `http://169.254.169.254/latest/meta-data/`.",
+        "question": "What is the primary risk of this functionality?",
+        "options": [
+          "The application could be used in a DDoS attack.",
+          "An attacker can force the server to make requests to internal, non-public services.",
+          "The response from the remote server might contain a virus.",
+          "The user could provide a URL that points back to the application itself."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a Server-Side Request Forgery (SSRF) vulnerability. The application makes an arbitrary request on behalf of the attacker. The IP `169.254.169.254` is the AWS metadata service endpoint. By providing this URL, the attacker can trick the server into fetching and revealing sensitive cloud instance metadata, such as temporary credentials.",
+        "learningPoints": [
+          "SSRF allows an attacker to control where a server sends requests.",
+          "It can be used to scan internal networks or access cloud metadata services.",
+          "To fix, validate user-supplied URLs against a strict allow-list of domains."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A10_2021-Server-Side_Request_Forgery_(SSRF)"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Insecure Direct Object Reference",
+        "context": "A user can view their invoice at the URL `https://example.com/invoices?id=1001`. The application checks if the user is authenticated but does not check if invoice `1001` actually belongs to that user. An attacker, logged in as their own user, changes the URL to `?id=1002`.",
+        "question": "What vulnerability does this scenario describe?",
+        "options": [
+          "Cross-Site Scripting (XSS)",
+          "Insecure Direct Object Reference (IDOR)",
+          "SQL Injection",
+          "Security Misconfiguration"
+        ],
+        "correct": 1,
+        "explanation": "✓ This is an Insecure Direct Object Reference (IDOR), a type of access control vulnerability. The application exposes a direct reference to an internal object (the invoice ID) and fails to perform an authorization check to ensure the logged-in user has permission to access the requested object. The attacker can simply iterate through IDs to view other users' invoices.",
+        "learningPoints": [
+          "IDOR is a failure to enforce authorization.",
+          "Always verify that the user is authorized for the specific resource they are requesting.",
+          "Avoid exposing sequential, guessable identifiers in URLs."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A01_2021-Broken_Access_Control"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Mass Assignment",
+        "context": "A user profile update form only allows changing the `email` and `phone` fields. The backend code in a Ruby on Rails app uses `user.update(params)`. An attacker intercepts the request and adds a parameter `is_admin=true` to the submitted form data.",
+        "question": "What vulnerability is being exploited?",
+        "options": [
+          "Mass Assignment",
+          "Cross-Site Request Forgery (CSRF)",
+          "Insecure Deserialization",
+          "Command Injection"
+        ],
+        "correct": 0,
+        "explanation": "✓ This is a Mass Assignment vulnerability. The application code automatically binds all user-provided parameters to fields in the user model. By adding an `is_admin` parameter, the attacker can modify a protected attribute and escalate their privileges. The fix is to use a strong-parameters approach, explicitly defining which fields are allowed to be updated from user input.",
+        "learningPoints": [
+          "Mass assignment vulnerabilities occur in frameworks that automate binding of HTTP parameters to objects.",
+          "It can lead to privilege escalation or data tampering.",
+          "Use allow-lists (strong parameters) to specify which attributes are user-modifiable."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-api-security/2019/asvs/4.0/en/0x13-V5-Validation-Sanitization-Encoding"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Unvalidated Redirects",
+        "context": "An application's logout feature redirects the user to a URL specified in a query parameter: `logout.php?redirect_url=https://example.com/login`. The application does not validate the `redirect_url` parameter. An attacker crafts a link: `logout.php?redirect_url=https://malicious-site.com/fake-login`.",
+        "question": "How can this be exploited?",
+        "options": [
+          "It will cause a server error.",
+          "The user's session will not be terminated.",
+          "The user will be redirected to a malicious site, enabling phishing attacks.",
+          "It allows the attacker to steal the user's cookie."
+        ],
+        "correct": 2,
+        "explanation": "✓ This is an Open Redirect or Unvalidated Redirect vulnerability. Because the application blindly redirects to any URL provided, an attacker can use the legitimate website's domain to lend credibility to a phishing attack. The user trusts the initial link but is ultimately sent to a malicious site designed to steal their credentials.",
+        "learningPoints": [
+          "Do not allow user-supplied data to control redirect destinations.",
+          "If dynamic redirects are needed, validate the URL against an allow-list of trusted destinations.",
+          "This vulnerability is often used to support phishing campaigns."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/11-Client-side_Testing/04-Testing_for_Client-side_URL_Redirect"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Missing Security Headers",
+        "context": "A security scan of a web application reveals that the server is not sending the `Strict-Transport-Security` header in its HTTPS responses.",
+        "question": "What attack does the absence of this header make the site vulnerable to?",
+        "options": [
+          "SQL Injection",
+          "Cross-Site Scripting (XSS)",
+          "SSL Stripping attacks.",
+          "Brute-force password guessing."
+        ],
+        "correct": 2,
+        "explanation": "✓ The HTTP Strict-Transport-Security (HSTS) header instructs the browser to only ever connect to the domain using HTTPS. Without it, an attacker in a man-in-the-middle position can perform an SSL Stripping attack, downgrading the user's connection to unencrypted HTTP and intercepting all traffic, including credentials and session cookies.",
+        "learningPoints": [
+          "Security headers are an important part of a defense-in-depth strategy.",
+          "HSTS prevents SSL Stripping attacks.",
+          "Other important headers include Content-Security-Policy and X-Frame-Options."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-secure-headers/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Regex DoS (ReDoS)",
+        "context": "A developer uses the regular expression `(a+)+$` to validate a string. An attacker provides the input string `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa!`.",
+        "question": "What is the likely impact on the application?",
+        "options": [
+          "The regex will immediately fail to match.",
+          "The regex engine will enter a state of catastrophic backtracking, consuming 100% CPU.",
+          "The application will return an error about an invalid regex pattern.",
+          "The input will be accepted as valid."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a 'vulnerable' or 'evil' regex pattern. Due to the nested quantifiers (`a+` inside `()+`), the regex engine must try an exponential number of paths to determine a match for the provided string, a condition known as catastrophic backtracking. This can freeze the processing thread and lead to a Denial of Service (DoS).",
+        "learningPoints": [
+          "Poorly written regular expressions can lead to Denial of Service.",
+          "Be wary of nested quantifiers or complex patterns that can cause catastrophic backtracking.",
+          "Use linters or static analysis tools to detect vulnerable regex patterns."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      }
+    ],
+    "secure-coding_advanced": [
+      {
+        "title": "Race Condition (TOCTOU)",
+        "context": "A web application allows a user to write to a file `tmp/userfile.txt`. The code first checks if the file exists (`check`). If it does not, it opens the file for writing (`act`). An attacker creates a symbolic link from `tmp/userfile.txt` to `/etc/shadow` *between* the check and the act.",
+        "question": "What vulnerability is being exploited?",
+        "options": [
+          "Insecure Deserialization",
+          "A Time-of-Check to Time-of-Use (TOCTOU) race condition.",
+          "XML External Entity (XXE) injection.",
+          "Server-Side Request Forgery (SSRF)."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a classic TOCTOU race condition. The security check (does the file exist?) and the sensitive operation (writing to the file) are not atomic. An attacker can exploit the small time window between these two steps to change the resource (e.g., replace the file with a symlink), causing the application to write to a privileged location.",
+        "learningPoints": [
+          "TOCTOU is a class of race condition vulnerabilities.",
+          "Ensure that security checks and related operations are atomic.",
+          "File system operations are particularly susceptible to this."
+        ],
+        "sources": [
+          "https://cwe.mitre.org/data/definitions/367.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Prototype Pollution",
+        "context": "A JavaScript application on the server (Node.js) recursively merges a user-provided JSON object into a base object. An attacker sends the JSON payload `{\"__proto__\": {\"isAdmin\": true}}`. Later, a new user object is created: `let newUser = {};`.",
+        "question": "What is the state of the `newUser` object after this attack?",
+        "options": [
+          "The `newUser` object will be empty.",
+          "The application will throw a type error.",
+          "The `newUser.isAdmin` property will be `true`.",
+          "The `newUser` object will be `null`."
+        ],
+        "correct": 2,
+        "explanation": "✓ This is a Prototype Pollution attack. By injecting the `__proto__` property, the attacker modifies the base `Object.prototype`. Since almost all objects in JavaScript inherit from `Object.prototype`, any new object created afterwards (`newUser`) will now have the polluted properties, in this case, `isAdmin: true`, leading to privilege escalation.",
+        "learningPoints": [
+          "Prototype Pollution is a vulnerability specific to JavaScript.",
+          "Be careful when recursively merging or cloning objects from untrusted sources.",
+          "Sanitize input to prevent modification of `__proto__`, `constructor`, and `prototype`."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/prototype-pollution"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Cryptographic Side-Channel",
+        "context": "A login function compares a user-provided API key with the stored key using a standard string comparison function (`strncmp` in C) that returns as soon as a mismatch is found. An attacker can precisely measure the function's execution time.",
+        "question": "What attack can be used to leak the valid API key character by character?",
+        "options": [
+          "A padding oracle attack.",
+          "A brute-force attack.",
+          "A timing side-channel attack.",
+          "A dictionary attack."
+        ],
+        "correct": 2,
+        "explanation": "✓ Because the string comparison function exits early on a mismatch, it takes slightly longer to execute for every correct character the attacker guesses at the start of the key. By measuring this tiny time difference, the attacker can infer the key one character at a time. The fix is to use a constant-time comparison function.",
+        "learningPoints": [
+          "Side-channel attacks exploit information leaked from the physical implementation of a system (e.g., timing, power consumption).",
+          "Cryptographic operations, especially comparisons, must be implemented in constant time.",
+          "Standard library comparison functions are often not constant-time."
+        ],
+        "sources": [
+          "https://cwe.mitre.org/data/definitions/208.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Insecure JWT Implementation",
+        "context": "A web application uses JSON Web Tokens (JWTs). A developer reads that the `alg` (algorithm) header can be set to `none`. To simplify testing, they configure the server to accept JWTs with `alg` set to `none`, meaning no signature verification is performed.",
+        "question": "How can an attacker exploit this misconfiguration?",
+        "options": [
+          "They cannot, as a key is still required.",
+          "They can create a forged JWT with any claims they want (e.g., `\"isAdmin\": true`), set `alg` to `none`, and the server will accept it.",
+          "They need to brute-force the server's secret key.",
+          "They can only replay existing tokens."
+        ],
+        "correct": 1,
+        "explanation": "✓ The `alg: none` vulnerability is a critical misconfiguration in JWT libraries. If the server is configured to accept it, signature validation is completely bypassed. An attacker can take any valid JWT, decode it, change the payload to grant themselves admin privileges, change the `alg` header to `none`, re-encode it, and send it to the server. The server will accept the forged token as valid.",
+        "learningPoints": [
+          "JWT libraries must be configured to never accept the `alg: none` algorithm.",
+          "Signature validation is the core security feature of JWTs.",
+          "Always use a strong, secret key for signing algorithms like HS256."
+        ],
+        "sources": [
+          "https://jwt.io/introduction/"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Padding Oracle Attack",
+        "context": "An application encrypts a cookie using a block cipher in CBC mode. When the application receives a cookie with invalid padding, it returns a `500 Internal Server Error`. If the padding is valid but the data is incorrect, it returns a `200 OK` with a login page. An attacker can observe this difference.",
+        "question": "What cryptographic attack does this behavior enable?",
+        "options": [
+          "A timing attack.",
+          "A padding oracle attack.",
+          "A replay attack.",
+          "A known-plaintext attack."
+        ],
+        "correct": 1,
+        "explanation": "✓ A padding oracle is a side-channel leak where an application reveals whether the padding of an encrypted message is valid or not. By observing the different server responses, the attacker has found an oracle. This allows the attacker to decrypt any captured ciphertext block by block, and in some cases, encrypt arbitrary plaintext, without ever knowing the encryption key.",
+        "learningPoints": [
+          "A padding oracle leaks information about cryptographic operations.",
+          "It is critical to ensure that errors related to decryption are generic and do not reveal padding validity.",
+          "Use authenticated encryption modes (like AES-GCM) to prevent these attacks."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/Padding_Oracle_Attack"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Supply Chain Attack",
+        "context": "A developer includes a popular open-source JavaScript library in their project for a simple utility function. The library is installed via NPM. An attacker compromises the library's NPM package and adds malicious code that steals credentials from the web application that uses it.",
+        "question": "What type of attack is this?",
+        "options": [
+          "A zero-day exploit.",
+          "A software supply chain attack.",
+          "An insider threat.",
+          "A man-in-the-middle attack."
+        ],
+        "correct": 1,
+        "explanation": "✓ A software supply chain attack involves compromising a component that is then distributed to downstream users. By compromising the NPM package, the attacker injects malicious code into every application that includes it as a dependency. This is a highly effective attack as it leverages the trust developers place in package ecosystems.",
+        "learningPoints": [
+          "Be cautious about the dependencies included in your project.",
+          "Use tools to scan for known vulnerabilities in dependencies (SCA - Software Composition Analysis).",
+          "Use lockfiles to ensure dependency versions are consistent and verified."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A06_2021-Vulnerable_and_Outdated_Components"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Blind SQL Injection",
+        "context": "A web page `?id=1` shows a user's profile. When an attacker tries a SQL injection payload `?id=1 AND 1=1`, the page loads normally. When they try `?id=1 AND 1=2`, the page returns a generic 'User not found' message. No database errors are shown.",
+        "question": "What specific type of SQL injection is being demonstrated?",
+        "options": [
+          "Error-based SQLi",
+          "Union-based SQLi",
+          "Time-based Blind SQLi",
+          "Boolean-based Blind SQLi"
+        ],
+        "correct": 3,
+        "explanation": "✓ This is Boolean-based Blind SQL Injection. The attacker cannot see the direct output of their query, but they can control the application's response by injecting a boolean condition. By asking a series of true/false questions (like 'Is the first letter of the admin password 'a'?' -> `AND SUBSTRING(password,1,1)='a'`), they can exfiltrate data character by character based on whether the page loads or not.",
+        "learningPoints": [
+          "Blind SQLi is possible when an application does not show database errors.",
+          "It relies on observing the application's behavior (a boolean change or a time delay).",
+          "It is much slower to exploit than other types but just as dangerous."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/Blind_SQL_Injection"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "HTTP Desync Attack",
+        "context": "An application sits behind a chain of proxies (e.g., a front-end load balancer and a back-end web server). The front-end proxy processes the `Content-Length` header, while the back-end server processes the `Transfer-Encoding: chunked` header. An attacker sends a specially crafted, ambiguous request.",
+        "question": "What attack can this discrepancy in parsing enable?",
+        "options": [
+          "HTTP Request Smuggling / Desync attack",
+          "Cross-Site Scripting (XSS)",
+          "Session Fixation",
+          "Clickjacking"
+        ],
+        "correct": 0,
+        "explanation": "✓ This is an HTTP Request Smuggling or Desync attack. The attacker crafts a request that is interpreted differently by the front-end and back-end servers. This desynchronizes their connection, allowing the attacker to 'smuggle' a malicious request that gets prepended to the next legitimate user's request, potentially hijacking their session or executing unauthorized actions.",
+        "learningPoints": [
+          "HTTP Request Smuggling exploits inconsistencies in how proxy chains parse HTTP requests.",
+          "It can be used to bypass security controls and hijack other users' requests.",
+          "Ensure all servers in a chain parse requests in the same, unambiguous way."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/request-smuggling"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "OAuth Redirect URI Flaw",
+        "context": "An application uses OAuth for authentication. It registers its redirect URI as `https://app.com/callback`. To add flexibility, a developer allows the redirect URI to be passed as a parameter and only validates that it *starts with* the registered URI. An attacker uses `https://app.com/callback@evil.com/`.",
+        "question": "How does this flaw lead to account takeover?",
+        "options": [
+          "It causes a denial of service.",
+          "The attacker can have the authorization code sent to their own server, hijacking the user's login.",
+          "It allows the attacker to brute-force the user's password.",
+          "It bypasses the need for multi-factor authentication."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a common OAuth vulnerability. The loose validation of the redirect URI can be bypassed. The attacker tricks the user into starting an OAuth flow with the malicious redirect URI. After the user approves the access, the identity provider sends the sensitive authorization code to the attacker's server (`evil.com`) instead of the legitimate application, allowing the attacker to complete the login and hijack the session.",
+        "learningPoints": [
+          "OAuth redirect URIs must be validated using an exact, case-sensitive match against a strict allow-list.",
+          "Do not use partial matching (e.g., starts-with, contains) for redirect URI validation.",
+          "A compromised redirect URI leads directly to account takeover."
+        ],
+        "sources": [
+          "https://datatracker.ietf.org/doc/html/rfc6819#section-4.1.5"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Insecure Randomness",
+        "context": "A developer needs to generate a password reset token. They use Python's `random.randint(100000, 999999)`. The random number generator is seeded with the current server time when the application starts.",
+        "question": "Why is this method of token generation insecure?",
+        "options": [
+          "The token is too short.",
+          "The random number generator is not cryptographically secure and can be predicted.",
+          "The server time is a secret value.",
+          "The token can only contain numbers."
+        ],
+        "correct": 1,
+        "explanation": "✓ Standard pseudo-random number generators (like Python's `random` module) are not suitable for security-sensitive purposes. They are often seeded with predictable values (like time) and are designed for statistical randomness, not unpredictability. An attacker who can guess the seed can predict all subsequent 'random' numbers. For security, always use a Cryptographically Secure Pseudo-Random Number Generator (CSPRNG), like Python's `secrets` module.",
+        "learningPoints": [
+          "Differentiate between standard PRNGs and CSPRNGs.",
+          "Always use a CSPRNG for generating tokens, keys, nonces, and passwords.",
+          "Predictable tokens can lead to account takeover."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A02_2021-Cryptographic_Failures"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      }
+    ],
+    "incident-response_beginner": [
+      {
+        "title": "Initial Phishing Response",
+        "context": "An employee receives an email from 'IT Servicess' with a link to 'update your pasword now!'. The sender's address is `admin@company.net` instead of the official `company.com`. The link points to `http://login-company.ru`.",
+        "question": "What is the best immediate action for the employee?",
+        "options": [
+          "Click the link to verify if it's real.",
+          "Reply to the sender to ask for confirmation.",
+          "Delete the email and ignore it.",
+          "Report the email as phishing using the company's designated procedure."
+        ],
+        "correct": 3,
+        "explanation": "✓ The email has multiple phishing indicators (misspellings, sender domain mismatch, suspicious URL). The employee should not interact with it. The correct action is to use the company's reporting mechanism (e.g., a 'Report Phishing' button). This allows the security team to analyze the threat and protect others.",
+        "learningPoints": [
+          "Recognize common phishing signs.",
+          "Do not click links or reply to suspicious emails.",
+          "Follow company procedure for reporting security incidents."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/tips/ST04-014"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Containing a Virus",
+        "context": "An antivirus alert pops up on a user's workstation, indicating that malware has been detected. The user is connected to the corporate network via an Ethernet cable.",
+        "question": "What is the most important first step in handling this incident?",
+        "options": [
+          "Run a full system scan.",
+          "Immediately disconnect the computer from the network.",
+          "Reboot the computer.",
+          "Delete the file that was flagged."
+        ],
+        "correct": 1,
+        "explanation": "✓ The first phase of incident response after identification is containment. Disconnecting the machine from the network is the most critical step to prevent the malware from spreading to other systems or communicating with an attacker. All other actions, like analysis or removal, should happen after the system is isolated.",
+        "learningPoints": [
+          "Containment is the first step after identifying a threat.",
+          "Isolating an infected machine prevents lateral movement.",
+          "Follow the NIST IR lifecycle: Preparation, Detection & Analysis, Containment, Eradication & Recovery, Post-Incident Activity."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Handling a Lost Laptop",
+        "context": "An employee reports that their company-issued laptop, which contains sensitive customer data, was stolen from their car.",
+        "question": "What security control would best mitigate the risk of data exposure in this situation?",
+        "options": [
+          "A strong user login password.",
+          "A firewall enabled on the laptop.",
+          "Full disk encryption (e.g., BitLocker or FileVault).",
+          "Up-to-date antivirus software."
+        ],
+        "correct": 2,
+        "explanation": "✓ While other controls are important, full disk encryption is the most effective at protecting data at rest. If the laptop's drive is encrypted, the thief cannot access the data without the decryption key or password, even if they remove the hard drive and connect it to another computer.",
+        "learningPoints": [
+          "Full disk encryption protects data at rest.",
+          "It is a critical control for mobile devices like laptops.",
+          "Physical security incidents require immediate response to assess data exposure."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Basic Log Review",
+        "context": "A system administrator is reviewing Windows Security event logs and sees numerous logs with Event ID 4625. The log details show failed login attempts for the 'Administrator' account from an unknown IP address.",
+        "question": "What is likely happening?",
+        "options": [
+          "A user has successfully logged in.",
+          "The server is being updated.",
+          "A brute-force password guessing attack is in progress.",
+          "A file has been deleted from the server."
+        ],
+        "correct": 2,
+        "explanation": "✓ Event ID 4625 in Windows signifies a failed logon attempt. A large number of these events from a single source targeting a common account like 'Administrator' is a classic indicator of a brute-force attack, where an attacker is systematically trying to guess the password.",
+        "learningPoints": [
+          "Familiarity with common security event IDs is crucial for log analysis.",
+          "A high volume of failed logins is a sign of a brute-force attack.",
+          "Monitor for and alert on such events."
+        ],
+        "sources": [
+          "https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/event.aspx?eventid=4625"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Defining an Incident",
+        "context": "An automated scanner finds a low-severity vulnerability on a public-facing web server. The vulnerability is not easily exploitable. No active attack has occurred.",
+        "question": "According to NIST, how would this best be classified?",
+        "options": [
+          "As a security incident.",
+          "As a security event.",
+          "As a breach.",
+          "As a false positive."
+        ],
+        "correct": 1,
+        "explanation": "✓ A security event is any observable occurrence in a system or network. A security incident is a violation or imminent threat of violation of security policies. Since there is no active violation or imminent threat, the scanner finding is simply an event that requires attention (vulnerability management), not a full-blown incident.",
+        "learningPoints": [
+          "Understand the difference between an event and an incident.",
+          "Not all events are incidents.",
+          "Incidents imply a real or imminent security violation."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Importance of Time Sync",
+        "context": "During an investigation, an analyst is trying to correlate logs from a firewall, a web server, and a domain controller. They find that the timestamps in the logs are all off by several minutes from each other.",
+        "question": "What is the primary problem this causes for the investigation?",
+        "options": [
+          "It makes the servers run slower.",
+          "It makes it extremely difficult to create an accurate timeline of the attack.",
+          "It causes the logs to be unreadable.",
+          "It prevents users from logging in."
+        ],
+        "correct": 1,
+        "explanation": "✓ Accurate and synchronized time is critical for incident response. If the clocks on different systems are not synchronized, it is nearly impossible to correlate events across multiple log sources and build a coherent timeline of what happened, when it happened, and in what order.",
+        "learningPoints": [
+          "Use a centralized time source like NTP to keep all system clocks synchronized.",
+          "Accurate timestamps are essential for log correlation.",
+          "Time discrepancies can severely hamper a forensic investigation."
+        ],
+        "sources": [
+          "https://www.cisecurity.org/controls/6"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Role of a SIEM",
+        "context": "A company has thousands of devices, including firewalls, servers, and workstations, all generating logs. The security team needs a way to collect all these logs in one place and automatically detect suspicious activity.",
+        "question": "What type of system is designed for this purpose?",
+        "options": [
+          "A backup server.",
+          "A vulnerability scanner.",
+          "A Security Information and Event Management (SIEM) system.",
+          "A network packet capture tool."
+        ],
+        "correct": 2,
+        "explanation": "✓ A SIEM is a security solution that helps organizations recognize and address potential security threats before they have a chance to disrupt business operations. It aggregates log data from numerous sources, identifies activity that deviates from the norm with real-time analysis, and takes appropriate action.",
+        "learningPoints": [
+          "A SIEM provides centralized log aggregation and analysis.",
+          "It uses correlation rules to detect incidents from multiple event sources.",
+          "It is a cornerstone of a modern Security Operations Center (SOC)."
+        ],
+        "sources": [
+          "https://www.enisa.europa.eu/topics/threat-risk-management/security-information-and-event-management"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Information Sharing",
+        "context": "A security analyst discovers a new type of malware targeting their industry. The malware uses specific IP addresses for its command and control servers.",
+        "question": "What are these specific IP addresses called in the context of threat intelligence?",
+        "options": [
+          "Signatures",
+          "Indicators of Compromise (IoCs)",
+          "Vulnerabilities",
+          "Exploits"
+        ],
+        "correct": 1,
+        "explanation": "✓ Indicators of Compromise (IoCs) are pieces of forensic data, such as IP addresses, file hashes, or domain names, that indicate a potential intrusion has occurred on a system or network. Sharing IoCs helps other organizations detect the same threat.",
+        "learningPoints": [
+          "IoCs are evidence of a potential compromise.",
+          "Examples include IP addresses, domain names, file hashes, and URLs.",
+          "Threat intelligence sharing helps the broader community defend against common threats."
+        ],
+        "sources": [
+          "https://www.mandiant.com/resources/blog/what-is-an-indicator-of-compromise"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Ransomware First Step",
+        "context": "An office worker calls the help desk in a panic. A message has appeared on their screen demanding a Bitcoin payment to unlock their files, and they can no longer open any documents. They can see files now have a `.locked` extension.",
+        "question": "What is the very first thing the help desk should instruct the user to do?",
+        "options": [
+          "Pay the ransom immediately.",
+          "Try to restore files from a backup.",
+          "Unplug the computer's network cable.",
+          "Turn the computer off and on again."
+        ],
+        "correct": 2,
+        "explanation": "✓ This is a ransomware attack. The immediate priority is containment. Ransomware often attempts to spread to other network drives and systems. Unplugging the network cable or disabling Wi-Fi isolates the machine and prevents further spread, which is the most critical first action.",
+        "learningPoints": [
+          "Do not pay the ransom, as it doesn't guarantee file recovery.",
+          "The first step is always containment: isolate the infected machine.",
+          "Regular, tested backups are the most effective defense against ransomware."
+        ],
+        "sources": [
+          "https://www.cisa.gov/stopransomware/ransomware-guide"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Escalation Path",
+        "context": "A junior security analyst sees an alert that indicates a potential compromise of a critical database server. The analyst is not sure how to proceed.",
+        "question": "What should the analyst do?",
+        "options": [
+          "Ignore the alert as it is probably a false positive.",
+          "Try to fix the problem on their own without telling anyone.",
+          "Follow the documented incident response plan to escalate the issue to a senior analyst or manager.",
+          "Immediately shut down the database server."
+        ],
+        "correct": 2,
+        "explanation": "✓ An incident response plan should clearly define roles, responsibilities, and escalation procedures. When a junior analyst encounters a critical incident beyond their expertise, the correct action is to escalate immediately according to the plan. This ensures the incident is handled by the appropriate personnel in a timely manner.",
+        "learningPoints": [
+          "A formal incident response plan is essential.",
+          "The plan must include clear escalation paths.",
+          "Do not take unilateral action on critical systems without proper authorization."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      }
+    ],
+    "incident-response_intermediate": [
+      {
+        "title": "Chain of Custody",
+        "context": "An incident responder has just created a forensic image of a hard drive from a compromised workstation. The evidence may be used in a legal proceeding.",
+        "question": "What is the primary purpose of maintaining a chain of custody document for this evidence?",
+        "options": [
+          "To record the hash value of the image.",
+          "To document every person who handled the evidence, at what time, and for what reason.",
+          "To list the tools used to create the image.",
+          "To get approval from management to analyze the image."
+        ],
+        "correct": 1,
+        "explanation": "✓ The chain of custody is a formal record that demonstrates the evidence has been preserved in its original state and has not been tampered with. It tracks the chronological possession and handling of the evidence from the moment of collection to its presentation in court. Without it, the evidence may be deemed inadmissible.",
+        "learningPoints": [
+          "Chain of custody is critical for the legal admissibility of digital evidence.",
+          "It must be meticulously maintained.",
+          "It tracks the who, what, when, where, and why of evidence handling."
+        ],
+        "sources": [
+          "https://csrc.nist.gov/glossary/term/chain_of_custody"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Threat Intelligence Types",
+        "context": "A SOC manager needs to brief the company's CEO about the current cyber threats to their industry. The briefing should focus on high-level risks, threat actor motivations, and potential business impact, without going into deep technical details.",
+        "question": "What level of threat intelligence is most appropriate for this audience?",
+        "options": [
+          "Strategic threat intelligence.",
+          "Tactical threat intelligence.",
+          "Operational threat intelligence.",
+          "Technical threat intelligence."
+        ],
+        "correct": 0,
+        "explanation": "✓ Strategic threat intelligence is high-level information intended for a non-technical audience, such as executives and board members. It focuses on the broad cybersecurity landscape, threat actor motivations, and the potential impact of threats on business objectives, helping to shape risk management and investment strategy.",
+        "learningPoints": [
+          "Strategic intelligence is for high-level decision making.",
+          "Operational intelligence is about attacker TTPs.",
+          "Tactical/Technical intelligence is about specific IoCs like IPs and file hashes."
+        ],
+        "sources": [
+          "https://www.enisa.europa.eu/publications/strategic-cybersecurity-for-smes"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Analyzing Log Anomaly",
+        "context": "An analyst reviews VPN logs and sees a successful login for a user 'asmith' from an IP in China at 14:00. The analyst then reviews badge access logs and sees that 'asmith' physically badged into the company's New York office at 14:05.",
+        "question": "What does this evidence strongly suggest?",
+        "options": [
+          "The user is traveling for work.",
+          "A false positive alert from the VPN.",
+          "An impossible travel scenario, indicating the user's credentials are compromised.",
+          "A misconfigured time zone on the VPN server."
+        ],
+        "correct": 2,
+        "explanation": "✓ The user cannot be in two geographically distant locations at virtually the same time. This is known as an 'impossible travel' or 'impossible login' scenario. It is a very strong indicator that the user's credentials have been compromised and are being used by an unauthorized party.",
+        "learningPoints": [
+          "Correlating different types of logs is key to identifying incidents.",
+          "Impossible travel is a high-confidence indicator of account compromise.",
+          "This type of detection is often automated by SIEM or UEBA platforms."
+        ],
+        "sources": [
+          "https://docs.microsoft.com/en-us/azure/active-directory/identity-protection/concept-identity-protection-risks"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Eradication vs Recovery",
+        "context": "During an incident, the response team has contained a malware infection and identified the root cause: an unpatched vulnerability. They are now planning the next steps.",
+        "question": "What is the primary goal of the 'Eradication' phase of the incident response process?",
+        "options": [
+          "To restore the affected systems from clean backups.",
+          "To remove the attacker and all malicious artifacts from the environment.",
+          "To conduct a lessons learned meeting.",
+          "To apply the necessary security patch to the vulnerability."
+        ],
+        "correct": 1,
+        "explanation": "✓ In the NIST IR model, Eradication involves removing the root cause of the incident and all artifacts of the attack (e.g., malware, attacker accounts). Recovery is the subsequent phase where systems are restored to normal operation, which includes actions like applying patches and restoring from backups.",
+        "learningPoints": [
+          "Eradication focuses on removing the threat.",
+          "Recovery focuses on restoring business operations.",
+          "You must eradicate the threat before you recover, otherwise you risk reinfection."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Understanding IoCs",
+        "context": "An incident response team is analyzing a malware sample. They have extracted the MD5 hash of the malicious file, a command-and-control domain (`badguy.ru`), and an IP address (`198.51.100.123`) it communicates with.",
+        "question": "What is the primary use of these pieces of information?",
+        "options": [
+          "To determine the financial impact of the breach.",
+          "To be used as Indicators of Compromise (IoCs) to search for other infected systems.",
+          "To reverse-engineer the malware code.",
+          "To report the incident to law enforcement."
+        ],
+        "correct": 1,
+        "explanation": "✓ The file hash, domain, and IP address are all Indicators of Compromise (IoCs). The team can use these IoCs to sweep their entire environment (e.g., search logs, scan endpoints) to identify any other systems that may have been compromised by the same malware campaign.",
+        "learningPoints": [
+          "IoCs are technical artifacts that can identify a specific threat.",
+          "Using IoCs to hunt for wider compromise is a standard IR procedure.",
+          "Common IoCs include hashes, IPs, domains, registry keys, and file paths."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/ir/2016/nist.ir.7972.pdf"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Incident Triage",
+        "context": "A SOC receives 1,000 alerts in one hour. These include: potential ransomware on an executive's laptop, a policy violation for a user visiting a sports website, and a port scan against a non-critical test server.",
+        "question": "Based on potential impact, which incident should be prioritized for immediate investigation?",
+        "options": [
+          "The policy violation.",
+          "The port scan against the test server.",
+          "The potential ransomware on the executive's laptop.",
+          "All alerts should be handled in the order they were received."
+        ],
+        "correct": 2,
+        "explanation": "✓ Incident triage requires prioritizing based on factors like potential impact and asset criticality. Ransomware has a very high potential for damage (data loss, business disruption), and an executive's laptop is a high-value asset. This alert represents the most immediate and significant risk and must be handled first.",
+        "learningPoints": [
+          "Incident triage is the process of prioritizing alerts.",
+          "Prioritization is based on factors like criticality, impact, and evidence.",
+          "Not all alerts are created equal."
+        ],
+        "sources": [
+          "https://www.enisa.europa.eu/topics/csirts-in-europe/incident-response-and-csirts/good-practices-for-incident-management"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Living off the Land",
+        "context": "After gaining access to a Windows server, an attacker avoids using custom malware. Instead, they use built-in Windows tools like PowerShell, WMI, and Bitsadmin to perform reconnaissance, move laterally, and exfiltrate data.",
+        "question": "What is this technique commonly called?",
+        "options": [
+          "Zero-day exploitation",
+          "Living off the Land (LotL)",
+          "Polymorphic malware",
+          "A watering hole attack"
+        ],
+        "correct": 1,
+        "explanation": "✓ Living off the Land (LotL) is a technique where attackers use pre-installed, legitimate tools to carry out their objectives. This makes their activity much harder to detect because it blends in with normal administrative activity and doesn't rely on malicious files that can be flagged by traditional antivirus.",
+        "learningPoints": [
+          "LotL attacks use legitimate system tools for malicious purposes.",
+          "This technique bypasses traditional signature-based detection.",
+          "Detecting LotL requires behavioral analysis and monitoring of tool usage (e.g., PowerShell command line logging)."
+        ],
+        "sources": [
+          "https://attack.mitre.org/T1059/001/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "DNS Sinkholing",
+        "context": "An organization is dealing with a botnet infection. They identify the command and control (C2) domain that the infected machines are trying to contact. They cannot immediately clean all the infected machines.",
+        "question": "What technique can be used to redirect the C2 traffic to a server controlled by the security team for analysis?",
+        "options": [
+          "Blackholing the C2 IP address.",
+          "Implementing a DNS sinkhole.",
+          "Deploying a honeypot.",
+          "Blocking the domain with a proxy server."
+        ],
+        "correct": 1,
+        "explanation": "✓ A DNS sinkhole is a technique where DNS is used to redirect malicious traffic. The security team configures their local DNS server to return the IP address of their own analysis server for the malicious C2 domain. This prevents the bots from reaching their real master while allowing the team to identify and log all infected internal machines that attempt to connect.",
+        "learningPoints": [
+          "DNS sinkholing is a powerful technique for identifying and mitigating botnet infections.",
+          "It redirects malicious DNS requests to a controlled server.",
+          "It helps in identifying compromised hosts within a network."
+        ],
+        "sources": [
+          "https://www.crest-approved.org/wp-content/uploads/2020/07/Threat-Intelligence-for-Incident-Response.pdf"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Beaconing Traffic",
+        "context": "An analyst examines firewall logs and notices a workstation, `10.1.1.50`, making an outbound connection to an unknown IP address `198.51.100.80` on port 443 every 5 minutes, exactly. The payload size is always 64 bytes. The destination is not a known web service.",
+        "question": "What does this traffic pattern likely indicate?",
+        "options": [
+          "Normal Windows update traffic.",
+          "A user browsing the web.",
+          "Malware beaconing to a Command and Control (C2) server.",
+          "A network time protocol (NTP) synchronization."
+        ],
+        "correct": 2,
+        "explanation": "✓ This highly regular, periodic, and uniform traffic is characteristic of malware beaconing. The compromised host is 'calling home' to its C2 server to check for new commands or to signal that it is still active. The use of port 443 is common to blend in with normal encrypted web traffic.",
+        "learningPoints": [
+          "C2 beaconing is often periodic and has a consistent pattern.",
+          "Look for connections to unusual destinations with a regular 'heartbeat'.",
+          "Attackers often use common ports like 80 or 443 to evade simple firewall rules."
+        ],
+        "sources": [
+          "https://attack.mitre.org/techniques/T1071/001/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      }
+    ],
+    "incident-response_advanced": [
+      {
+        "title": "Memory Forensics",
+        "context": "An analyst is examining a memory dump from a compromised Linux server using the Volatility tool. They suspect a fileless malware infection is running, but no malicious files are found on the disk.",
+        "question": "Which Volatility command would be most useful for finding hidden or injected processes in memory?",
+        "options": [
+          "`linux_pslist` to list active processes.",
+          "`linux_malfind` to find injected code and hidden processes.",
+          "`linux_ifconfig` to view network interfaces.",
+          "`linux_lsmod` to list loaded kernel modules."
+        ],
+        "correct": 1,
+        "explanation": "✓ While `pslist` shows running processes, fileless malware often operates by injecting code into legitimate processes, which may not be immediately obvious. The `malfind` plugin is specifically designed to hunt for these injections and other common malware characteristics within process memory, making it the most effective tool for this specific task.",
+        "learningPoints": [
+          "Memory forensics is critical for detecting fileless malware and advanced threats.",
+          "Tools like Volatility can analyze memory dumps to find evidence not present on disk.",
+          "Plugins like `malfind` are designed to locate common malware patterns like code injection."
+        ],
+        "sources": [
+          "https://github.com/volatilityfoundation/volatility/wiki"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Golden Ticket Attack",
+        "context": "An attacker has compromised a domain controller and extracted the hash of the `KRBTGT` account. They use this hash to forge Kerberos Ticket Granting Tickets (TGTs) that are valid for 10 years and grant them Domain Admin privileges.",
+        "question": "What is this specific Kerberos-based persistence technique called?",
+        "options": [
+          "Pass the Hash",
+          "A Golden Ticket attack",
+          "Kerberoasting",
+          "A Silver Ticket attack"
+        ],
+        "correct": 1,
+        "explanation": "✓ A Golden Ticket attack involves compromising the `KRBTGT` account, which is the master key for a Kerberos domain. With its hash, an attacker can use a tool like Mimikatz to create forged TGTs for any user with any level of privilege, granting them persistent, high-level access to the entire domain. A Silver Ticket, by contrast, targets a specific service account.",
+        "learningPoints": [
+          "The KRBTGT account is the most critical account in Active Directory.",
+          "A Golden Ticket provides long-term, domain-wide persistence.",
+          "Detecting this requires monitoring for Kerberos ticket anomalies and protecting domain controllers."
+        ],
+        "sources": [
+          "https://attack.mitre.org/techniques/T1558/001/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "APT Response Strategy",
+        "context": "An organization detects an Advanced Persistent Threat (APT) actor on their network. The actor is moving slowly and has not yet exfiltrated data. The security team knows that simply blocking the C2 IP will cause the actor to use a different method.",
+        "question": "What is the most prudent response strategy?",
+        "options": [
+          "Immediately wipe all compromised systems and restore from backup.",
+          "Passively monitor the attacker to understand their TTPs and the full scope of the compromise before taking coordinated eradication action.",
+          "Announce the breach publicly to warn other companies.",
+          "Shut down the entire network to contain the threat."
+        ],
+        "correct": 1,
+        "explanation": "✓ Responding to an APT requires a different mindset than responding to commodity malware. A 'whack-a-mole' approach is ineffective. The best strategy is often to enter a 'monitor and learn' phase. This allows the response team to gather intelligence on the attacker's tools, infrastructure, and objectives, which is critical for planning a single, decisive eradication action that removes all of the attacker's footholds at once.",
+        "learningPoints": [
+          "APT response is a strategic campaign, not a single action.",
+          "Intelligence gathering is crucial before eradication.",
+          "Prematurely tipping off the attacker can make full eradication much more difficult."
+        ],
+        "sources": [
+          "https://www.mandiant.com/resources/blog/insights-into-incident-response-for-apts"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Threat Hunting Model",
+        "context": "A mature security organization wants to move beyond purely reactive incident response. They want to proactively search their network and endpoint data for signs of undetected threats, based on threat intelligence about specific adversary behaviors.",
+        "question": "What is this proactive, intelligence-driven defensive activity called?",
+        "options": [
+          "Vulnerability scanning",
+          "Penetration testing",
+          "Threat hunting",
+          "Compliance auditing"
+        ],
+        "correct": 2,
+        "explanation": "✓ Threat hunting is the proactive process of searching through networks to detect and isolate advanced threats that evade existing security solutions. It is a human-driven, iterative process that starts with a hypothesis (e.g., 'An attacker is using WMI for lateral movement') and uses security data to prove or disprove it.",
+        "learningPoints": [
+          "Threat hunting is proactive, assuming a breach has occurred.",
+          "It is hypothesis-driven and relies on analyzing attacker TTPs.",
+          "It requires deep knowledge of both offensive and defensive techniques."
+        ],
+        "sources": [
+          "https://www.sans.org/cyber-security-courses/threat-hunting-incident-response/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "YARA Rule Purpose",
+        "context": "An incident responder has a malware binary. They want to create a rule that can identify this malware family on other systems by searching for specific strings and binary patterns within files.",
+        "question": "What tool or language is best suited for creating these pattern-matching rules?",
+        "options": [
+          "Snort",
+          "YARA",
+          "PowerShell",
+          "Wireshark"
+        ],
+        "correct": 1,
+        "explanation": "✓ YARA is often described as 'the pattern matching swiss army knife for malware researchers'. It is a tool and language specifically designed to create rules that identify malware based on textual or binary patterns. Incident responders and security researchers use YARA to classify malware and create custom signatures for hunting.",
+        "learningPoints": [
+          "YARA is used to create signatures for malware families.",
+          "A YARA rule consists of strings, a condition, and metadata.",
+          "It is a standard tool for malware analysis and threat hunting."
+        ],
+        "sources": [
+          "https://yara.readthedocs.io/en/stable/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Filesystem Timeline Analysis",
+        "context": "During a forensic investigation of a Linux system, an analyst needs to understand the sequence of an attacker's file system activities. They want to see when files were created, modified, and accessed in a chronological order.",
+        "question": "What forensic technique is used to create this chronological view of file system events?",
+        "options": [
+          "Keyword searching of the disk image.",
+          "Creating a file system timeline using MACB times.",
+          "Extracting the browser history.",
+          "Analyzing the system's memory dump."
+        ],
+        "correct": 1,
+        "explanation": "✓ A file system timeline is a fundamental forensic technique. It involves extracting the MACB (Modified, Accessed, Changed, Birth) timestamps from all files on the file system (including deleted ones) and sorting them chronologically. This allows the analyst to reconstruct the attacker's activities, such as when they downloaded a tool, modified a configuration file, or created an output file.",
+        "learningPoints": [
+          "Timelining provides a chronological record of file system activity.",
+          "MACB timestamps are a critical source of forensic data.",
+          "Tools like `fls` and `mactime` from The Sleuth Kit are used for this."
+        ],
+        "sources": [
+          "https://wiki.sleuthkit.org/index.php?title=Mactime"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Rootkit Detection",
+        "context": "A system administrator runs `ls` to list files in a directory. A forensic analyst runs the same command on a forensic image of the disk and sees a malicious file that the administrator did not. The system also behaves strangely, but AV scans from the live OS find nothing.",
+        "question": "What type of malware is most likely present?",
+        "options": [
+          "A virus",
+          "Adware",
+          "A rootkit",
+          "A worm"
+        ],
+        "correct": 2,
+        "explanation": "✓ A rootkit is malware designed to gain administrative-level control over a computer system while hiding its own presence. It often achieves this by modifying core OS functions or hooking APIs. The discrepancy between what the live OS sees and what a forensic tool sees on the raw disk is a classic sign of a rootkit hiding files, processes, and network connections.",
+        "learningPoints": [
+          "Rootkits are designed for stealth and persistence.",
+          "They can be user-mode or kernel-mode.",
+          "Detecting them often requires offline analysis of a disk image or memory dump."
+        ],
+        "sources": [
+          "https://attack.mitre.org/techniques/T1014/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Lessons Learned Meeting",
+        "context": "After a major incident, a company holds a post-mortem meeting. The goal is to identify the root causes of the incident and determine what improvements can be made to people, processes, and technology to prevent a recurrence.",
+        "question": "What is the most important characteristic of a successful lessons learned meeting?",
+        "options": [
+          "It assigns blame to the specific individuals responsible for the security failure.",
+          "It is a blameless post-mortem focused on identifying systemic issues.",
+          "It is attended only by senior management.",
+          "It focuses entirely on purchasing new security tools."
+        ],
+        "correct": 1,
+        "explanation": "✓ The goal of a 'lessons learned' or post-mortem session is to improve, not to punish. A blameless culture is essential. When individuals are not afraid of being blamed, they are more likely to be open and honest about the details of the incident, which is crucial for identifying the true root causes and making meaningful, systemic improvements.",
+        "learningPoints": [
+          "The 'Lessons Learned' phase is arguably the most important part of the IR lifecycle.",
+          "Adopt a blameless culture to encourage open discussion.",
+          "The output should be actionable improvements to people, process, and technology."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Diamond Model of Intrusion",
+        "context": "An incident response team is documenting an attack. They map out the adversary (an APT group), their capabilities (a specific malware implant), the infrastructure used (a C2 domain), and the victim (their organization).",
+        "question": "What analytical model are they using to structure their analysis?",
+        "options": [
+          "The Cyber Kill Chain",
+          "The MITRE ATT&CK Framework",
+          "The Diamond Model of Intrusion Analysis",
+          "The VERIS Framework"
+        ],
+        "correct": 2,
+        "explanation": "✓ The Diamond Model describes an intrusion event using four core, interconnected features: adversary, infrastructure, capability, and victim. By defining these elements and the relationships between them, analysts can systematically organize their knowledge of an intrusion and pivot between them to discover new information (e.g., find new infrastructure used by the same adversary).",
+        "learningPoints": [
+          "The Diamond Model is a framework for analyzing intrusion events.",
+          "Its four vertices are Adversary, Capability, Infrastructure, and Victim.",
+          "It helps to formalize and structure threat intelligence."
+        ],
+        "sources": [
+          "https://www.activeresponse.org/wp-content/uploads/2013/07/diamond.pdf"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Data Exfiltration Detection",
+        "context": "An analyst is looking for signs of data exfiltration. They notice that a server in the data center has established a DNS tunnel to an external domain. Large amounts of data are being sent via encoded subdomains in DNS queries.",
+        "question": "Why would an attacker use DNS tunneling for data exfiltration?",
+        "options": [
+          "It is the fastest method for transferring large files.",
+          "DNS traffic is unencrypted and easy to read.",
+          "DNS traffic (port 53) is almost always allowed outbound in firewall rules, making it a covert channel.",
+          "It is the only protocol that can transfer binary data."
+        ],
+        "correct": 2,
+        "explanation": "✓ DNS tunneling is a stealthy technique for C2 communication and data exfiltration. Attackers use it because DNS is a fundamental internet protocol and outbound traffic on UDP/TCP port 53 is permitted by nearly all firewalls. By encoding data within DNS queries, they can bypass strict egress filtering rules and exfiltrate data from a secure network.",
+        "learningPoints": [
+          "DNS tunneling can be used to bypass firewall egress rules.",
+          "It is a common technique for data exfiltration and C2.",
+          "Detection requires analyzing DNS query patterns, volumes, and payload entropy."
+        ],
+        "sources": [
+          "https://attack.mitre.org/techniques/T1071/004/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      }
+    ]
+  },
+  "last_updated": "2025-10-17T16:22:23.591937",
+  "version": "1.0"
+}

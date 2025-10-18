@@ -1,0 +1,375 @@
+{% extends "base.html" %} {% block title %}Home - CyberHubs AI Assessment{%
+endblock %} {% block content %}
+<div class="max-w-6xl mx-auto px-4">
+  <!-- Hero Section -->
+  <div class="text-center mb-12 fade-in">
+    <div class="flex items-center justify-center gap-3 mb-4">
+      <svg
+        class="w-16 h-16 text-cyan-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+        ></path>
+      </svg>
+      <h1 class="text-5xl font-bold text-white">CyberHubs AI Assessment</h1>
+    </div>
+    <p class="text-slate-300 text-xl max-w-3xl mx-auto">
+      Fast, reliable cybersecurity assessments. Solid question bank with smart
+      AI summaries and recommendations.
+    </p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="grid md:grid-cols-3 gap-6 mb-12">
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.1s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-cyan-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+          ></path>
+        </svg>
+        <h3 class="text-xl font-bold text-white">Assessments</h3>
+      </div>
+      <p class="text-4xl font-bold text-cyan-400">
+        {{ user_stats.total_assessments }}
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Completed</p>
+    </div>
+
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.2s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-purple-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+          ></path>
+        </svg>
+        <h3 class="text-xl font-bold text-white">Average Score</h3>
+      </div>
+      <p class="text-4xl font-bold text-purple-400">
+        {{ user_stats.avg_score }}%
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Overall Performance</p>
+    </div>
+
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.3s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-yellow-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+          ></path>
+        </svg>
+        <h3 class="text-xl font-bold text-white">Badges</h3>
+      </div>
+      <p class="text-4xl font-bold text-yellow-400">
+        {{ user_stats.badges|length }}
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Earned</p>
+    </div>
+  </div>
+
+  <!-- Domain Cards -->
+  <h2 class="text-3xl font-bold text-white mb-6">Choose Your Domain</h2>
+  <div class="grid md:grid-cols-3 gap-6 mb-12">
+    <a
+      href="{{ url_for('assessment.start') }}?domain=network-security"
+      class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-cyan-500 transition transform hover:scale-105 cursor-pointer fade-in"
+      style="animation-delay: 0.4s"
+    >
+      <div
+        class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4"
+      >
+        <svg
+          class="w-10 h-10 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+          ></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-2">Network Security</h3>
+      <p class="text-slate-400 mb-4">
+        Test your knowledge of firewalls, intrusion detection, VPNs, and network
+        protocols.
+      </p>
+      <div class="flex items-center gap-2 text-cyan-400 font-medium">
+        Start Assessment
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </div>
+    </a>
+
+    <a
+      href="{{ url_for('assessment.start') }}?domain=secure-coding"
+      class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-green-500 transition transform hover:scale-105 cursor-pointer fade-in"
+      style="animation-delay: 0.5s"
+    >
+      <div
+        class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4"
+      >
+        <svg
+          class="w-10 h-10 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+          ></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-2">Secure Coding</h3>
+      <p class="text-slate-400 mb-4">
+        Assess your skills in OWASP vulnerabilities, SQL injection prevention,
+        and secure development.
+      </p>
+      <div class="flex items-center gap-2 text-green-400 font-medium">
+        Start Assessment
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </div>
+    </a>
+
+    <a
+      href="{{ url_for('assessment.start') }}?domain=incident-response"
+      class="bg-slate-800 rounded-xl p-8 border border-slate-700 hover:border-red-500 transition transform hover:scale-105 cursor-pointer fade-in"
+      style="animation-delay: 0.6s"
+    >
+      <div
+        class="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center mb-4"
+      >
+        <svg
+          class="w-10 h-10 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+          ></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-2">Incident Response</h3>
+      <p class="text-slate-400 mb-4">
+        Challenge your incident response, forensics, containment, and threat
+        hunting abilities.
+      </p>
+      <div class="flex items-center gap-2 text-red-400 font-medium">
+        Start Assessment
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </div>
+    </a>
+  </div>
+
+  <!-- Features -->
+  <div
+    class="bg-slate-800 rounded-xl p-8 border border-slate-700 fade-in"
+    style="animation-delay: 0.7s"
+  >
+    <h2 class="text-2xl font-bold text-white mb-6">Why Choose Our Platform?</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="flex gap-4">
+        <div class="flex-shrink-0">
+          <div
+            class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-cyan-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-1">Reliable Question Bank</h3>
+          <p class="text-slate-400 text-sm">
+            Curated, domain-specific questions ship with the app—always
+            available with zero API dependencies or quotas.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex-shrink-0">
+          <div
+            class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-purple-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00 2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-1">
+            AI Summaries, Only Where It Helps
+          </h3>
+          <p class="text-slate-400 text-sm">
+            We use Gemini to summarize results and suggest learning next
+            steps—keeping costs low and reliability high.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex-shrink-0">
+          <div
+            class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-1">Adaptive Difficulty</h3>
+          <p class="text-slate-400 text-sm">
+            Questions calibrate to your performance across domains and sessions
+            for a steady, personalized challenge.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex gap-4">
+        <div class="flex-shrink-0">
+          <div
+            class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-yellow-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-bold mb-1">Progress & Analytics</h3>
+          <p class="text-slate-400 text-sm">
+            Track scores, domains, and history with a clean dashboard—no account
+            required. Data stays in your session.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

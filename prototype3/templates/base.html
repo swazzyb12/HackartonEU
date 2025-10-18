@@ -1,0 +1,156 @@
+{# Time formatting macro #} {% macro format_time(seconds) %} {% set hours =
+(seconds // 3600)|int %} {% set minutes = ((seconds % 3600) // 60)|int %} {% set
+secs = (seconds % 60)|int %} {% if hours > 0 %} {{ hours }}h {{ minutes }}m {{
+secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
+}}s {% endif %} {% endmacro %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}CyberHubs AI Assessment{% endblock %}</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-out;
+      }
+      .debug-info {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #0f0;
+        padding: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+        font-size: 12px;
+        max-width: 300px;
+        z-index: 9999;
+      }
+    </style>
+
+    {% block extra_css %}{% endblock %}
+  </head>
+  <body
+    class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen"
+  >
+    <!-- Navigation -->
+    <nav class="bg-slate-800 border-b border-slate-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a
+              href="{{ url_for('home.index') }}"
+              class="flex items-center gap-2 text-white hover:text-cyan-400 transition"
+            >
+              <svg
+                class="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+              <span class="text-xl font-bold">CyberHubs AI</span>
+            </a>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <a
+              href="{{ url_for('home.index') }}"
+              class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+            >
+              Home
+            </a>
+            <a
+              href="{{ url_for('assessment.start') }}"
+              class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+            >
+              Start Assessment
+            </a>
+            <a
+              href="{{ url_for('dashboard.index') }}"
+              class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+            >
+              Dashboard
+            </a>
+            <a
+              href="{{ url_for('home.about') }}"
+              class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+            >
+              About
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+      {% for category, message in messages %}
+      <div
+        class="bg-{{ 'green' if category == 'success' else 'red' if category == 'error' else 'blue' }}-500 text-white px-4 py-3 rounded-lg mb-2 fade-in"
+      >
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <!-- Main Content -->
+    <main class="py-8">{% block content %}{% endblock %}</main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 border-t border-slate-700 mt-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center text-slate-400 text-sm">
+          <p>
+            &copy; 2025 CyberHubs AI Assessment Platform. Powered by Google
+            Gemini AI.
+          </p>
+          <p class="mt-2">Developed for Hackathon EU 2025</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Debug Information (only in debug mode) -->
+    {% if config.DEBUG %}
+    <div class="debug-info">
+      <div>🐛 Debug Mode</div>
+      <div>Route: {{ request.endpoint }}</div>
+      <div>Method: {{ request.method }}</div>
+      {% if session %}
+      <div>Session: Active</div>
+      {% endif %}
+    </div>
+    {% endif %} {% block extra_js %}{% endblock %}
+
+    <script>
+      // Debug logging
+      console.log('Page loaded:', '{{ request.endpoint }}');
+      console.log('Debug mode:', {{ 'true' if config.DEBUG else 'false' }});
+    </script>
+  </body>
+</html>

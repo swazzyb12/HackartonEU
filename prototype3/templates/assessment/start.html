@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}Start Assessment - CyberHubs{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4">
+    <div class="bg-slate-800 rounded-xl p-8 border border-slate-700 fade-in">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            {% if selected_domain %}
+            <h1 class="text-4xl font-bold text-white mb-3">Ready to Start?</h1>
+            <p class="text-slate-300 text-lg">Your assessment is ready - just choose how many questions!</p>
+            {% else %}
+            <h1 class="text-4xl font-bold text-white mb-3">Start New Assessment</h1>
+            <p class="text-slate-300 text-lg">Choose your domain to begin!</p>
+            {% endif %}
+            <div class="mt-4 inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 rounded-lg px-4 py-2">
+                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span class="text-cyan-300 text-sm font-medium">AI-Powered Adaptive Testing</span>
+            </div>
+        </div>
+        
+        <form method="POST" action="{{ url_for('assessment.start') }}" class="space-y-6">
+            
+            {% if selected_domain %}
+            <!-- Domain already selected - show as read-only badge -->
+            <input type="hidden" name="domain" value="{{ selected_domain }}">
+            <div class="bg-slate-700/50 border border-slate-600 rounded-lg p-6">
+                <label class="block text-white font-bold mb-3 text-lg">
+                    <svg class="inline w-6 h-6 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Selected Domain
+                </label>
+                <div class="flex items-center gap-4">
+                    <div class="flex-1 bg-slate-800 border-2 {% if selected_domain == 'network-security' %}border-blue-500 bg-blue-500/10{% elif selected_domain == 'secure-coding' %}border-green-500 bg-green-500/10{% else %}border-red-500 bg-red-500/10{% endif %} rounded-lg p-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-14 h-14 {% if selected_domain == 'network-security' %}bg-blue-500/20{% elif selected_domain == 'secure-coding' %}bg-green-500/20{% else %}bg-red-500/20{% endif %} rounded-lg flex items-center justify-center">
+                                {% if selected_domain == 'network-security' %}
+                                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                                {% elif selected_domain == 'secure-coding' %}
+                                <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                                {% else %}
+                                <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">{{ selected_domain|replace('-', ' ')|title }}</h3>
+                                <p class="text-slate-400">
+                                    {% if selected_domain == 'network-security' %}Firewalls, IDS/IPS, VPNs
+                                    {% elif selected_domain == 'secure-coding' %}OWASP, SQL Injection
+                                    {% else %}Forensics, Containment{% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('home.index') }}" class="text-cyan-400 hover:text-cyan-300 font-medium text-sm flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                        Change
+                    </a>
+                </div>
+            </div>
+            
+            {% else %}
+            <!-- Domain Selection -->
+            <div>
+                <label class="block text-white font-bold mb-3 text-lg">
+                    <svg class="inline w-6 h-6 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Choose Domain
+                </label>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="domain" value="network-security" 
+                               {% if selected_domain == 'network-security' %}checked{% endif %}
+                               class="peer sr-only" required>
+                        <div class="bg-slate-700 border-2 border-slate-600 rounded-lg p-6 hover:border-blue-500 peer-checked:border-blue-500 peer-checked:bg-blue-500/10 transition">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-white font-bold text-center mb-1">Network Security</h3>
+                            <p class="text-slate-400 text-sm text-center">Firewalls, IDS/IPS, VPNs</p>
+                        </div>
+                    </label>
+                    
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="domain" value="secure-coding"
+                               {% if selected_domain == 'secure-coding' %}checked{% endif %}
+                               class="peer sr-only" required>
+                        <div class="bg-slate-700 border-2 border-slate-600 rounded-lg p-6 hover:border-green-500 peer-checked:border-green-500 peer-checked:bg-green-500/10 transition">
+                            <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-7 h-7 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-white font-bold text-center mb-1">Secure Coding</h3>
+                            <p class="text-slate-400 text-sm text-center">OWASP, SQL Injection</p>
+                        </div>
+                    </label>
+                    
+                    <label class="relative cursor-pointer">
+                        <input type="radio" name="domain" value="incident-response"
+                               {% if selected_domain == 'incident-response' %}checked{% endif %}
+                               class="peer sr-only" required>
+                        <div class="bg-slate-700 border-2 border-slate-600 rounded-lg p-6 hover:border-red-500 peer-checked:border-red-500 peer-checked:bg-red-500/10 transition">
+                            <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-3 mx-auto">
+                                <svg class="w-7 h-7 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-white font-bold text-center mb-1">Incident Response</h3>
+                            <p class="text-slate-400 text-sm text-center">Forensics, Containment</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- Adaptive Difficulty Info -->
+            <div class="bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-lg p-6">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <svg class="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold mb-2 text-lg">🧠 How Adaptive Difficulty Works</h3>
+                        <ul class="text-slate-300 space-y-1 text-sm">
+                            <li class="flex items-start gap-2">
+                                <span class="text-green-400 mt-0.5">✓</span>
+                                <span>Answer correctly → questions get <strong class="text-green-400">harder</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-yellow-400 mt-0.5">✓</span>
+                                <span>Answer incorrectly → questions get <strong class="text-yellow-400">easier</strong></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-cyan-400 mt-0.5">✓</span>
+                                <span>The system finds your <strong class="text-cyan-400">true skill level</strong> automatically</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-purple-400 mt-0.5">✓</span>
+                                <span>No need to guess your level - the AI discovers it for you!</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Number of Questions -->
+            <div>
+                <label class="block text-white font-bold mb-3 text-lg">
+                    <svg class="inline w-6 h-6 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 0l4 16M6 9h14M4 15h14"></path>
+                    </svg>
+                    Number of Questions
+                </label>
+                <select name="num_questions" class="w-full bg-slate-700 border-2 border-slate-600 rounded-lg px-4 py-3 text-white focus:border-cyan-500 focus:outline-none transition">
+                    <option value="5" {% if num_questions == 5 %}selected{% endif %}>5 Questions (Quick)</option>
+                    <option value="10" {% if num_questions == 10 %}selected{% endif %}>10 Questions (Standard)</option>
+                    <option value="15" {% if num_questions == 15 %}selected{% endif %}>15 Questions (Comprehensive)</option>
+                </select>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="flex gap-4 pt-4">
+                <a href="{{ url_for('home.index') }}" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 px-6 rounded-lg transition text-center">
+                    Cancel
+                </a>
+                <button type="submit" class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-lg transition transform hover:scale-105 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    Start Assessment
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+console.log('Assessment start page loaded');
+</script>
+{% endblock %}

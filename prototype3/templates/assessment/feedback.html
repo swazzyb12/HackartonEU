@@ -1,0 +1,374 @@
+{% extends "base.html" %} {% from "base.html" import format_time %} {% block
+title %}Feedback - CyberHubs{% endblock %} {% block content %}
+<div class="max-w-4xl mx-auto px-4">
+  <!-- Result Header -->
+  <div class="text-center mb-8 fade-in">
+    <div
+      class="inline-flex items-center justify-center w-24 h-24 rounded-full mb-4 {% if feedback.is_correct %}bg-green-500/20{% else %}bg-red-500/20{% endif %}"
+    >
+      {% if feedback.is_correct %}
+      <svg
+        class="w-14 h-14 text-green-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"
+        ></path>
+      </svg>
+      {% else %}
+      <svg
+        class="w-14 h-14 text-red-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+      {% endif %}
+    </div>
+    <h1
+      class="text-4xl font-bold {% if feedback.is_correct %}text-green-400{% else %}text-red-400{% endif %} mb-2"
+    >
+      {% if feedback.is_correct %}Correct!{% else %}Incorrect{% endif %}
+    </h1>
+    <p class="text-slate-300 text-lg">
+      Question {{ current_question }} of {{ total_questions }}
+    </p>
+  </div>
+
+  <!-- Question Review -->
+  <div
+    class="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-6 fade-in"
+    style="animation-delay: 0.1s"
+  >
+    <h2 class="text-xl font-bold text-white mb-4">Question</h2>
+    <p class="text-slate-200 mb-6">{{ question.question }}</p>
+
+    <div class="space-y-3">
+      {% for option in question.options %}
+      <div
+        class="rounded-lg p-4 border-2 {% if loop.index0 == question.correct_answer %}border-green-500 bg-green-500/10 {% elif loop.index0 == user_answer and not feedback.is_correct %}border-red-500 bg-red-500/10 {% else %}border-slate-600 bg-slate-700/50{% endif %}"
+      >
+        <div class="flex items-start gap-3">
+          <div
+            class="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm {% if loop.index0 == question.correct_answer %}bg-green-500 text-white {% elif loop.index0 == user_answer and not feedback.is_correct %}bg-red-500 text-white {% else %}bg-slate-600 text-white{% endif %}"
+          >
+            {{ ['A', 'B', 'C', 'D'][loop.index0] }}
+          </div>
+          <div class="flex-1">
+            <p
+              class="{% if loop.index0 == question.correct_answer or (loop.index0 == user_answer and not feedback.is_correct) %}text-white font-medium{% else %}text-slate-300{% endif %}"
+            >
+              {{ option }}
+            </p>
+            {% if loop.index0 == question.correct_answer %}
+            <div
+              class="flex items-center gap-2 mt-2 text-green-400 text-sm font-medium"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>
+              Correct Answer
+            </div>
+            {% elif loop.index0 == user_answer and not feedback.is_correct %}
+            <div
+              class="flex items-center gap-2 mt-2 text-red-400 text-sm font-medium"
+            >
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+              Your Answer
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {# Reference Sources for the Question #} {% if feedback.sources and
+  feedback.sources|length > 0 %}
+  <div
+    class="bg-slate-800 rounded-xl p-6 border border-slate-700 mb-8 fade-in"
+    style="animation-delay: 0.2s"
+  >
+    <h3 class="text-white font-bold mb-3 flex items-center gap-2">
+      <svg
+        class="w-5 h-5 text-cyan-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+        />
+      </svg>
+      Reference Sources
+    </h3>
+    <div class="space-y-2">
+      {% for source in feedback.sources %}
+      <a
+        href="{{ source }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-cyan-400 hover:text-cyan-300 text-sm break-all flex items-center gap-1 transition group"
+      >
+        <svg
+          class="w-4 h-4 flex-shrink-0 group-hover:translate-x-0.5 transition-transform"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+          />
+        </svg>
+        <span>{{ source }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- AI Feedback -->
+  <div
+    class="bg-slate-800 rounded-xl p-8 border border-slate-700 mb-6 fade-in"
+    style="animation-delay: 0.2s"
+  >
+    <div class="flex items-start gap-3 mb-4">
+      <div
+        class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center flex-shrink-0"
+      >
+        <svg
+          class="w-7 h-7 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+          ></path>
+        </svg>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-white mb-1">AI Feedback</h2>
+        <p class="text-slate-400 text-sm">
+          Personalized insights powered by Google Gemini
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-slate-900/50 rounded-lg p-6 border border-slate-700">
+      <div class="prose prose-invert max-w-none">
+        <div class="text-slate-200 whitespace-pre-wrap leading-relaxed">
+          {{ feedback.explanation }}
+        </div>
+      </div>
+    </div>
+
+    {% if feedback.learning_resources %}
+    <div class="mt-6">
+      <h3 class="text-white font-bold mb-3 flex items-center gap-2">
+        <svg
+          class="w-5 h-5 text-cyan-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+          ></path>
+        </svg>
+        Recommended Learning Resources
+      </h3>
+      <ul class="space-y-2">
+        {% for resource in feedback.learning_resources %}
+        <li class="flex items-start gap-2 text-slate-300">
+          <svg
+            class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"
+            ></path>
+          </svg>
+          <span>{{ resource }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Performance Stats -->
+  <div
+    class="grid md:grid-cols-3 gap-4 mb-8 fade-in"
+    style="animation-delay: 0.3s"
+  >
+    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-6 h-6 text-cyan-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Time Taken</h3>
+      </div>
+      <p class="text-3xl font-bold text-cyan-400">
+        {{ format_time(time_taken) }}
+      </p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-6 h-6 text-purple-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00 2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Current Score</h3>
+      </div>
+      <p class="text-3xl font-bold text-purple-400">{{ score }}%</p>
+    </div>
+
+    <div class="bg-slate-800 rounded-xl p-6 border border-slate-700">
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-6 h-6 text-yellow-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Progress</h3>
+      </div>
+      <p class="text-3xl font-bold text-yellow-400">
+        {{ current_question }}/{{ total_questions }}
+      </p>
+    </div>
+  </div>
+
+  <!-- Continue Button -->
+  <div class="text-center fade-in" style="animation-delay: 0.4s">
+    {% if current_question < total_questions %}
+    <a
+      href="{{ url_for('assessment.question') }}"
+      class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-8 rounded-lg transition transform hover:scale-105"
+    >
+      Continue to Next Question
+      <svg
+        class="inline w-5 h-5 ml-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        ></path>
+      </svg>
+    </a>
+    {% else %}
+    <a
+      href="{{ url_for('assessment.results') }}"
+      class="inline-block bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-4 px-8 rounded-lg transition transform hover:scale-105"
+    >
+      View Final Results
+      <svg
+        class="inline w-5 h-5 ml-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+        ></path>
+      </svg>
+    </a>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  console.log('Feedback page loaded:', {
+      isCorrect: {{ feedback.is_correct|lower }},
+      timeTaken: {{ time_taken }},
+      currentScore: {{ score }}
+  });
+</script>
+{% endblock %}

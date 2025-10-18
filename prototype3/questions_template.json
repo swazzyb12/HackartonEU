@@ -1,0 +1,229 @@
+{
+  "questions": {
+    "network-security_beginner": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 2,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "beginner",
+        "domain": "network-security"
+      }
+    ],
+    "network-security_intermediate": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 0,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "intermediate",
+        "domain": "network-security"
+      }
+    ],
+    "network-security_advanced": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 1,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "advanced",
+        "domain": "network-security"
+      }
+    ],
+    "secure-coding_beginner": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 3,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "beginner",
+        "domain": "secure-coding"
+      }
+    ],
+    "secure-coding_intermediate": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 2,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "intermediate",
+        "domain": "secure-coding"
+      }
+    ],
+    "secure-coding_advanced": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 1,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "advanced",
+        "domain": "secure-coding"
+      }
+    ],
+    "incident-response_beginner": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 0,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "beginner",
+        "domain": "incident-response"
+      }
+    ],
+    "incident-response_intermediate": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 3,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "intermediate",
+        "domain": "incident-response"
+      }
+    ],
+    "incident-response_advanced": [
+      {
+        "title": "Question Title Here",
+        "context": "Scenario or background information that sets up the question. This provides the real-world context for the assessment.",
+        "question": "The actual question text goes here?",
+        "options": [
+          "First answer option",
+          "Second answer option",
+          "Third answer option",
+          "Fourth answer option"
+        ],
+        "correct": 2,
+        "explanation": "✓ Explanation of why the correct answer is right.\n✗ Explanation of why the other answers are wrong.",
+        "learningPoints": [
+          "First key learning point from this question",
+          "Second key learning point",
+          "Third key learning point"
+        ],
+        "sources": [
+          "https://example.com/reference-documentation"
+        ],
+        "difficulty": "advanced",
+        "domain": "incident-response"
+      }
+    ]
+  }
+}

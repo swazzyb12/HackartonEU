@@ -1,0 +1,317 @@
+{% extends "base.html" %} {% block title %}Dashboard - CyberHubs{% endblock %}
+{% block content %}
+<div class="max-w-6xl mx-auto px-4">
+  <!-- Dashboard Header -->
+  <div class="mb-10 fade-in">
+    <h1 class="text-4xl font-bold text-white mb-3">Your Dashboard</h1>
+    <p class="text-slate-300 text-lg">
+      Track your progress and performance across all domains
+    </p>
+  </div>
+
+  <!-- Overall Stats -->
+  <div class="grid md:grid-cols-4 gap-6 mb-10">
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.1s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-cyan-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Total Assessments</h3>
+      </div>
+      <p class="text-4xl font-bold text-cyan-400">
+        {{ stats.total_assessments or 0 }}
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Completed</p>
+    </div>
+
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.2s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-purple-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Average Score</h3>
+      </div>
+      <p class="text-4xl font-bold text-purple-400">
+        {{ stats.avg_score or 0 }}%
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Overall Performance</p>
+    </div>
+
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.3s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-green-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Best Score</h3>
+      </div>
+      <p class="text-4xl font-bold text-green-400">
+        {{ stats.best_score or 0 }}%
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Personal Best</p>
+    </div>
+
+    <div
+      class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+      style="animation-delay: 0.4s"
+    >
+      <div class="flex items-center gap-3 mb-2">
+        <svg
+          class="w-8 h-8 text-yellow-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+          ></path>
+        </svg>
+        <h3 class="text-white font-bold">Badges Earned</h3>
+      </div>
+      <p class="text-4xl font-bold text-yellow-400">
+        {{ (stats.badges or [])|length }}
+      </p>
+      <p class="text-slate-400 text-sm mt-1">Achievements</p>
+    </div>
+  </div>
+
+  <!-- Domain Performance -->
+  <div class="mb-10">
+    <h2
+      class="text-2xl font-bold text-white mb-6 fade-in"
+      style="animation-delay: 0.5s"
+    >
+      Domain Performance
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      {% for domain, domain_stats in (stats.by_domain or {}).items() %}
+      <div
+        class="bg-slate-800 rounded-xl p-6 border border-slate-700 fade-in"
+        style="animation-delay: {{ 0.6 + loop.index * 0.1 }}s"
+      >
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h3 class="text-xl font-bold text-white mb-1">
+              {{ domain|replace('-', ' ')|title }}
+            </h3>
+            <p class="text-slate-400 text-sm">
+              {{ domain_stats.count }} assessment{{ 's' if domain_stats.count !=
+              1 else '' }}
+            </p>
+          </div>
+          <div
+            class="w-12 h-12 rounded-lg flex items-center justify-center {% if domain == 'network-security' %}bg-blue-500/20 {% elif domain == 'secure-coding' %}bg-green-500/20 {% else %}bg-red-500/20{% endif %}"
+          >
+            {% if domain == 'network-security' %}
+            <svg
+              class="w-7 h-7 text-blue-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              ></path>
+            </svg>
+            {% elif domain == 'secure-coding' %}
+            <svg
+              class="w-7 h-7 text-green-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+              ></path>
+            </svg>
+            {% else %}
+            <svg
+              class="w-7 h-7 text-red-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              ></path>
+            </svg>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-slate-400">Average Score</span>
+              <span class="text-white font-bold"
+                >{{ domain_stats.avg_score }}%</span
+              >
+            </div>
+            <div class="w-full bg-slate-700 rounded-full h-2">
+              <div
+                class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full rounded-full"
+                style="width: {{ domain_stats.avg_score }}%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="flex justify-between text-sm">
+            <span class="text-slate-400">Best Score</span>
+            <span class="text-green-400 font-bold"
+              >{{ domain_stats.best_score }}%</span
+            >
+          </div>
+
+          <a
+            href="{{ url_for('assessment.start') }}?domain={{ domain }}"
+            class="block text-center bg-slate-700 hover:bg-slate-600 text-white font-medium py-2 px-4 rounded-lg transition mt-4"
+          >
+            Practice Again
+          </a>
+        </div>
+      </div>
+      {% else %}
+      <div class="col-span-3 text-center py-12">
+        <svg
+          class="w-16 h-16 text-slate-600 mx-auto mb-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+          ></path>
+        </svg>
+        <p class="text-slate-400 text-lg mb-4">No assessments completed yet</p>
+        <a
+          href="{{ url_for('home.index') }}"
+          class="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-3 px-6 rounded-lg transition"
+        >
+          Start Your First Assessment
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  {% if recent_assessments %}
+  <div class="fade-in" style="animation-delay: 0.9s">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-white">Recent Activity</h2>
+      <a
+        href="{{ url_for('dashboard.history') }}"
+        class="text-cyan-400 hover:text-cyan-300 font-medium flex items-center gap-2"
+      >
+        View All History
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
+        </svg>
+      </a>
+    </div>
+
+    <div
+      class="bg-slate-800 rounded-xl border border-slate-700 overflow-hidden"
+    >
+      <table class="w-full">
+        <thead class="bg-slate-700/50">
+          <tr>
+            <th class="px-6 py-4 text-left text-white font-bold">Domain</th>
+            <th class="px-6 py-4 text-left text-white font-bold">Difficulty</th>
+            <th class="px-6 py-4 text-left text-white font-bold">Score</th>
+            <th class="px-6 py-4 text-left text-white font-bold">Date</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-700">
+          {% for assessment in recent_assessments[:5] %}
+          <tr class="hover:bg-slate-700/30 transition">
+            <td class="px-6 py-4 text-white font-medium">
+              {{ assessment.domain|replace('-', ' ')|title }}
+            </td>
+            <td class="px-6 py-4">
+              <span
+                class="px-3 py-1 rounded-full text-sm font-medium {% if assessment.difficulty == 'beginner' %}bg-green-500/20 text-green-400 {% elif assessment.difficulty == 'intermediate' %}bg-yellow-500/20 text-yellow-400 {% else %}bg-red-500/20 text-red-400{% endif %}"
+              >
+                {{ assessment.difficulty|title }}
+              </span>
+            </td>
+            <td class="px-6 py-4">
+              <span
+                class="text-2xl font-bold {% if assessment.score >= 80 %}text-green-400 {% elif assessment.score >= 60 %}text-yellow-400 {% else %}text-red-400{% endif %}"
+              >
+                {{ assessment.score }}%
+              </span>
+            </td>
+            <td class="px-6 py-4 text-slate-400">{{ assessment.date }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
