@@ -371,4 +371,43 @@ title %}Feedback - CyberHubs{% endblock %} {% block content %}
       currentScore: {{ score }}
   });
 </script>
-{% endblock %}
+{% if feedback.is_correct %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("sfx-correct");
+    if (audio) {
+      audio.play().catch((err) => {
+        console.log("Autoplay prevented, playing on first interaction");
+        // Fallback: speel bij eerste interactie
+        const playOnce = () => {
+          audio.currentTime = 0;
+          audio.play();
+          document.removeEventListener("click", playOnce);
+          document.removeEventListener("keydown", playOnce);
+        };
+        document.addEventListener("click", playOnce, { once: true });
+        document.addEventListener("keydown", playOnce, { once: true });
+      });
+    }
+  });
+</script>
+{% else %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("sfx-wrong");
+    if (audio) {
+      audio.play().catch((err) => {
+        console.log("Autoplay prevented, playing on first interaction");
+        const playOnce = () => {
+          audio.currentTime = 0;
+          audio.play();
+          document.removeEventListener("click", playOnce);
+          document.removeEventListener("keydown", playOnce);
+        };
+        document.addEventListener("click", playOnce, { once: true });
+        document.addEventListener("keydown", playOnce, { once: true });
+      });
+    }
+  });
+</script>
+{% endif %} {% endblock %}

@@ -11,4 +11,8 @@ dist/
 *.iml
 .env
 .history
+<<<<<<< HEAD
 .venv/
+=======
+.venv
+>>>>>>> de423989f294d862e0d5d1e64c4f3ce278607fc8
