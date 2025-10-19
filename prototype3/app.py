@@ -5,8 +5,9 @@ Fully AI-driven cybersecurity assessment with Flask and Jinja2
 
 import os
 import logging
-from flask import Flask, render_template
+from flask import Flask, render_template, session, request
 from flask_session import Session
+from flask_babel import Babel
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -18,6 +19,29 @@ from routes.assessment import assessment_bp
 from routes.dashboard import dashboard_bp
 from routes.api import api_bp
 
+# Initialize Babel
+babel = Babel()
+
+# Supported languages
+SUPPORTED_LANGUAGES = {
+    'en': 'English',
+    'et': 'Eesti',
+    'hu': 'Magyar',
+    'lt': 'Lietuvių',
+    'pl': 'Polski',
+    'pt': 'Português',
+    'sk': 'Slovenčina',
+    'sl': 'Slovenščina'
+}
+
+def get_locale():
+    """Determine the current locale"""
+    # Check if user has set a language preference
+    if 'language' in session:
+        return session.get('language')
+    # Try to use the best match from supported languages
+    return request.accept_languages.best_match(SUPPORTED_LANGUAGES.keys()) or 'en'
+
 def create_app():
     """Application factory pattern for Flask app"""
     app = Flask(__name__)
@@ -27,9 +51,15 @@ def create_app():
     app.config['SESSION_TYPE'] = 'filesystem'
     app.config['GEMINI_API_KEY'] = os.getenv('GEMINI_API_KEY', '')
     app.config['DEBUG'] = os.getenv('FLASK_DEBUG', 'True') == 'True'
+    app.config['LANGUAGES'] = SUPPORTED_LANGUAGES
+    app.config['BABEL_DEFAULT_LOCALE'] = 'en'
+    app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
     
     # Session configuration
     Session(app)
+    
+    # Initialize Babel
+    babel.init_app(app, locale_selector=get_locale)
     
     # Logging configuration
     configure_logging(app)

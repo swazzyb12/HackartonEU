@@ -1,0 +1,95 @@
+# Slovenian translations for CyberHubs AI Assessment Platform
+# Copyright (C) 2025
+# This file is distributed under the same license as the CyberHubs package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CyberHubs 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "Domov"
+
+msgid "Start Assessment"
+msgstr "Začni Ocenjevanje"
+
+msgid "Dashboard"
+msgstr "Nadzorna plošča"
+
+msgid "About"
+msgstr "O nas"
+
+msgid "Language"
+msgstr "Jezik"
+
+msgid "CyberHubs AI Assessment"
+msgstr "Ocenjevanje CyberHubs AI"
+
+msgid "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+msgstr "Hitre, zanesljive ocene cybersecurity. Trdna banka vprašanj s pametnimi povzetki AI in priporočili."
+
+msgid "Assessments"
+msgstr "Ocenjevanja"
+
+msgid "Completed"
+msgstr "Zaključeno"
+
+msgid "Average Score"
+msgstr "Povprečna Točka"
+
+msgid "Overall Performance"
+msgstr "Splošna Zmogljivost"
+
+msgid "Badges"
+msgstr "Značke"
+
+msgid "Earned"
+msgstr "Zasluženo"
+
+msgid "Start Your Journey"
+msgstr "Začnite svojo pot"
+
+msgid "Ready to test your cybersecurity knowledge?"
+msgstr "Ste pripravljeni testirati svoje znanje cybersecurity?"
+
+msgid "Begin Assessment"
+msgstr "Začni Ocenjevanje"
+
+msgid "View Your Progress"
+msgstr "Oglejte si svoj napredek"
+
+msgid "Track your learning journey and see how you're improving"
+msgstr "Spremljajte svojo pot učenja in poglejte, kako napredujete"
+
+msgid "Visit Dashboard"
+msgstr "Obiščite Nadzorno Ploščo"
+
+msgid "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+msgstr "Platforma za Ocenjevanje CyberHubs AI. Poganja Google Gemini AI."
+
+msgid "Developed for Hackathon EU 2025"
+msgstr "Razvito za Hackathon EU 2025"
+
+msgid "Home - CyberHubs AI Assessment"
+msgstr "Domov - Ocenjevanje CyberHubs AI"
+
+msgid "Error"
+msgstr "Napaka"
+
+msgid "Page not found"
+msgstr "Strani ni mogoče najti"
+
+msgid "The page you're looking for doesn't exist"
+msgstr "Iskana stran ne obstaja"
+
+msgid "Go back to home"
+msgstr "Pojdi nazaj na domov"
+
+msgid "Internal Server Error"
+msgstr "Notranja Napaka Strežnika"
+
+msgid "Something went wrong on our end"
+msgstr "Na naši strani se je nekaj napačno zgodilo"

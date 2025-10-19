@@ -1,0 +1,95 @@
+# English translations for CyberHubs AI Assessment Platform
+# Copyright (C) 2025
+# This file is distributed under the same license as the CyberHubs package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CyberHubs 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "Start Assessment"
+msgstr "Start Assessment"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "About"
+msgstr "About"
+
+msgid "Language"
+msgstr "Language"
+
+msgid "CyberHubs AI Assessment"
+msgstr "CyberHubs AI Assessment"
+
+msgid "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+msgstr "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+
+msgid "Assessments"
+msgstr "Assessments"
+
+msgid "Completed"
+msgstr "Completed"
+
+msgid "Average Score"
+msgstr "Average Score"
+
+msgid "Overall Performance"
+msgstr "Overall Performance"
+
+msgid "Badges"
+msgstr "Badges"
+
+msgid "Earned"
+msgstr "Earned"
+
+msgid "Start Your Journey"
+msgstr "Start Your Journey"
+
+msgid "Ready to test your cybersecurity knowledge?"
+msgstr "Ready to test your cybersecurity knowledge?"
+
+msgid "Begin Assessment"
+msgstr "Begin Assessment"
+
+msgid "View Your Progress"
+msgstr "View Your Progress"
+
+msgid "Track your learning journey and see how you're improving"
+msgstr "Track your learning journey and see how you're improving"
+
+msgid "Visit Dashboard"
+msgstr "Visit Dashboard"
+
+msgid "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+msgstr "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+
+msgid "Developed for Hackathon EU 2025"
+msgstr "Developed for Hackathon EU 2025"
+
+msgid "Home - CyberHubs AI Assessment"
+msgstr "Home - CyberHubs AI Assessment"
+
+msgid "Error"
+msgstr "Error"
+
+msgid "Page not found"
+msgstr "Page not found"
+
+msgid "The page you're looking for doesn't exist"
+msgstr "The page you're looking for doesn't exist"
+
+msgid "Go back to home"
+msgstr "Go back to home"
+
+msgid "Internal Server Error"
+msgstr "Internal Server Error"
+
+msgid "Something went wrong on our end"
+msgstr "Something went wrong on our end"

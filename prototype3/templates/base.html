@@ -79,27 +79,50 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
             <a
               href="{{ url_for('home.index') }}"
               class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+              data-i18n="home"
             >
               Home
             </a>
             <a
               href="{{ url_for('assessment.start') }}"
               class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+              data-i18n="start_assessment"
             >
               Start Assessment
             </a>
             <a
               href="{{ url_for('dashboard.index') }}"
               class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+              data-i18n="dashboard"
             >
               Dashboard
             </a>
             <a
               href="{{ url_for('home.about') }}"
               class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
+              data-i18n="about"
             >
               About
             </a>
+            <!-- Language Selector -->
+            <div class="relative group">
+              <button class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H17a2 2 0 012 2v2.5M3 5A2.5 2.5 0 015.5 7.5H21V5a2 2 0 00-2-2h-2.764a2 2 0 00-1.789 1.106l-1.498 2.248a1 1 0 01-.948.684H5a2 2 0 00-2 2v2.5m0 0v10a2 2 0 002 2h14a2 2 0 002-2v-10"></path>
+                </svg>
+                <span data-i18n="language">Language</span>
+              </button>
+              <div class="absolute right-0 mt-2 w-48 bg-slate-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                <a href="#" onclick="setLanguage('en'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition rounded-t-lg">English</a>
+                <a href="#" onclick="setLanguage('et'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition">Eesti</a>
+                <a href="#" onclick="setLanguage('hu'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition">Magyar</a>
+                <a href="#" onclick="setLanguage('lt'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition">Lietuvių</a>
+                <a href="#" onclick="setLanguage('pl'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition">Polski</a>
+                <a href="#" onclick="setLanguage('pt'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition">Português</a>
+                <a href="#" onclick="setLanguage('sk'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition">Slovenčina</a>
+                <a href="#" onclick="setLanguage('sl'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition rounded-b-lg">Slovenščina</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -150,7 +173,55 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
     <script>
       // Debug logging
       console.log('Page loaded:', '{{ request.endpoint }}');
-      console.log('Debug mode:', {{ 'true' if config.DEBUG else 'false' }});
+      var debugMode = {% if config.DEBUG %}true{% else %}false{% endif %};
+      console.log('Debug mode:', debugMode);
+      
+      // Global translations object
+      let translations = {};
+      let currentLanguage = sessionStorage.getItem('language') || 'en';
+      
+      // Load translations on page load
+      async function loadTranslations() {
+        try {
+          const response = await fetch('/static/translations.json');
+          translations = await response.json();
+          applyTranslations(currentLanguage);
+        } catch (error) {
+          console.error('Error loading translations:', error);
+        }
+      }
+      
+      // Apply translations to page
+      function applyTranslations(langCode) {
+        currentLanguage = langCode;
+        sessionStorage.setItem('language', langCode);
+        
+        // Store in server session
+        fetch(`/api/set-language/${langCode}`, { method: 'POST' })
+          .catch(error => console.error('Error saving language preference:', error));
+        
+        const langData = translations[langCode] || translations['en'];
+        
+        // Apply translations to elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (langData[key]) {
+            element.textContent = langData[key];
+          }
+        });
+      }
+      
+      // Language switching function
+      function setLanguage(langCode) {
+        if (translations && Object.keys(translations).length > 0) {
+          applyTranslations(langCode);
+        } else {
+          loadTranslations().then(() => applyTranslations(langCode));
+        }
+      }
+      
+      // Load translations when page loads
+      document.addEventListener('DOMContentLoaded', loadTranslations);
     </script>
   </body>
 </html>

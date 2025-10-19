@@ -1,0 +1,95 @@
+# Slovak translations for CyberHubs AI Assessment Platform
+# Copyright (C) 2025
+# This file is distributed under the same license as the CyberHubs package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CyberHubs 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "Domov"
+
+msgid "Start Assessment"
+msgstr "Začať Hodnotenie"
+
+msgid "Dashboard"
+msgstr "Ovládací panel"
+
+msgid "About"
+msgstr "O nás"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "CyberHubs AI Assessment"
+msgstr "Hodnotenie CyberHubs AI"
+
+msgid "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+msgstr "Rýchle, spoľahlivé posúdenia kybernetickej bezpečnosti. Solídna banka otázok s inteligentnými zhrnutiami AI a odporúčaniami."
+
+msgid "Assessments"
+msgstr "Hodnotenia"
+
+msgid "Completed"
+msgstr "Dokončené"
+
+msgid "Average Score"
+msgstr "Priemerný balík"
+
+msgid "Overall Performance"
+msgstr "Celková Výkonnosť"
+
+msgid "Badges"
+msgstr "Odznamenia"
+
+msgid "Earned"
+msgstr "Nadobudnutý"
+
+msgid "Start Your Journey"
+msgstr "Začnite svoju cestu"
+
+msgid "Ready to test your cybersecurity knowledge?"
+msgstr "Ste pripravení otestovať svoje znalosti z kybernetickej bezpečnosti?"
+
+msgid "Begin Assessment"
+msgstr "Začať Hodnotenie"
+
+msgid "View Your Progress"
+msgstr "Pozrite si svoj Pokrok"
+
+msgid "Track your learning journey and see how you're improving"
+msgstr "Sledujte svoju cestu učenia sa a vidíte, ako sa zlepšujete"
+
+msgid "Visit Dashboard"
+msgstr "Navštívte Ovládací panel"
+
+msgid "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+msgstr "Platforma hodnotenia CyberHubs AI. Poháňané Google Gemini AI."
+
+msgid "Developed for Hackathon EU 2025"
+msgstr "Vyvinuté pre Hackathon EU 2025"
+
+msgid "Home - CyberHubs AI Assessment"
+msgstr "Domov - Hodnotenie CyberHubs AI"
+
+msgid "Error"
+msgstr "Chyba"
+
+msgid "Page not found"
+msgstr "Stránka sa nenašla"
+
+msgid "The page you're looking for doesn't exist"
+msgstr "Hľadaná stránka neexistuje"
+
+msgid "Go back to home"
+msgstr "Vrátite sa na domov"
+
+msgid "Internal Server Error"
+msgstr "Interná Chyba Servera"
+
+msgid "Something went wrong on our end"
+msgstr "Niečo sa pokazilo z našej strany"
