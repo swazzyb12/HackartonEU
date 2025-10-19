@@ -152,5 +152,55 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
       console.log('Page loaded:', '{{ request.endpoint }}');
       console.log('Debug mode:', {{ 'true' if config.DEBUG else 'false' }});
     </script>
+
+    <!-- Feedback sounds -->
+    <audio
+      id="sfx-correct"
+      src="{{ url_for('static', filename='sound/correct.mp3') }}"
+      preload="auto"
+    ></audio>
+    <audio
+      id="sfx-wrong"
+      src="{{ url_for('static', filename='sound/wrong.mp3') }}"
+      preload="auto"
+    ></audio>
+    <script>
+      (function () {
+        const tryPlay = (el) => el && el.play && el.play().catch(() => {});
+        window.SFX = {
+          playCorrect() {
+            const a = document.getElementById("sfx-correct");
+            if (a) {
+              a.currentTime = 0;
+              tryPlay(a);
+            }
+          },
+          playWrong() {
+            const a = document.getElementById("sfx-wrong");
+            if (a) {
+              a.currentTime = 0;
+              tryPlay(a);
+            }
+          },
+        };
+      })();
+    </script>
+    <!-- Feedback sounds -->
+    <audio id="sfx-correct" src="{{ url_for('static', filename='sound/correct.mp3') }}" preload="auto"></audio>
+    <audio id="sfx-wrong"   src="{{ url_for('static', filename='sound/wrong.mp3') }}" preload="auto"></audio>
+    <audio id="sfx-good-performance" src="{{ url_for('static', filename='sound/goodperformance.mp3') }}" preload="auto"></audio>
+    <audio id="sfx-bad-performance" src="{{ url_for('static', filename='sound/badperformance.mp3') }}" preload="auto"></audio>
+    <script>
+      (function () {
+        const tryPlay = el => el && el.play && el.play().catch(()=>{});
+        window.SFX = {
+          playCorrect(){ const a=document.getElementById('sfx-correct'); if(a){ a.currentTime=0; tryPlay(a);} },
+          playWrong(){   const a=document.getElementById('sfx-wrong');   if(a){ a.currentTime=0; tryPlay(a);} },
+          playGoodPerformance(){ const a=document.getElementById('sfx-good-performance'); if(a){ a.currentTime=0; tryPlay(a);} },
+          playBadPerformance(){ const a=document.getElementById('sfx-bad-performance'); if(a){ a.currentTime=0; tryPlay(a);} }
+        };
+      }());
+    </script>
+  </body>
   </body>
 </html>
