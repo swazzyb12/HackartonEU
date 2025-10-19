@@ -12,3 +12,4 @@ dist/
 .env
 .history
 .venv/
+prototype3flask_env

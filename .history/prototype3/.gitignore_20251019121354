@@ -11,4 +11,4 @@ dist/
 *.iml
 .env
 .history
-.venv/
+.venv
