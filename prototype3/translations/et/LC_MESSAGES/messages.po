@@ -1,0 +1,95 @@
+# Estonian translations for CyberHubs AI Assessment Platform
+# Copyright (C) 2025
+# This file is distributed under the same license as the CyberHubs package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CyberHubs 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "Avaleht"
+
+msgid "Start Assessment"
+msgstr "Alusta hindamist"
+
+msgid "Dashboard"
+msgstr "Juhtpaneel"
+
+msgid "About"
+msgstr "Teave"
+
+msgid "Language"
+msgstr "Keel"
+
+msgid "CyberHubs AI Assessment"
+msgstr "CyberHubs AI hindamine"
+
+msgid "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+msgstr "Kiired, usaldusväärsed küberneetilise turvalisuse hinnangud. Tugev küsimuste pank koos nutika AI kokkuvõtete ja soovitustega."
+
+msgid "Assessments"
+msgstr "Hinnangud"
+
+msgid "Completed"
+msgstr "Lõpetatud"
+
+msgid "Average Score"
+msgstr "Keskmine skoor"
+
+msgid "Overall Performance"
+msgstr "Üldine jõudlus"
+
+msgid "Badges"
+msgstr "Märgid"
+
+msgid "Earned"
+msgstr "Teenitud"
+
+msgid "Start Your Journey"
+msgstr "Alusta oma teekonda"
+
+msgid "Ready to test your cybersecurity knowledge?"
+msgstr "Kas oled valmis testima oma küberneetilise turvalisuse teadmisi?"
+
+msgid "Begin Assessment"
+msgstr "Alusta hindamist"
+
+msgid "View Your Progress"
+msgstr "Vaata oma edusamme"
+
+msgid "Track your learning journey and see how you're improving"
+msgstr "Jälgi oma õppehetkust ja näe, kuidas paranevad"
+
+msgid "Visit Dashboard"
+msgstr "Külasta juhtpaneeli"
+
+msgid "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+msgstr "CyberHubs AI hindamise platvorm. Võimendatud Google Gemini AI-ga."
+
+msgid "Developed for Hackathon EU 2025"
+msgstr "Välja töötatud Hackathon EU 2025 jaoks"
+
+msgid "Home - CyberHubs AI Assessment"
+msgstr "Avaleht - CyberHubs AI hindamine"
+
+msgid "Error"
+msgstr "Viga"
+
+msgid "Page not found"
+msgstr "Leht ei leitud"
+
+msgid "The page you're looking for doesn't exist"
+msgstr "Otstavat lehte ei ole olemas"
+
+msgid "Go back to home"
+msgstr "Liigu tagasi avalehele"
+
+msgid "Internal Server Error"
+msgstr "Serveri sisemine viga"
+
+msgid "Something went wrong on our end"
+msgstr "Meie poolelt läks midagi valesti"

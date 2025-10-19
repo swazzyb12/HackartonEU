@@ -1,0 +1,95 @@
+# Polish translations for CyberHubs AI Assessment Platform
+# Copyright (C) 2025
+# This file is distributed under the same license as the CyberHubs package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CyberHubs 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "Strona główna"
+
+msgid "Start Assessment"
+msgstr "Rozpocznij ocenę"
+
+msgid "Dashboard"
+msgstr "Pulpit"
+
+msgid "About"
+msgstr "O nas"
+
+msgid "Language"
+msgstr "Język"
+
+msgid "CyberHubs AI Assessment"
+msgstr "Ocena CyberHubs AI"
+
+msgid "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+msgstr "Szybkie, niezawodne oceny bezpieczeństwa cybernetycznego. Solidna baza pytań z inteligentnymi podsumowaniami AI i rekomendacjami."
+
+msgid "Assessments"
+msgstr "Oceny"
+
+msgid "Completed"
+msgstr "Ukończone"
+
+msgid "Average Score"
+msgstr "Średni wynik"
+
+msgid "Overall Performance"
+msgstr "Ogólna wydajność"
+
+msgid "Badges"
+msgstr "Odznaki"
+
+msgid "Earned"
+msgstr "Zdobyte"
+
+msgid "Start Your Journey"
+msgstr "Rozpocznij swoją podróż"
+
+msgid "Ready to test your cybersecurity knowledge?"
+msgstr "Czy jesteś gotów przetestować swoją wiedzę z zakresu bezpieczeństwa cybernetycznego?"
+
+msgid "Begin Assessment"
+msgstr "Rozpocznij ocenę"
+
+msgid "View Your Progress"
+msgstr "Wyświetl swój postęp"
+
+msgid "Track your learning journey and see how you're improving"
+msgstr "Śledź swoją podróż edukacyjną i zobacz, jak się poprawiasz"
+
+msgid "Visit Dashboard"
+msgstr "Odwiedź pulpit"
+
+msgid "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+msgstr "Platforma oceny CyberHubs AI. Zasilana przez Google Gemini AI."
+
+msgid "Developed for Hackathon EU 2025"
+msgstr "Opracowane dla Hackathon EU 2025"
+
+msgid "Home - CyberHubs AI Assessment"
+msgstr "Strona główna - Ocena CyberHubs AI"
+
+msgid "Error"
+msgstr "Błąd"
+
+msgid "Page not found"
+msgstr "Strona nie znaleziona"
+
+msgid "The page you're looking for doesn't exist"
+msgstr "Szukana strona nie istnieje"
+
+msgid "Go back to home"
+msgstr "Wróć na stronę główną"
+
+msgid "Internal Server Error"
+msgstr "Wewnętrzny błąd serwera"
+
+msgid "Something went wrong on our end"
+msgstr "Coś poszło nie tak z naszej strony"

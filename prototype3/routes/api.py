@@ -102,6 +102,36 @@ def clear_session():
             'error': str(e)
         }), 500
 
+@api_bp.route('/set-language/<language>', methods=['POST'])
+def set_language(language):
+    """Set user language preference"""
+    logger.info(f'Language preference change requested: {language}')
+    
+    from app import SUPPORTED_LANGUAGES
+    
+    try:
+        if language in SUPPORTED_LANGUAGES:
+            session['language'] = language
+            logger.info(f'Language set to: {language}')
+            return jsonify({
+                'success': True,
+                'message': f'Language set to {SUPPORTED_LANGUAGES[language]}',
+                'language': language
+            })
+        else:
+            logger.warning(f'Unsupported language requested: {language}')
+            return jsonify({
+                'success': False,
+                'error': 'Unsupported language'
+            }), 400
+    
+    except Exception as e:
+        logger.exception(f'Error setting language: {str(e)}')
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
 @api_bp.errorhandler(404)
 def api_not_found(error):
     """API 404 handler"""

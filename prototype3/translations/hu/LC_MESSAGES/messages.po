@@ -1,0 +1,95 @@
+# Hungarian translations for CyberHubs AI Assessment Platform
+# Copyright (C) 2025
+# This file is distributed under the same license as the CyberHubs package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CyberHubs 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Home"
+msgstr "Kezdőlap"
+
+msgid "Start Assessment"
+msgstr "Felmérés megkezdése"
+
+msgid "Dashboard"
+msgstr "Vezérlőpult"
+
+msgid "About"
+msgstr "Névjegy"
+
+msgid "Language"
+msgstr "Nyelv"
+
+msgid "CyberHubs AI Assessment"
+msgstr "CyberHubs AI Felmérés"
+
+msgid "Fast, reliable cybersecurity assessments. Solid question bank with smart AI summaries and recommendations."
+msgstr "Gyors, megbízható kiberbiztonsági felmérések. Szilárd kérdésbank az intelligens AI-összefoglalások és ajánlások mellett."
+
+msgid "Assessments"
+msgstr "Felmérések"
+
+msgid "Completed"
+msgstr "Befejezve"
+
+msgid "Average Score"
+msgstr "Átlagos pontszám"
+
+msgid "Overall Performance"
+msgstr "Teljes teljesítmény"
+
+msgid "Badges"
+msgstr "Jelvények"
+
+msgid "Earned"
+msgstr "Szerzett"
+
+msgid "Start Your Journey"
+msgstr "Kezdd meg utazásodat"
+
+msgid "Ready to test your cybersecurity knowledge?"
+msgstr "Készen állsz a kiberbiztonsági ismereteid tesztelésére?"
+
+msgid "Begin Assessment"
+msgstr "Felmérés megkezdése"
+
+msgid "View Your Progress"
+msgstr "Nézd meg a haladásodat"
+
+msgid "Track your learning journey and see how you're improving"
+msgstr "Kövesd tanulási utazásodat, és nézd meg, hogyan javulsz"
+
+msgid "Visit Dashboard"
+msgstr "Látogass meg a Vezérlőpultra"
+
+msgid "CyberHubs AI Assessment Platform. Powered by Google Gemini AI."
+msgstr "CyberHubs AI Felmérési Platform. A Google Gemini AI által működtetett."
+
+msgid "Developed for Hackathon EU 2025"
+msgstr "Kifejlesztve a Hackathon EU 2025-hez"
+
+msgid "Home - CyberHubs AI Assessment"
+msgstr "Kezdőlap - CyberHubs AI Felmérés"
+
+msgid "Error"
+msgstr "Hiba"
+
+msgid "Page not found"
+msgstr "Oldal nem található"
+
+msgid "The page you're looking for doesn't exist"
+msgstr "A keresett oldal nem létezik"
+
+msgid "Go back to home"
+msgstr "Vissza a kezdőlapra"
+
+msgid "Internal Server Error"
+msgstr "Belső szerverhiba"
+
+msgid "Something went wrong on our end"
+msgstr "Valamilyen hiba történt a mi végünkön"
