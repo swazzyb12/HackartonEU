@@ -53,6 +53,7 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
     <nav class="bg-slate-800 border-b border-slate-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
+          <!-- Logo -->
           <div class="flex items-center">
             <a
               href="{{ url_for('home.index') }}"
@@ -71,11 +72,12 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
                   d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                 />
               </svg>
-              <span class="text-xl font-bold">CyberHubs AI</span>
+              <span class="text-xl font-bold hidden sm:inline">CyberHubs AI</span>
             </a>
           </div>
 
-          <div class="flex items-center gap-4">
+          <!-- Desktop Navigation -->
+          <div class="hidden md:flex items-center gap-1 lg:gap-4">
             <a
               href="{{ url_for('home.index') }}"
               class="text-slate-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition"
@@ -110,7 +112,7 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H17a2 2 0 012 2v2.5M3 5A2.5 2.5 0 015.5 7.5H21V5a2 2 0 00-2-2h-2.764a2 2 0 00-1.789 1.106l-1.498 2.248a1 1 0 01-.948.684H5a2 2 0 00-2 2v2.5m0 0v10a2 2 0 002 2h14a2 2 0 002-2v-10"></path>
                 </svg>
-                <span data-i18n="language">Language</span>
+                <span data-i18n="language" class="hidden lg:inline">Language</span>
               </button>
               <div class="absolute right-0 mt-2 w-48 bg-slate-700 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
                 <a href="#" onclick="setLanguage('en'); return false;" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition rounded-t-lg">English</a>
@@ -124,6 +126,66 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
               </div>
             </div>
           </div>
+
+          <!-- Mobile Menu Button & Language Selector -->
+          <div class="flex md:hidden items-center gap-1">
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" class="text-slate-300 hover:text-white p-2 rounded-md transition">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+            <!-- Mobile Language Selector -->
+            <div class="relative">
+              <button id="mobile-lang-btn" class="text-slate-300 hover:text-white p-2 rounded-md transition" title="Change language">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H17a2 2 0 012 2v2.5M3 5A2.5 2.5 0 015.5 7.5H21V5a2 2 0 00-2-2h-2.764a2 2 0 00-1.789 1.106l-1.498 2.248a1 1 0 01-.948.684H5a2 2 0 00-2 2v2.5m0 0v10a2 2 0 002 2h14a2 2 0 002-2v-10"></path>
+                </svg>
+              </button>
+              <div id="mobile-lang-menu" class="hidden absolute right-0 mt-2 w-40 bg-slate-700 rounded-lg shadow-lg z-20">
+                <button onclick="setLanguage('en')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition rounded-t-lg text-sm">English</button>
+                <button onclick="setLanguage('et')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition text-sm">Eesti</button>
+                <button onclick="setLanguage('hu')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition text-sm">Magyar</button>
+                <button onclick="setLanguage('lt')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition text-sm">Lietuvių</button>
+                <button onclick="setLanguage('pl')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition text-sm">Polski</button>
+                <button onclick="setLanguage('pt')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition text-sm">Português</button>
+                <button onclick="setLanguage('sk')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition text-sm">Slovenčina</button>
+                <button onclick="setLanguage('sl')" class="block w-full text-left px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-600 transition rounded-b-lg text-sm">Slovenščina</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+          <a
+            href="{{ url_for('home.index') }}"
+            class="block text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium transition"
+            data-i18n="home"
+          >
+            Home
+          </a>
+          <a
+            href="{{ url_for('assessment.start') }}"
+            class="block text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium transition"
+            data-i18n="start_assessment"
+          >
+            Start Assessment
+          </a>
+          <a
+            href="{{ url_for('dashboard.index') }}"
+            class="block text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium transition"
+            data-i18n="dashboard"
+          >
+            Dashboard
+          </a>
+          <a
+            href="{{ url_for('home.about') }}"
+            class="block text-slate-300 hover:text-white hover:bg-slate-700 px-3 py-2 rounded-md text-base font-medium transition"
+            data-i18n="about"
+          >
+            About
+          </a>
         </div>
       </div>
     </nav>
@@ -222,6 +284,49 @@ secs }}s {% elif minutes > 0 %} {{ minutes }}m {{ secs }}s {% else %} {{ secs
       
       // Load translations when page loads
       document.addEventListener('DOMContentLoaded', loadTranslations);
+      
+      // Mobile menu toggle
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLangBtn = document.getElementById('mobile-lang-btn');
+      const mobileLangMenu = document.getElementById('mobile-lang-menu');
+      
+      if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+          });
+        });
+      }
+      
+      // Mobile language selector toggle
+      if (mobileLangBtn && mobileLangMenu) {
+        mobileLangBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          mobileLangMenu.classList.toggle('hidden');
+        });
+        
+        // Close when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!mobileLangBtn.contains(e.target) && !mobileLangMenu.contains(e.target)) {
+            mobileLangMenu.classList.add('hidden');
+          }
+        });
+        
+        // Close menu when a language is selected
+        const langButtons = mobileLangMenu.querySelectorAll('button');
+        langButtons.forEach(btn => {
+          btn.addEventListener('click', function() {
+            mobileLangMenu.classList.add('hidden');
+          });
+        });
+      }
     </script>
   </body>
 </html>
